@@ -12,7 +12,7 @@ Graph::Graph(std::vector<std::vector<int>> adjacencyMatrix) {
     };
 }
 
-boolean Graph::isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const {
+bool Graph::isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const {
     int rows = (int) adjacencyMatrix.size();
     int cols = 0;
     for (std::vector<int> row : adjacencyMatrix) {

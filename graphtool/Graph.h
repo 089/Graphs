@@ -1,7 +1,6 @@
 #pragma once
 
 #include <vector>
-#include <jmorecfg.h>
 
 /**
  * Represents a graph. Has certain verifiable properties.
@@ -14,7 +13,7 @@ private:
 public:
     Graph(std::vector<std::vector<int>> adjacencyMatrix);
 
-    boolean isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const;
+    bool isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const;
 
     const std::vector<std::vector<int>> &getAdjacencyMatrix() const;
 };
