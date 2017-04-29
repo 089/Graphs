@@ -25,7 +25,7 @@ matrix:
           sources:
             - ubuntu-toolchain-r-test
           packages:
-            - g++-
+            - g++-6
             - doxygen
             - doxygen-doc
             - doxygen-latex
