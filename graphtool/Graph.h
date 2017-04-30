@@ -2,20 +2,28 @@
 
 #include <vector>
 
+using namespace std;
+
 /**
  * Represents a graph. Has certain verifiable properties.
  */
 class Graph {
 
 private:
-    std::vector<std::vector<int>> adjacencyMatrix;
+    vector<vector<int>> adjacencyMatrix;
 
 public:
-    Graph(std::vector<std::vector<int>> adjacencyMatrix);
+    Graph(vector<vector<int>> adjacencyMatrix);
 
-    bool isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const;
+    bool isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const;
 
-    const std::vector<std::vector<int>> &getAdjacencyMatrix() const;
+    /**
+     * Detect the number of nodes of the given graph.
+     * @return number of nodes.
+     */
+    int getNumberOfNodes() const;
+
+    const vector<vector<int>> &getAdjacencyMatrix() const;
 };
 
 

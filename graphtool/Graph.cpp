@@ -3,19 +3,19 @@
 #include <stdexcept>
 #include "Graph.h"
 
-Graph::Graph(std::vector<std::vector<int>> adjacencyMatrix) {
+Graph::Graph(vector<vector<int>> adjacencyMatrix) {
 
     if (isSymmetricMatrix(adjacencyMatrix)) {
         this->adjacencyMatrix = adjacencyMatrix;
     } else {
-        throw std::invalid_argument("adjacency matix must be symmetrical");
+        throw invalid_argument("adjacency matrix has to be symmetrical");
     };
 }
 
-bool Graph::isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatrix) const {
+bool Graph::isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const {
     int rows = (int) adjacencyMatrix.size();
     int cols = 0;
-    for (std::vector<int> row : adjacencyMatrix) {
+    for (vector<int> row : adjacencyMatrix) {
         if (row.size() > cols) {
             cols = (int) row.size();
         }
@@ -24,6 +24,14 @@ bool Graph::isSymmetricMatrix(const std::vector<std::vector<int>> &adjacencyMatr
     return rows == cols;
 }
 
-const std::vector<std::vector<int>> &Graph::getAdjacencyMatrix() const {
+const vector<vector<int>> &Graph::getAdjacencyMatrix() const {
     return adjacencyMatrix;
+}
+
+/**
+ * Detect the number of nodes of the given graph.
+ * @return number of nodes.
+ */
+int Graph::getNumberOfNodes() const {
+    return this->adjacencyMatrix.size();
 }
