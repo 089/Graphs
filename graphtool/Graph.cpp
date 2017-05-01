@@ -126,3 +126,22 @@ bool Graph::isDirected() {
     this->type = UNDIRECTED;
     return false;
 }
+
+bool Graph::isFreeOfLoops() {
+
+    if (isFreeOfLoopsFlag) {
+        return isFreeOfLoopsCache;
+    }
+
+    for (int mainDiagonal = 0; mainDiagonal < this->getNumberOfNodes(); ++mainDiagonal) {
+        // check if there is a loop
+        if (this->getAdjacencyMatrix()[mainDiagonal][mainDiagonal] > 0) {
+            isFreeOfLoopsCache = false;
+            return isFreeOfLoopsCache;
+        }
+    }
+
+    isFreeOfLoopsCache = true;
+    return isFreeOfLoopsCache;
+}
+

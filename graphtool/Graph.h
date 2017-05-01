@@ -38,6 +38,16 @@ private:
      */
     vector<int> outDeg;
 
+    /**
+     * Cache for result of eponymous function.
+     */
+    bool isFreeOfLoopsCache = false;
+
+    /**
+     * Flag. Specifies whether function has been called already.
+     */
+    bool isFreeOfLoopsFlag = false;
+
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
@@ -76,6 +86,14 @@ public:
      * @return outdegree outdeg(v)
      */
     int getOutDeg(int vertexIndex);
+
+    /**
+     * Specifies whether the graph is free of loops.
+     * Loops are edges from and to the same vertex.
+     *
+     * @return true, if there are no loops in the graph.
+     */
+    bool isFreeOfLoops();
 };
 
 
