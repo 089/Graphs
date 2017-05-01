@@ -44,9 +44,19 @@ private:
     bool isFreeOfLoopsCache = false;
 
     /**
-     * Flag. Specifies whether function has been called already.
+     * Flag. Specifies whether the eponymous function has been called already.
      */
     bool isFreeOfLoopsFlag = false;
+
+    /**
+     * Cache for result of eponymous function.
+     */
+    bool isMultigraphCache = false;
+
+    /**
+     * Flag. Specifies whether the eponymous function has been called already.
+     */
+    bool isMultigraphFlag = false;
 
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
@@ -94,6 +104,15 @@ public:
      * @return true, if there are no loops in the graph.
      */
     bool isFreeOfLoops();
+
+    /**
+     * Specifies whether the graph is a multigraph (has multiple edges/has
+     * <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Multigraph">
+     * "two or more edged that connect the same two vertices"</a>)
+     *
+     * @return true, if it is a multigraph
+     */
+    bool isMultigraph();
 };
 
 

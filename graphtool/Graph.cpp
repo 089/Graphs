@@ -145,3 +145,26 @@ bool Graph::isFreeOfLoops() {
     return isFreeOfLoopsCache;
 }
 
+bool Graph::isMultigraph() {
+
+    if (isMultigraphFlag) {
+        return isMultigraphCache;
+    }
+
+    /*
+     * if the adjacency matrix contains a value greater than 1 the matrix
+     * has multiple edges and therefore the graph is a multigraph.
+     */
+    for (int row = 0; row < this->getNumberOfNodes(); ++row) {
+        for (int col = 0; col < this->getNumberOfNodes(); ++col) {
+            if (this->getAdjacencyMatrix()[row][col] > 1) {
+                isMultigraphCache = true;
+                return isMultigraphCache;
+            }
+        }
+    }
+
+    isMultigraphCache = false;
+    return isMultigraphCache;
+}
+
