@@ -58,6 +58,16 @@ private:
      */
     bool isMultigraphFlag = false;
 
+    /**
+     * Cache for result of eponymous function.
+     */
+    bool isCompleteCache = false;
+
+    /**
+     * Flag. Specifies whether the eponymous function has been called already.
+     */
+    bool isCompleteFlag = false;
+
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
@@ -121,6 +131,16 @@ public:
      * @return  true, if the graph is a simple graph.
      */
     bool isSimple();
+
+    /**
+     * Specifies whether the graph is a complete graph (simple graph
+     * <a href="https://en.wikipedia.org/wiki/Complete_graph">"in which every
+     * pair of distinct vertices is connected by a unique edge."</a>).
+     * Checks only undirected graphs! A complete graph is also called K_n.
+     *
+     * @return  true, if the graph is a complete graph.
+     */
+    bool isComplete();
 };
 
 

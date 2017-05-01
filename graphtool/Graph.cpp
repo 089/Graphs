@@ -133,6 +133,8 @@ bool Graph::isFreeOfLoops() {
         return isFreeOfLoopsCache;
     }
 
+    isFreeOfLoopsFlag = true;
+
     for (int mainDiagonal = 0; mainDiagonal < this->getNumberOfNodes(); ++mainDiagonal) {
         // check if there is a loop
         if (this->getAdjacencyMatrix()[mainDiagonal][mainDiagonal] > 0) {
@@ -150,6 +152,8 @@ bool Graph::isMultigraph() {
     if (isMultigraphFlag) {
         return isMultigraphCache;
     }
+
+    isMultigraphFlag = true;
 
     /*
      * if the adjacency matrix contains a value greater than 1 the matrix
@@ -172,3 +176,34 @@ bool Graph::isSimple() {
     return !this->isDirected() && !isMultigraph() && isFreeOfLoops();
 }
 
+bool Graph::isComplete() {
+
+    if (isCompleteFlag) {
+        return isCompleteCache;
+    }
+
+    isCompleteFlag = true;
+
+
+    /*
+     * the graph is complete if the adjacency matrix has only entries of 1
+     * except the main diagonal which must be 0.
+     */
+    if (!isFreeOfLoops()) {
+        isCompleteCache = false;
+        return isCompleteCache;
+    }
+
+    for (int row = 0; row < this->getNumberOfNodes(); row++) {
+        for (int col = 0; col < this->getNumberOfNodes(); col++) {
+            // only 1 is allowed now
+            if (row != col && this->getAdjacencyMatrix()[row][col] != 1) {
+                isCompleteCache = false;
+                return isCompleteCache;
+            }
+        }
+    }
+
+    isCompleteCache = true;
+    return isCompleteCache;
+}
