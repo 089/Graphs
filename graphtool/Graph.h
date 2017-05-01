@@ -11,6 +11,9 @@ using namespace std;
 class Graph {
 
 private:
+    /**
+     * the adjacency matrix
+     */   
     vector<vector<int>> adjacencyMatrix;
 
 public:
