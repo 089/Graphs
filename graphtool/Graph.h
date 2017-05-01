@@ -5,7 +5,8 @@
 using namespace std;
 
 /**
- * Represents a graph. Has certain verifiable properties.
+ * Represents a <b>simple</b> or <b>directed</b> graph. Has certain verifiable
+ * properties. Its edges are not weighted.
  */
 class Graph {
 
