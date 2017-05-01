@@ -94,12 +94,6 @@ int Graph::getOutDeg(int vertexIndex) {
     return this->outDeg[vertexIndex];
 }
 
-/**
- * Returns if the graph is a directed or undirected graph.
- *
- * @return  true, if directed<br>
- *          false, if undirected
- */
 bool Graph::isDirected() {
 
     // Get cached result.

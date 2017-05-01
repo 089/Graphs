@@ -51,6 +51,12 @@ public:
 
     const vector<vector<int>> &getAdjacencyMatrix() const;
 
+    /**
+     * Returns if the graph is a directed or undirected graph.
+     *
+     * @return  true, if directed<br>
+     *          false, if undirected
+     */
     bool isDirected();
 
     /**
