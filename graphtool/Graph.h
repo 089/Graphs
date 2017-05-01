@@ -16,6 +16,16 @@ private:
      */   
     vector<vector<int>> adjacencyMatrix;
 
+    /**
+     * Possible types of the graph: unchecked, directed or undirected.
+     */
+    enum Type { UNCHECKED, DIRECTED, UNDIRECTED};
+
+    /**
+     * type of the graph ({@see Type).
+     */
+    Type type = UNCHECKED;
+
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
@@ -28,6 +38,8 @@ public:
     int getNumberOfNodes() const;
 
     const vector<vector<int>> &getAdjacencyMatrix() const;
+
+    bool isDirected();
 };
 
 
