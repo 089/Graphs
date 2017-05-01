@@ -1,7 +1,6 @@
 
 #include <vector>
 #include <stdexcept>
-#include <iostream>
 #include "Graph.h"
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
@@ -37,6 +36,64 @@ int Graph::getNumberOfNodes() const {
     return this->adjacencyMatrix.size();
 }
 
+int Graph::getInDeg(int vertexIndex) {
+
+    if (vertexIndex < 0 || vertexIndex >= this->getNumberOfNodes()) {
+        throw invalid_argument("vertex index has to be between 0 and n, but is " + to_string(vertexIndex) + ".");
+    }
+
+    // no value cached ==> calculate degree
+    if (this->inDeg.empty()) {
+
+        // count edges
+        int countIngoingEdges = 0;
+        for (int row = 0; row < this->getNumberOfNodes(); row++) {
+            // adds ingoing edges
+            countIngoingEdges += this->adjacencyMatrix[row][vertexIndex];
+
+            // In undirected graphs loops are counted twice:
+            if (row == vertexIndex && !this->isDirected()) {
+                countIngoingEdges++;
+            }
+        }
+
+        // setting cache value
+        this->inDeg.resize(this->getNumberOfNodes());
+        this->inDeg[vertexIndex] = countIngoingEdges;
+    }
+
+    return this->inDeg[vertexIndex];
+}
+
+int Graph::getOutDeg(int vertexIndex) {
+
+    if (vertexIndex < 0 || vertexIndex >= this->getNumberOfNodes()) {
+        throw invalid_argument("vertex index has to be between 0 and n, but is " + to_string(vertexIndex) + ".");
+    }
+
+    // no value cached ==> calculate degree
+    if (this->outDeg.empty()) {
+
+        // count edges
+        int countOutgoingEdges = 0;
+        for (int col = 0; col < this->getNumberOfNodes(); col++) {
+            // adds ingoing edges
+            countOutgoingEdges += this->adjacencyMatrix[vertexIndex][col];
+
+            // In undirected graphs loops are counted twice:
+            if (col == vertexIndex && !this->isDirected()) {
+                countOutgoingEdges++;
+            }
+        }
+
+        // setting cache value
+        this->outDeg.resize(this->getNumberOfNodes());
+        this->outDeg[vertexIndex] = countOutgoingEdges;
+    }
+
+    return this->outDeg[vertexIndex];
+}
+
 /**
  * Returns if the graph is a directed or undirected graph.
  *
@@ -59,9 +116,8 @@ bool Graph::isDirected() {
             for (int row = 0; row < this->getNumberOfNodes(); row++) {
                 // check only upper triangle part of matrix
                 for (int col = row + 1; col < this->getNumberOfNodes(); col++) {
-                    cout << "here" << endl;
                     // values must be the same, otherwise its a digraph
-                    if(this->getAdjacencyMatrix()[row][col] != this->getAdjacencyMatrix()[col][row]) {
+                    if (this->getAdjacencyMatrix()[row][col] != this->getAdjacencyMatrix()[col][row]) {
                         // cache result
                         this->type = DIRECTED;
                         return true;
