@@ -168,3 +168,7 @@ bool Graph::isMultigraph() {
     return isMultigraphCache;
 }
 
+bool Graph::isSimple() {
+    return !this->isDirected() && !isMultigraph() && isFreeOfLoops();
+}
+

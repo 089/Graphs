@@ -113,6 +113,14 @@ public:
      * @return true, if it is a multigraph
      */
     bool isMultigraph();
+
+    /**
+     * Specifies whether the graph is a simple graph (undirected, no multiple
+     * edges, no loops) or not.
+     *
+     * @return  true, if the graph is a simple graph.
+     */
+    bool isSimple();
 };
 
 
