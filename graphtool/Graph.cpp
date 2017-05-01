@@ -43,7 +43,7 @@ int Graph::getInDeg(int vertexIndex) {
     }
 
     // no value cached ==> calculate degree
-    if (this->inDeg.empty()) {
+    if (this->inDeg.empty() || this->inDeg[vertexIndex] < 1) {
 
         // count edges
         int countIngoingEdges = 0;
@@ -72,7 +72,7 @@ int Graph::getOutDeg(int vertexIndex) {
     }
 
     // no value cached ==> calculate degree
-    if (this->outDeg.empty()) {
+    if (this->outDeg.empty() || this->outDeg[vertexIndex] < 1) {
 
         // count edges
         int countOutgoingEdges = 0;
@@ -206,4 +206,35 @@ bool Graph::isComplete() {
 
     isCompleteCache = true;
     return isCompleteCache;
+}
+
+bool Graph::isRegular() {
+
+    if (isRegularFlag) {
+        return isRegularCache;
+    }
+
+    isRegularFlag = true;
+
+    // get in/out deg of the first vertex
+    int inDegOfFirstVertex = this->getInDeg(0);
+    int outDegOfFirstVertex = this->getOutDeg(0);
+
+    // all other vertices must have the same deg,
+    // otherwise this graph is not regular
+    for (int vertex = 1; vertex < this->getNumberOfNodes(); vertex++) {
+
+
+        // directed graph ==> indeg and outdeg can differ ==> we have to test both
+        // undirected graph ==> indeg and outdeg must be the same ==> we only must test one
+        // ==> we can use the following commands for both types
+        if (this->getInDeg(vertex) != inDegOfFirstVertex || this->getOutDeg(vertex) != outDegOfFirstVertex) {
+            isRegularCache = false;
+            return isRegularCache;
+        }
+
+    }
+
+    isRegularCache = true;
+    return isRegularCache;
 }

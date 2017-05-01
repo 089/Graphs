@@ -68,6 +68,16 @@ private:
      */
     bool isCompleteFlag = false;
 
+    /**
+     * Cache for result of eponymous function.
+     */
+    bool isRegularCache = false;
+
+    /**
+     * Flag. Specifies whether the eponymous function has been called already.
+     */
+    bool isRegularFlag = false;
+
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
@@ -141,6 +151,16 @@ public:
      * @return  true, if the graph is a complete graph.
      */
     bool isComplete();
+
+    /**
+     * Specifies whether the graph is a regular graph
+     * (<a href="https://en.wikipedia.org/wiki/Regular_graph">
+     * "is a graph where each vertex has the same number of neighbors"
+     * </a>).
+     *
+     * @return  true, if the graph is a regular graph.
+     */
+    bool isRegular();
 };
 
 
