@@ -52,7 +52,7 @@ before_install:
 
 script:
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER && make
-  - ./build/runAllTests.exe
+  - ./build/runAllTests
 
 
 # Generate and deploy documentation
