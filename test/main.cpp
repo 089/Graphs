@@ -1,4 +1,5 @@
 #include "gtest/gtest.h"
+#include "Graph.h"
 
 TEST(basic_check, test_eq) {
     EXPECT_EQ(1, 1);
