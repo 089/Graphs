@@ -9,5 +9,5 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/build)
 
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/graphtool")
 add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/gui")
-#add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test")
+add_subdirectory("${CMAKE_CURRENT_SOURCE_DIR}/test")
 

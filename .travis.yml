@@ -14,7 +14,7 @@ branches:
 env:
   global:
     - GH_REPO_NAME: blatt-2-amf0
-    - DOXYFILE: $TRAVIS_BUILD_DIR/doxyconf # todo: doxyconf
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile # todo: doxyconf
     - GH_REPO_REF: github.com:algdat/blatt-2-amf0.git
 
 matrix:
@@ -51,10 +51,8 @@ before_install:
   - sudo apt-get update -qq
 
 script:
-  - mkdir build
-  - cd build
-  - cmake -DCMAKE_CXX_COMPILER=$COMPILER ../graphtool && make
-  - ./graphtool
+  - cmake -DCMAKE_CXX_COMPILER=$COMPILER && make
+  - ./build/runAllTests.exe
 
 
 # Generate and deploy documentation
