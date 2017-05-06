@@ -1,7 +1,3 @@
-cmake_minimum_required(VERSION 3.2)
-project(graphtool)
+add_library(graphtoolShared SHARED Graph.cpp Graph.h)
 
-set(CMAKE_CXX_STANDARD 14)
-
-set(SOURCE_FILES main.cpp Graph.cpp)
-add_executable(graphtool ${SOURCE_FILES})
+target_include_directories (graphtoolShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
