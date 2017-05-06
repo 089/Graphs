@@ -22,5 +22,8 @@ int main() {
     // Number of  nodes
     cout << "Number of nodes: " << g->getNumberOfNodes() << endl;
 
+    // Export for sigma js
+    g->exportFile("data.json", g->graphToJson());
+
     return 0;
 }
