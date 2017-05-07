@@ -26,6 +26,16 @@ private:
      */
     bool hasCycleFlag = false;
 
+    /**
+     * Cache for result of isDirected function.
+     */
+    bool isDirectedCache = false;
+
+    /**
+     * Flag. Specifies whether the isDirected function has been called already.
+     */
+    bool isDirectedFlag = false;
+
 
     /**
      * Private helper function for hasCycle function.
@@ -68,6 +78,8 @@ public:
 
     /**
      * Checks if the graph contains the given edge.
+     * @param from node number
+     * @param to node number
      * @return true if the edge exists
      */
     bool hasEdge(const int from, const int to) const;
