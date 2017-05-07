@@ -11,7 +11,7 @@ int main() {
             {0, 1, 0, 0},
             {1, 0, 1, 1},
             {0, 1, 0, 0},
-            {0, 1, 0, 0},
+            {0, 1, 0, 0}
     };
 
     Graph *g = new Graph(am1);
@@ -24,6 +24,9 @@ int main() {
 
     // Export for sigma js
     g->exportFile("data.json", g->graphToJson());
+
+    // Has cycle
+    cout << "cycle: " << g->hasCycle() << endl;
 
     return 0;
 }

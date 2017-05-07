@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdexcept>
 #include <fstream>
+#include <iostream>
 #include "Graph.h"
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
@@ -89,8 +90,8 @@ string Graph::graphToJson() const {
 
                 // set properties
                 edges += "\"id\": \"" + to_string(id) + "\",";
-                edges += "\"source\": \"" + to_string(x) + "\",";
-                edges += "\"target\": \"" + to_string(y) + "\",";
+                edges += "\"source\": \"" + to_string(y) + "\",";
+                edges += "\"target\": \"" + to_string(x) + "\",";
                 edges += "\"type\": \"" + edgeType + "\",";
                 edges += "\"size\": \"" + to_string(1) + "\"";
 
@@ -117,4 +118,70 @@ void Graph::exportFile(const string fileName, const string data) const {
     file.open(fileName);
     file << data;
     file.close();
+}
+
+/**
+ * Checks the graph if a cycle exists. DFS.
+ * @return true if a cycle exists, else false
+ */
+bool Graph::hasCycle() {
+
+    int nodes = this->getNumberOfNodes();
+
+    // array for the visited nodes
+    bool *visited = new bool[nodes];
+    // array for the stack
+    bool *stack = new bool[nodes];
+
+    // set the default values to the stack and the visited nodes arrays
+    for (int i = 0; i < nodes; i++) {
+        visited[i] = false;
+        stack[i] = false;
+    }
+
+    for (int i = 0; i < nodes; i++) {
+        if (hasCycleRec(i, visited, stack)) {
+            hasCycleCache = true;
+            hasCycleFlag = true;
+            return true;
+        }
+    }
+
+    hasCycleFlag = true;
+    return false;
+}
+
+/**
+ * Private helper function for hasCycle function.
+ * @param i current index.
+ * @param visited array contains visited elements.
+ * @param stack for recursion.
+ * @return true if cycle found else false
+ */
+bool Graph::hasCycleRec(const int i, bool *visited, bool *stack) const {
+
+    // check if node was not visited.
+    if (!visited[i]) {
+        visited[i] = true;
+        stack[i] = true;
+
+        // iterate through the given adja matrix row (i)
+        for (int x = 0; x < this->getNumberOfNodes(); ++x) {
+            if (adjacencyMatrix[x][i] > 0) {
+                // if the current node has an edge
+                if (!visited[x] && hasCycleRec(x, visited, stack)) {
+                    // if node was not visited and there is a existing cycle
+                    return true;
+                } else if (stack[x]) {
+                    // if the stack contains the current node
+                    return true;
+                }
+            }
+        }
+
+    }
+
+    // delete node from stack if the node was visited
+    stack[i] = false;
+    return false;
 }

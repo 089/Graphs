@@ -13,8 +13,28 @@ class Graph {
 private:
     /**
      * the adjacency matrix
-     */   
+     */
     vector<vector<int>> adjacencyMatrix;
+
+    /**
+     * Cache for result of hasCycle function.
+     */
+    bool hasCycleCache = false;
+
+    /**
+     * Flag. Specifies whether the hasCycle function has been called already.
+     */
+    bool hasCycleFlag = false;
+
+
+    /**
+     * Private helper function for hasCycle function.
+     * @param i current index.
+     * @param visited array contains visited elements.
+     * @param stack for recursion.
+     * @return true if cycle found else false
+     */
+    bool hasCycleRec(const int i, bool *visited, bool *stack) const;
 
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
@@ -39,6 +59,12 @@ public:
      * @return string json.
      */
     string graphToJson() const;
+
+    /**
+     * Checks the graph if a cycle exists. DFS.
+     * @return true if a cycle exists, else false
+     */
+    bool hasCycle();
 
     const vector<vector<int>> &getAdjacencyMatrix() const;
 };
