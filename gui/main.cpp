@@ -28,5 +28,8 @@ int main() {
     // Has cycle
     cout << "cycle: " << g->hasCycle() << endl;
 
+    // Has edge
+    cout << g->hasEdge(0,1) << endl;
+
     return 0;
 }

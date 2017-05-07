@@ -185,3 +185,11 @@ bool Graph::hasCycleRec(const int i, bool *visited, bool *stack) const {
     stack[i] = false;
     return false;
 }
+
+/**
+ * Checks if the graph contains the given edge.
+ * @return true if the edge exists
+ */
+bool Graph::hasEdge(const int from, const int to) const {
+    return adjacencyMatrix[from][to] > 0;
+}

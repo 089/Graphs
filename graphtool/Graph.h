@@ -66,6 +66,12 @@ public:
      */
     bool hasCycle();
 
+    /**
+     * Checks if the graph contains the given edge.
+     * @return true if the edge exists
+     */
+    bool hasEdge(const int from, const int to) const;
+
     const vector<vector<int>> &getAdjacencyMatrix() const;
 };
 
