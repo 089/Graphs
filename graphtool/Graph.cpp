@@ -190,7 +190,7 @@ bool Graph::hasCycleRec(const int i, bool *visited, bool *stack) const {
  * Checks if the graph contains the given edge.
  * @param from node number
  * @param to node number
- * @return true if the edge exists
+ * @return true if the edge exists, else if not
  */
 bool Graph::hasEdge(const int from, const int to) const {
     if (!isDirectedFlag) {
@@ -203,4 +203,26 @@ bool Graph::hasEdge(const int from, const int to) const {
         return adjacencyMatrix[from][to] > 0 && adjacencyMatrix[to][from] > 0;
     }
 
+}
+
+/**
+ * Checks, if the graph contains the given path.
+ * @param path vector with path nodes.
+ * @return true if graph contains the path, else false
+ */
+bool Graph::hasPath(const vector<int> path) const {
+
+    if (path.size() == 0) {
+        throw invalid_argument("The vector must contain at least one value!");
+    }
+
+    for (int i = 0; i < path.size(); i++) {
+        if (path[i] >= this->getNumberOfNodes()) {
+            throw invalid_argument("The vector contains not existing nodes!");
+        } else if (i + 1 < path.size() && adjacencyMatrix[path[i]][path[i + 1]] == 0) {
+            return false;
+        }
+    }
+
+    return true;
 }

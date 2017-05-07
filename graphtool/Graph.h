@@ -80,9 +80,16 @@ public:
      * Checks if the graph contains the given edge.
      * @param from node number
      * @param to node number
-     * @return true if the edge exists
+     * @return true if the edge exists, else if not
      */
     bool hasEdge(const int from, const int to) const;
+
+    /**
+     * Checks, if the graph contains the given path.
+     * @param path vector with path nodes.
+     * @return true if graph contains the path, else false
+     */
+    bool hasPath(const vector<int> path) const;
 
     const vector<vector<int>> &getAdjacencyMatrix() const;
 };

@@ -31,5 +31,8 @@ int main() {
     // Has edge
     cout << g->hasEdge(0,1) << endl;
 
+    // Has path
+    cout << "has path: " << g->hasPath({1,2,1,2,1,0,1,3,1,2,3});
+
     return 0;
 }
