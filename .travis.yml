@@ -45,7 +45,7 @@ matrix:
             - doxygen-latex
             - doxygen-gui
             - graphviz
-      env: COMPILER=clang++-3.9
+      env: COMPILER=clang++-3.9 GENERATE_DOC=true
 
 script:
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER && make
