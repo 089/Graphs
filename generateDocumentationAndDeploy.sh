@@ -39,13 +39,12 @@ echo 'Setting up the script...'
 # Exit with nonzero exit code if anything fails
 set -e
 
-# Create a clean working directory for this script.
-mkdir code_docs
-cd code_docs
+GH_REPO_ORG=`echo $TRAVIS_REPO_SLUG | cut -d "/" -f 1`
+GH_REPO_NAME=`echo $TRAVIS_REPO_SLUG | cut -d "/" -f 2`
+GH_REPO_REF="github.com/$GH_REPO_ORG/$GH_REPO_NAME.git"
 
-# Get the current gh-pages branch
-git clone -b gh-pages https://git@$GH_REPO_REF
-cd $GH_REPO_NAME
+git clone -b gh-pages https://git@$GH_REPO_REF code_docs
+cd code_docs
 
 ##### Configure git.
 # Set the push default to simple i.e. push only the current branch.

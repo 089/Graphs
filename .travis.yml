@@ -13,8 +13,7 @@ branches:
 # Environment variables
 env:
   global:
-    - GH_REPO_NAME: blatt-2-amf0
-    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile # todo: doxyconf
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
     - GH_REPO_REF: github.com:algdat/blatt-2-amf0.git
 
 matrix:
