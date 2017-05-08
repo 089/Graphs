@@ -57,4 +57,4 @@ script:
 after_success:
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
-#  - ./generateDocumentationAndDeploy.sh
+  - ./generateDocumentationAndDeploy.sh
