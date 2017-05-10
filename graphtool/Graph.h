@@ -17,66 +17,34 @@ private:
     vector<vector<int>> adjacencyMatrix;
 
     /**
-     * Possible types of the graph: unchecked, directed or undirected.
+     * Cache for result of hasCycle function.
      */
-    enum Type {
-        UNCHECKED, DIRECTED, UNDIRECTED
-    };
+    bool hasCycleCache = false;
 
     /**
-     * type of the graph ({@see Type).
+     * Flag. Specifies whether the hasCycle function has been called already.
      */
-    Type type = UNCHECKED;
+    bool hasCycleFlag = false;
 
     /**
-     * Contains the <b>ingoing</b> degrees of the individual vertices.
+     * Cache for result of isDirected function.
      */
-    vector<int> inDeg;
+    bool isDirectedCache = false;
 
     /**
-     * Contains the <b>outgoing</b> degrees of the individual vertices.
+     * Flag. Specifies whether the isDirected function has been called already.
      */
-    vector<int> outDeg;
+    bool isDirectedFlag = false;
+
 
     /**
-     * Cache for result of eponymous function.
+     * Private helper function for hasCycle function.
+     * @param i current index.
+     * @param visited array contains visited elements.
+     * @param stack for recursion.
+     * @return true if cycle found else false
      */
-    bool isFreeOfLoopsCache = false;
-
-    /**
-     * Flag. Specifies whether the eponymous function has been called already.
-     */
-    bool isFreeOfLoopsFlag = false;
-
-    /**
-     * Cache for result of eponymous function.
-     */
-    bool isMultigraphCache = false;
-
-    /**
-     * Flag. Specifies whether the eponymous function has been called already.
-     */
-    bool isMultigraphFlag = false;
-
-    /**
-     * Cache for result of eponymous function.
-     */
-    bool isCompleteCache = false;
-
-    /**
-     * Flag. Specifies whether the eponymous function has been called already.
-     */
-    bool isCompleteFlag = false;
-
-    /**
-     * Cache for result of eponymous function.
-     */
-    bool isRegularCache = false;
-
-    /**
-     * Flag. Specifies whether the eponymous function has been called already.
-     */
-    bool isRegularFlag = false;
+    bool hasCycleRec(const int i, bool *visited, bool *stack) const;
 
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
@@ -89,78 +57,41 @@ public:
      */
     int getNumberOfNodes() const;
 
+    /**
+     * Export a given file with custom data.
+     * @param fileName string file name.
+     * @param data string of data.
+     */
+    void exportFile(const string fileName, const string data) const;
+
+    /**
+     * Return the graph in a json-format.
+     * @return string json.
+     */
+    string graphToJson() const;
+
+    /**
+     * Checks the graph if a cycle exists. DFS.
+     * @return true if a cycle exists, else false
+     */
+    bool hasCycle();
+
+    /**
+     * Checks if the graph contains the given edge.
+     * @param from node number
+     * @param to node number
+     * @return true if the edge exists, else if not
+     */
+    bool hasEdge(const int from, const int to) const;
+
+    /**
+     * Checks, if the graph contains the given path.
+     * @param path vector with path nodes.
+     * @return true if graph contains the path, else false
+     */
+    bool hasPath(const vector<int> path) const;
+
     const vector<vector<int>> &getAdjacencyMatrix() const;
-
-    /**
-     * Returns if the graph is a directed or undirected graph.
-     *
-     * @return  true, if directed<br>
-     *          false, if undirected
-     */
-    bool isDirected();
-
-    /**
-     * Returns indegree indeg(v). Therefore it counts the ingoing edges.
-     * In undirected graphs loops are counted twice.
-     *
-     * @param vertexIndex   the index of the vertex v
-     * @return indegree indeg(v)
-     */
-    int getInDeg(int vertexIndex);
-
-    /**
-     * Returns outdegree outdeg(v). Therefore it counts the outgoing edges.
-     * In undirected graphs loops are counted twice.
-     *
-     * @param vertexIndex   the index of the vertex v
-     * @return outdegree outdeg(v)
-     */
-    int getOutDeg(int vertexIndex);
-
-    /**
-     * Specifies whether the graph is free of loops.
-     * Loops are edges from and to the same vertex.
-     *
-     * @return true, if there are no loops in the graph.
-     */
-    bool isFreeOfLoops();
-
-    /**
-     * Specifies whether the graph is a multigraph (has multiple edges/has
-     * <a href="https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Multigraph">
-     * "two or more edged that connect the same two vertices"</a>)
-     *
-     * @return true, if it is a multigraph
-     */
-    bool isMultigraph();
-
-    /**
-     * Specifies whether the graph is a simple graph (undirected, no multiple
-     * edges, no loops) or not.
-     *
-     * @return  true, if the graph is a simple graph.
-     */
-    bool isSimple();
-
-    /**
-     * Specifies whether the graph is a complete graph (simple graph
-     * <a href="https://en.wikipedia.org/wiki/Complete_graph">"in which every
-     * pair of distinct vertices is connected by a unique edge."</a>).
-     * Checks only undirected graphs! A complete graph is also called K_n.
-     *
-     * @return  true, if the graph is a complete graph.
-     */
-    bool isComplete();
-
-    /**
-     * Specifies whether the graph is a regular graph
-     * (<a href="https://en.wikipedia.org/wiki/Regular_graph">
-     * "is a graph where each vertex has the same number of neighbors"
-     * </a>).
-     *
-     * @return  true, if the graph is a regular graph.
-     */
-    bool isRegular();
 };
 
 

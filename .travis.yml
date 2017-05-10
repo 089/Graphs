@@ -13,7 +13,8 @@ branches:
 # Environment variables
 env:
   global:
-    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile
+    - GH_REPO_NAME: blatt-2-amf0
+    - DOXYFILE: $TRAVIS_BUILD_DIR/Doxyfile # todo: doxyconf
     - GH_REPO_REF: github.com:algdat/blatt-2-amf0.git
 
 matrix:
@@ -45,7 +46,7 @@ matrix:
             - doxygen-latex
             - doxygen-gui
             - graphviz
-      env: COMPILER=clang++-3.9 GENERATE_DOC=true
+      env: COMPILER=clang++-3.9
 
 script:
   - cmake -DCMAKE_CXX_COMPILER=$COMPILER && make
@@ -56,4 +57,4 @@ script:
 after_success:
   - cd $TRAVIS_BUILD_DIR
   - chmod +x generateDocumentationAndDeploy.sh
-  - ./generateDocumentationAndDeploy.sh
+#  - ./generateDocumentationAndDeploy.sh

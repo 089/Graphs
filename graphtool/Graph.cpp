@@ -1,6 +1,8 @@
 
 #include <vector>
 #include <stdexcept>
+#include <fstream>
+#include <iostream>
 #include "Graph.h"
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
@@ -36,205 +38,191 @@ int Graph::getNumberOfNodes() const {
     return this->adjacencyMatrix.size();
 }
 
-int Graph::getInDeg(int vertexIndex) {
+/**
+ * Transform the graph to json-format.
+ * @return string json.
+ */
+string Graph::graphToJson() const {
 
-    if (vertexIndex < 0 || vertexIndex >= this->getNumberOfNodes()) {
-        throw invalid_argument("vertex index has to be between 0 and n, but is " + to_string(vertexIndex) + ".");
-    }
+    int size = this->adjacencyMatrix.size();
 
-    // no value cached ==> calculate degree
-    if (this->inDeg.empty() || this->inDeg[vertexIndex] < 1) {
+    string nodes = "\"nodes\": [";
 
-        // count edges
-        int countIngoingEdges = 0;
-        for (int row = 0; row < this->getNumberOfNodes(); row++) {
-            // adds ingoing edges
-            countIngoingEdges += this->adjacencyMatrix[row][vertexIndex];
+    // parse json nodes
+    for (int i = 0; i < size; i++) {
+        nodes += "{ ";
+        nodes += "\"id\": \"" + to_string(i) + "\",";
+        nodes += "\"label\": \"" + to_string(i) + "\",";
+        nodes += "\"x\": \"" + to_string(rand() % 10) + "\",";
+        nodes += "\"y\": \"" + to_string(rand() % 10) + "\",";
+        nodes += "\"size\": \"" + to_string(1) + "\"";
 
-            // In undirected graphs loops are counted twice:
-            if (row == vertexIndex && !this->isDirected()) {
-                countIngoingEdges++;
-            }
+        if (i < (size - 1)) {
+            nodes += "},";
+        } else {
+            nodes += "}";
         }
-
-        // setting cache value
-        this->inDeg.resize(this->getNumberOfNodes());
-        this->inDeg[vertexIndex] = countIngoingEdges;
     }
 
-    return this->inDeg[vertexIndex];
-}
+    nodes += "]";
 
-int Graph::getOutDeg(int vertexIndex) {
+    string edges = "\"edges\": [";
+    int y = 0;
+    int id = 0;
 
-    if (vertexIndex < 0 || vertexIndex >= this->getNumberOfNodes()) {
-        throw invalid_argument("vertex index has to be between 0 and n, but is " + to_string(vertexIndex) + ".");
-    }
+    string edgeType = "arrow";
 
-    // no value cached ==> calculate degree
-    if (this->outDeg.empty() || this->outDeg[vertexIndex] < 1) {
+    // parse json edges
+    for (vector<int> row : adjacencyMatrix) {
 
-        // count edges
-        int countOutgoingEdges = 0;
-        for (int col = 0; col < this->getNumberOfNodes(); col++) {
-            // adds ingoing edges
-            countOutgoingEdges += this->adjacencyMatrix[vertexIndex][col];
+        // column
+        for (int x = 0; x < row.size(); x++) {
 
-            // In undirected graphs loops are counted twice:
-            if (col == vertexIndex && !this->isDirected()) {
-                countOutgoingEdges++;
-            }
-        }
+            // if there is a connection between two nodes.
+            if (row[x] == 1) {
 
-        // setting cache value
-        this->outDeg.resize(this->getNumberOfNodes());
-        this->outDeg[vertexIndex] = countOutgoingEdges;
-    }
-
-    return this->outDeg[vertexIndex];
-}
-
-bool Graph::isDirected() {
-
-    // Get cached result.
-    switch (this->type) {
-        case DIRECTED:
-            return true;
-
-        case UNDIRECTED:
-            return false;
-
-        case UNCHECKED:
-            // check if values of the adjacency matrix are set symmetrically ==> undirected graph
-            // otherwise diagraph
-            for (int row = 0; row < this->getNumberOfNodes(); row++) {
-                // check only upper triangle part of matrix
-                for (int col = row + 1; col < this->getNumberOfNodes(); col++) {
-                    // values must be the same, otherwise its a digraph
-                    if (this->getAdjacencyMatrix()[row][col] != this->getAdjacencyMatrix()[col][row]) {
-                        // cache result
-                        this->type = DIRECTED;
-                        return true;
-                    }
+                if (id == 0) {
+                    // first element
+                    edges += "{ ";
+                } else {
+                    edges += ", { ";
                 }
-            }
 
-            break;
+                // set properties
+                edges += "\"id\": \"" + to_string(id) + "\",";
+                edges += "\"source\": \"" + to_string(y) + "\",";
+                edges += "\"target\": \"" + to_string(x) + "\",";
+                edges += "\"type\": \"" + edgeType + "\",";
+                edges += "\"size\": \"" + to_string(1) + "\"";
+
+                edges += "}";
+
+                id++;
+            }
+        }
+        y++;
     }
 
-    // cache result
-    this->type = UNDIRECTED;
+    edges += "]";
+
+    return "{ " + nodes + ", " + edges + " }";
+}
+
+/**
+ * Export a given file with custom data.
+ * @param fileName string file name.
+ * @param data string of data.
+ */
+void Graph::exportFile(const string fileName, const string data) const {
+    ofstream file;
+    file.open(fileName);
+    file << data;
+    file.close();
+}
+
+/**
+ * Checks the graph if a cycle exists. DFS.
+ * @return true if a cycle exists, else false
+ */
+bool Graph::hasCycle() {
+
+    int nodes = this->getNumberOfNodes();
+
+    // array for the visited nodes
+    bool *visited = new bool[nodes];
+    // array for the stack
+    bool *stack = new bool[nodes];
+
+    // set the default values to the stack and the visited nodes arrays
+    for (int i = 0; i < nodes; i++) {
+        visited[i] = false;
+        stack[i] = false;
+    }
+
+    for (int i = 0; i < nodes; i++) {
+        if (hasCycleRec(i, visited, stack)) {
+            hasCycleCache = true;
+            hasCycleFlag = true;
+            return true;
+        }
+    }
+
+    hasCycleFlag = true;
     return false;
 }
 
-bool Graph::isFreeOfLoops() {
+/**
+ * Private helper function for hasCycle function.
+ * @param i current index.
+ * @param visited array contains visited elements.
+ * @param stack for recursion.
+ * @return true if cycle found else false
+ */
+bool Graph::hasCycleRec(const int i, bool *visited, bool *stack) const {
 
-    if (isFreeOfLoopsFlag) {
-        return isFreeOfLoopsCache;
-    }
+    // check if node was not visited.
+    if (!visited[i]) {
+        visited[i] = true;
+        stack[i] = true;
 
-    isFreeOfLoopsFlag = true;
-
-    for (int mainDiagonal = 0; mainDiagonal < this->getNumberOfNodes(); ++mainDiagonal) {
-        // check if there is a loop
-        if (this->getAdjacencyMatrix()[mainDiagonal][mainDiagonal] > 0) {
-            isFreeOfLoopsCache = false;
-            return isFreeOfLoopsCache;
-        }
-    }
-
-    isFreeOfLoopsCache = true;
-    return isFreeOfLoopsCache;
-}
-
-bool Graph::isMultigraph() {
-
-    if (isMultigraphFlag) {
-        return isMultigraphCache;
-    }
-
-    isMultigraphFlag = true;
-
-    /*
-     * if the adjacency matrix contains a value greater than 1 the matrix
-     * has multiple edges and therefore the graph is a multigraph.
-     */
-    for (int row = 0; row < this->getNumberOfNodes(); ++row) {
-        for (int col = 0; col < this->getNumberOfNodes(); ++col) {
-            if (this->getAdjacencyMatrix()[row][col] > 1) {
-                isMultigraphCache = true;
-                return isMultigraphCache;
+        // iterate through the given adja matrix row (i)
+        for (int x = 0; x < this->getNumberOfNodes(); ++x) {
+            if (adjacencyMatrix[x][i] > 0) {
+                // if the current node has an edge
+                if (!visited[x] && hasCycleRec(x, visited, stack)) {
+                    // if node was not visited and there is a existing cycle
+                    return true;
+                } else if (stack[x]) {
+                    // if the stack contains the current node
+                    return true;
+                }
             }
         }
+
     }
 
-    isMultigraphCache = false;
-    return isMultigraphCache;
+    // delete node from stack if the node was visited
+    stack[i] = false;
+    return false;
 }
 
-bool Graph::isSimple() {
-    return !this->isDirected() && !isMultigraph() && isFreeOfLoops();
+/**
+ * Checks if the graph contains the given edge.
+ * @param from node number
+ * @param to node number
+ * @return true if the edge exists, else if not
+ */
+bool Graph::hasEdge(const int from, const int to) const {
+    if (!isDirectedFlag) {
+        // isDirectedCache = isDirected();
+    }
+
+    if (isDirectedCache) {
+        return adjacencyMatrix[from][to] > 0;
+    } else {
+        return adjacencyMatrix[from][to] > 0 && adjacencyMatrix[to][from] > 0;
+    }
+
 }
 
-bool Graph::isComplete() {
+/**
+ * Checks, if the graph contains the given path.
+ * @param path vector with path nodes.
+ * @return true if graph contains the path, else false
+ */
+bool Graph::hasPath(const vector<int> path) const {
 
-    if (isCompleteFlag) {
-        return isCompleteCache;
+    if (path.size() == 0) {
+        throw invalid_argument("The vector must contain at least one value!");
     }
 
-    isCompleteFlag = true;
-
-
-    /*
-     * the graph is complete if the adjacency matrix has only entries of 1
-     * except the main diagonal which must be 0.
-     */
-    if (!isFreeOfLoops()) {
-        isCompleteCache = false;
-        return isCompleteCache;
-    }
-
-    for (int row = 0; row < this->getNumberOfNodes(); row++) {
-        for (int col = 0; col < this->getNumberOfNodes(); col++) {
-            // only 1 is allowed now
-            if (row != col && this->getAdjacencyMatrix()[row][col] != 1) {
-                isCompleteCache = false;
-                return isCompleteCache;
-            }
+    for (int i = 0; i < path.size(); i++) {
+        if (path[i] >= this->getNumberOfNodes()) {
+            throw invalid_argument("The vector contains not existing nodes!");
+        } else if (i + 1 < path.size() && adjacencyMatrix[path[i]][path[i + 1]] == 0) {
+            return false;
         }
     }
 
-    isCompleteCache = true;
-    return isCompleteCache;
-}
-
-bool Graph::isRegular() {
-
-    if (isRegularFlag) {
-        return isRegularCache;
-    }
-
-    isRegularFlag = true;
-
-    // get in/out deg of the first vertex
-    int inDegOfFirstVertex = this->getInDeg(0);
-    int outDegOfFirstVertex = this->getOutDeg(0);
-
-    // all other vertices must have the same deg,
-    // otherwise this graph is not regular
-    for (int vertex = 1; vertex < this->getNumberOfNodes(); vertex++) {
-
-
-        // directed graph ==> indeg and outdeg can differ ==> we have to test both
-        // undirected graph ==> indeg and outdeg must be the same ==> we only must test one
-        // ==> we can use the following commands for both types
-        if (this->getInDeg(vertex) != inDegOfFirstVertex || this->getOutDeg(vertex) != outDegOfFirstVertex) {
-            isRegularCache = false;
-            return isRegularCache;
-        }
-
-    }
-
-    isRegularCache = true;
-    return isRegularCache;
+    return true;
 }
