@@ -34,7 +34,7 @@ const vector<vector<int>> &Graph::getAdjacencyMatrix() const {
  * @return number of nodes.
  */
 int Graph::getNumberOfNodes() const {
-    return this->adjacencyMatrix.size();
+    return (int) this->adjacencyMatrix.size();
 }
 
 int Graph::getInDeg(int vertexIndex) {
@@ -59,7 +59,7 @@ int Graph::getInDeg(int vertexIndex) {
         }
 
         // setting cache value
-        this->inDeg.resize(this->getNumberOfNodes());
+        this->inDeg.resize((unsigned long) this->getNumberOfNodes());
         this->inDeg[vertexIndex] = countIngoingEdges;
     }
 
@@ -88,7 +88,7 @@ int Graph::getOutDeg(int vertexIndex) {
         }
 
         // setting cache value
-        this->outDeg.resize(this->getNumberOfNodes());
+        this->outDeg.resize((unsigned long) this->getNumberOfNodes());
         this->outDeg[vertexIndex] = countOutgoingEdges;
     }
 
@@ -246,7 +246,7 @@ bool Graph::isRegular() {
  */
 string Graph::graphToJson() const {
 
-    int size = this->adjacencyMatrix.size();
+    int size = (int) this->adjacencyMatrix.size();
 
     string nodes = "\"nodes\": [";
 
@@ -328,6 +328,10 @@ void Graph::exportFile(const string fileName, const string data) const {
  */
 bool Graph::hasCycle() {
 
+    if(hasCycleFlag) {
+        return hasCycleCache;
+    }
+
     int nodes = this->getNumberOfNodes();
 
     // array for the visited nodes
@@ -350,6 +354,7 @@ bool Graph::hasCycle() {
     }
 
     hasCycleFlag = true;
+    hasCycleCache = false;
     return false;
 }
 
@@ -425,3 +430,164 @@ bool Graph::hasPath(const vector<int> path) const {
 
     return true;
 }
+
+bool Graph::hasConnectivity(int s, int t) {
+
+    if (s < 0 || s > getNumberOfNodes() - 1) {
+        throw invalid_argument("invalid s");
+    } else if (t < 0 || t > getNumberOfNodes() - 1) {
+        throw invalid_argument("invalid t");
+    }
+
+    // there is a direct connection form s to t
+    if (getAdjacencyMatrix()[s][t] > 0) {
+        return true;
+    }
+
+    // loops are not allowed if adjacency matrix has none there
+    if (s == t && getAdjacencyMatrix()[s][t] == 0) {
+        return false;
+    }
+
+    // there is no direct connection from s to t
+    // test if there are any connections using idea from
+    // https://de.wikipedia.org/wiki/Adjazenzmatrix#Pfadl.C3.A4nge_in_Graphen_berechnen
+    // we skip identity (A^0) and original adjacency matrix (A^1) ==> start at k = 2
+    for (int k = 2; k < getNumberOfNodes(); ++k) {
+
+        vector<vector<int>> tmp = powerMatrix(getAdjacencyMatrix(), k);
+
+        if (tmp[s][t] > 0) {
+            return true;
+        }
+    }
+
+    return false;
+}
+
+bool Graph::isSameMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B) {
+
+    if (A.size() != B.size() || A[0].size() != B[0].size()) {
+        return false;
+    }
+
+    // rows of A
+    for (int i = 0; i < A.size(); i++) {
+        // cols of A
+        for (int j = 0; j < A[0].size(); j++) {
+            if (A[i][j] != B[i][j]) {
+                return false;
+            }
+        }
+    }
+
+    return true;
+}
+
+vector<vector<int>> Graph::getZeroizedMatrix(int rows, int cols) {
+
+    // initialize an empty square matrix
+    vector<vector<int>> resultMatrix = vector<vector<int>>((unsigned long) rows);
+
+    // only diagonal is 1
+    for (int diagonal = 0; diagonal < rows; diagonal++) {
+        // set row to 0
+        resultMatrix[diagonal] = vector<int>((unsigned long) cols, 0);
+    }
+
+    return resultMatrix;
+}
+
+vector<vector<int>> Graph::getIdentityMatrix(int size) {
+
+    // initialize an empty square matrix
+    vector<vector<int>> resultMatrix = getZeroizedMatrix(size, size);
+
+    // set diagonal to 1
+    for (int diagonal = 0; diagonal < size; diagonal++) {
+        resultMatrix[diagonal][diagonal] = 1;
+    }
+
+    return resultMatrix;
+}
+
+vector<vector<int>> Graph::powerMatrix(vector<vector<int>> squareMatrix, int exponent) {
+
+    // initialize an empty square matrix
+    vector<vector<int>> resultMatrix;
+
+    if (exponent < 0) {
+        throw invalid_argument("not implemented yet");
+
+    } else if (exponent == 0) {
+        resultMatrix = getIdentityMatrix((int) squareMatrix.size());
+
+    } else if (exponent == 1) {
+        return squareMatrix;
+
+    } else {
+        resultMatrix = getIdentityMatrix((int) squareMatrix.size());
+
+        for (int multiplyIndex = 0; multiplyIndex < exponent; multiplyIndex++) {
+            resultMatrix = multiplyMatrix(resultMatrix, squareMatrix);
+        }
+    }
+
+    return resultMatrix;
+}
+
+vector<vector<int>> Graph::multiplyMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B) {
+    // rows of A
+    int l = (int) A.size();
+
+    // cols of A MUST BE rows of B
+    int m = (int) A[0].size();
+    if (A[0].size() != B.size()) {
+        throw invalid_argument("Matrix A must have as much rows as B columns. ");
+    }
+
+    // cols of B
+    int n = (int) B[0].size();
+
+    vector<vector<int>> C = getZeroizedMatrix(l, n);
+
+    // multiply matrix c_{ij} = \sum_{j=1}^{m} a_{ij} \cdot \b_{jk}
+    // loop over rows of C
+    for (int i = 0; i < l; i++) {
+        // loop over columns of C
+        for (int k = 0; k < n; k++) {
+            // loop over columns of A/rows of B
+            for (int j = 0; j < m; j++) {
+                C[i][k] = C[i][k] + A[i][j] * B[j][k];
+            }
+        }
+    }
+
+    return C;
+}
+
+vector<vector<int>> Graph::addMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B) {
+
+    if (A.size() != B.size() || A[0].size() != B[0].size()) {
+        throw invalid_argument("Matrix A and B must have the same size (rows and columns). ");
+    }
+
+    // rows of A
+    int m = (int) A.size();
+
+    // cols of A MUST BE rows of B
+    int n = (int) A[0].size();
+
+    vector<vector<int>> C = getZeroizedMatrix(m, n);
+
+    // add matrix
+    for (int i = 0; i < m; i++) {
+        for (int j = 0; j < n; j++) {
+            C[i][j] = A[i][j] + B[i][j];
+        }
+    }
+
+    return C;
+}
+
+

@@ -27,26 +27,6 @@ private:
     bool hasCycleFlag = false;
 
     /**
-     * Cache for result of isDirected function.
-     */
-    bool isDirectedCache = false;
-
-    /**
-     * Flag. Specifies whether the isDirected function has been called already.
-     */
-    bool isDirectedFlag = false;
-
-
-    /**
-     * Private helper function for hasCycle function.
-     * @param i current index.
-     * @param visited array contains visited elements.
-     * @param stack for recursion.
-     * @return true if cycle found else false
-     */
-    bool hasCycleRec(const int i, bool *visited, bool *stack) const;
-
-    /**
      * Possible types of the graph: unchecked, directed or undirected.
      */
     enum Type {
@@ -107,6 +87,73 @@ private:
      * Flag. Specifies whether the eponymous function has been called already.
      */
     bool isRegularFlag = false;
+
+    /**
+     * Private helper function for hasCycle function.
+     * @param i current index.
+     * @param visited array contains visited elements.
+     * @param stack for recursion.
+     * @return true if cycle found else false
+     */
+    bool hasCycleRec(const int i, bool *visited, bool *stack) const;
+
+    /**
+     * Auxiliary method to calculate the power of a matrix.
+     *
+     * @param squareMatrix  the matrix
+     * @param exponent      the exponent
+     *
+     * @return the result as a matrix
+     */
+    vector<vector<int>> powerMatrix(vector<vector<int>> squareMatrix, int exponent);
+
+    /**
+     * Creates an identity matrix with the given size.
+     *
+     * @param size  size (rows and columns) of the matrix
+     * @return identity matrix
+     */
+    vector<vector<int>> getIdentityMatrix(int size);
+
+    /**
+     * Multiplies two matrices A (l x m) and B (m x n).
+     *
+     * @param A matrix with l rows and m columns
+     * @param B matrix with m rows and n columns
+     *
+     * @return the result as a matrix
+     */
+    vector<vector<int>> multiplyMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B);
+
+    /**
+     * Adds two matrices A (m x n) and B (m x n).
+     *
+     * @param A matrix with m rows and n columns
+     * @param B matrix with m rows and n columns
+     *
+     * @return the result as a matrix
+     */
+    vector<vector<int>> addMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B);
+
+    /**
+     * Creates a matrix with zeroized elements.
+     *
+     * @param rows  number of rows
+     * @param cols  number of columns
+     *
+     * @return a zeroized matrix
+     */
+    vector<vector<int>> getZeroizedMatrix(int rows, int cols);
+
+    /**
+     * Checks whether matrix A (m x n) and B (m x n) are identical.
+     *
+     * @param A matrix with m rows and n columns
+     * @param B matrix with m rows and n columns
+     *
+     * @return true, if A = B
+     */
+    bool isSameMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B);
 
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
@@ -225,6 +272,14 @@ public:
      * @return  true, if the graph is a regular graph.
      */
     bool isRegular();
+
+    /**
+     * Calculates if there is a path from s to t.
+     *
+     * @param s number of node 1
+     * @param t number of node 2
+     * @return true, if there is a path from s to t.
+     */
+    bool hasConnectivity(int s, int t);
+
 };
-
-
