@@ -328,7 +328,7 @@ void Graph::exportFile(const string fileName, const string data) const {
  */
 bool Graph::hasCycle() {
 
-    if(hasCycleFlag) {
+    if (hasCycleFlag) {
         return hasCycleCache;
     }
 
@@ -588,6 +588,25 @@ vector<vector<int>> Graph::addMatrix(const vector<vector<int>> &A, const vector<
     }
 
     return C;
+}
+
+int Graph::getNumberOfEdges() {
+    if (adjacencyMatrix.size() <= 0) {
+        return 0;
+    }
+    int count = 0;
+    long end = adjacencyMatrix.size();
+    for (long i = 0; i < end; i++) {
+        for (long j = 0; j < end; j++) {
+            if (adjacencyMatrix[i][j]) {
+                count++;
+            }
+        }
+    }
+    if(!isDirected()) {
+        count /= 2;
+    }
+    return count;
 }
 
 

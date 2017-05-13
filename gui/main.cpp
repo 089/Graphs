@@ -29,6 +29,8 @@ int main() {
     // Number of  nodes
     cout << "Number of nodes: " << g->getNumberOfNodes() << endl;
 
+    Graph *g2 = new Graph(am1);
+    cout << "Number of edges: " << g->getNumberOfEdges() << ", " << g2->getNumberOfEdges() << endl;
     // Export for sigma js
     g->exportFile("data.json", g->graphToJson());
 

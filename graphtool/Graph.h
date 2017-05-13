@@ -167,6 +167,12 @@ public:
     int getNumberOfNodes() const;
 
     /**
+     * Detect the number of edges of the given graph.
+     * @return number of edges.
+     */
+    int getNumberOfEdges();
+
+    /**
      * Export a given file with custom data.
      * @param fileName string file name.
      * @param data string of data.
