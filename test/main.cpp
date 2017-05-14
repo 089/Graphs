@@ -155,3 +155,25 @@ TEST(graph_check, test_outdegree) {
     EXPECT_EQ(g->getOutDeg(2), 2);
     EXPECT_EQ(g->getOutDeg(3), 0);
 }
+
+TEST(graph_check, test_free_of_loops) {
+    vector<vector<int>> am = {
+            {0, 1, 1, 0},
+            {1, 0, 1, 0},
+            {1, 1, 0, 0},
+            {0, 0, 0, 0},
+    };
+    Graph *g = new Graph(am);
+    EXPECT_TRUE(g->isFreeOfLoops());
+}
+
+TEST(graph_check, test_free_of_loops_2) {
+    vector<vector<int>> am = {
+            {0, 1, 1, 0},
+            {1, 1, 1, 0},
+            {1, 1, 0, 0},
+            {0, 0, 0, 0},
+    };
+    Graph *g = new Graph(am);
+    EXPECT_FALSE(g->isFreeOfLoops());
+}

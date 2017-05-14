@@ -288,4 +288,10 @@ public:
      */
     bool hasConnectivity(int s, int t);
 
+    /**
+     * Exports the Graph to a dot file.
+     * @return The string content for the dot file.
+     */
+    string exportDot();
+
 };

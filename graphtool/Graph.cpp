@@ -53,7 +53,7 @@ int Graph::getInDeg(int vertexIndex) {
             countIngoingEdges += this->adjacencyMatrix[row][vertexIndex];
 
             // In undirected graphs loops are counted twice:
-            if (row == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[row][vertexIndex] && row == vertexIndex && !this->isDirected()) {
                 countIngoingEdges++;
             }
         }
@@ -82,7 +82,7 @@ int Graph::getOutDeg(int vertexIndex) {
             countOutgoingEdges += this->adjacencyMatrix[vertexIndex][col];
 
             // In undirected graphs loops are counted twice:
-            if (col == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[vertexIndex][col] && col == vertexIndex && !this->isDirected()) {
                 countOutgoingEdges++;
             }
         }
@@ -603,10 +603,43 @@ int Graph::getNumberOfEdges() {
             }
         }
     }
-    if(!isDirected()) {
+    if (!isDirected()) {
         count /= 2;
     }
     return count;
+}
+
+string Graph::exportDot() {
+    string data = "";
+    if (isDirected()) { data += "digraph {\n"; } else { data += "graph {\n"; }
+
+    //create nodes - in case one node has no edges
+    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+        data += to_string(i) + "\n";
+    }
+
+    for (int x = 0; x < adjacencyMatrix.size(); x++) {
+        if (!isDirected()) {
+            //long max = (x / 2) + x % 2;
+            for (long y = 0; y <= x; y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -- ";
+                    data += to_string(y);
+                }
+            }
+        } else {
+            for (int y = 0; y < adjacencyMatrix.size(); y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -> ";
+                    data += to_string(y);
+                }
+            }
+        }
+    }
+    data += "\n}\n";
+    return data;
 }
 
 

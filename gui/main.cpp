@@ -8,10 +8,11 @@ int main() {
 
     // Beispiel aus https://de.wikipedia.org/wiki/Adjazenzmatrix oben
     vector<vector<int>> am1 = {
-            {0, 1, 0, 0},
-            {1, 0, 0, 1},
-            {0, 0, 0, 0},
-            {0, 1, 0, 0}
+            {0, 1, 1, 0, 0},
+            {1, 0, 1, 1, 0},
+            {1, 1, 0, 0, 0},
+            {0, 1, 0, 0, 1},
+            {0, 0, 0, 1, 0}
     };
 
     vector<vector<int>> am2 = {
@@ -24,7 +25,7 @@ int main() {
     Graph *g = new Graph(am2);
 
     cout << (g->getAdjacencyMatrix().at(0).at(1) == 1 ? "Zeile 1, Spalte 2 ist 1"
-                                                           : "Zeile 1, Spalte 2 ist **NICHT** 1") << endl;
+                                                      : "Zeile 1, Spalte 2 ist **NICHT** 1") << endl;
 
     // Number of  nodes
     cout << "Number of nodes: " << g->getNumberOfNodes() << endl;
@@ -38,10 +39,10 @@ int main() {
     cout << "cycle: " << g->hasCycle() << endl;
 
     // Has edge
-    cout << g->hasEdge(0,1) << endl;
+    cout << g->hasEdge(0, 1) << endl;
 
     // Has path
-    cout << "has path: " << g->hasPath({1,2,1,2,1,0,1,3,1,2,3}) << endl;
+    cout << "has path: " << g->hasPath({1, 2, 1, 2, 1, 0, 1, 3, 1, 2, 3}) << endl;
 
     cout << "has conncetivity: " << g->hasConnectivity(0, 2) << endl;
 
@@ -49,9 +50,12 @@ int main() {
     for (int i = 0; i < g->getNumberOfNodes(); i++) {
         for (int j = 0; j < g->getNumberOfNodes(); j++) {
 
-            cout << "hasConncetivity("<<i+1<<", "<<j+1<<"): " << g->hasConnectivity(i, j) << endl;
+            cout << "hasConncetivity(" << i + 1 << ", " << j + 1 << "): " << g->hasConnectivity(i, j) << endl;
         }
     }
 
+    //can be opened by calling this - requires graphviz & imagemagick
+    //dot -Tpng dotfile.dot > Graph.png && display Graph.png
+    g2->exportFile("/tmp/dotfile.dot", g2->exportDot());
     return 0;
 }
