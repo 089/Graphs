@@ -53,7 +53,7 @@ int Graph::getInDeg(int vertexIndex) {
             countIngoingEdges += this->adjacencyMatrix[row][vertexIndex];
 
             // In undirected graphs loops are counted twice:
-            if (adjacencyMatrix[row][vertexIndex] && row == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[row][vertexIndex] > 0 && row == vertexIndex && !this->isDirected()) {
                 countIngoingEdges++;
             }
         }
@@ -82,7 +82,7 @@ int Graph::getOutDeg(int vertexIndex) {
             countOutgoingEdges += this->adjacencyMatrix[vertexIndex][col];
 
             // In undirected graphs loops are counted twice:
-            if (adjacencyMatrix[vertexIndex][col] && col == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[vertexIndex][col] > 0 && col == vertexIndex && !this->isDirected()) {
                 countOutgoingEdges++;
             }
         }
@@ -620,7 +620,6 @@ string Graph::exportDot() {
 
     for (int x = 0; x < adjacencyMatrix.size(); x++) {
         if (!isDirected()) {
-            //long max = (x / 2) + x % 2;
             for (long y = 0; y <= x; y++) {
                 if (adjacencyMatrix[x][y] > 0) {
                     data += "\t" + to_string(x);
