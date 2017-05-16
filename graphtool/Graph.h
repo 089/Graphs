@@ -294,4 +294,13 @@ public:
      */
     string exportDot();
 
+    /**
+     * Returns true, if both given vertices are neighbours in the graph.
+     * The direction is only considered in digraphs.
+     *
+     * @param from    first vertice
+     * @param to      second vertice
+     * @return true, if both vertices are neighbours in the graph
+     */
+    bool areNeighbours(int from, int to);
 };
