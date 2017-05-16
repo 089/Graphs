@@ -641,4 +641,17 @@ string Graph::exportDot() {
     return data;
 }
 
+bool Graph::areNeighbours(int from, int to) {
+
+    if (from < 0 || to < 0 || from > getNumberOfNodes() - 1 || to > getNumberOfNodes() - 1) {
+        throw out_of_range("from and to have to be in the range. ");
+    }
+
+    if (isDirected()) {
+        return getAdjacencyMatrix()[from][to] > 0;
+    } else {
+        return getAdjacencyMatrix()[from][to] > 0 && getAdjacencyMatrix()[to][from] > 0;
+    }
+}
+
 
