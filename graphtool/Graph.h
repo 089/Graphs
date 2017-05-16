@@ -167,6 +167,12 @@ public:
     int getNumberOfNodes() const;
 
     /**
+     * Detect the number of edges of the given graph.
+     * @return number of edges.
+     */
+    int getNumberOfEdges();
+
+    /**
      * Export a given file with custom data.
      * @param fileName string file name.
      * @param data string of data.
@@ -281,5 +287,11 @@ public:
      * @return true, if there is a path from s to t.
      */
     bool hasConnectivity(int s, int t);
+
+    /**
+     * Exports the Graph to a dot file.
+     * @return The string content for the dot file.
+     */
+    string exportDot();
 
 };

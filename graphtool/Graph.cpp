@@ -53,7 +53,7 @@ int Graph::getInDeg(int vertexIndex) {
             countIngoingEdges += this->adjacencyMatrix[row][vertexIndex];
 
             // In undirected graphs loops are counted twice:
-            if (row == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[row][vertexIndex] > 0 && row == vertexIndex && !this->isDirected()) {
                 countIngoingEdges++;
             }
         }
@@ -82,7 +82,7 @@ int Graph::getOutDeg(int vertexIndex) {
             countOutgoingEdges += this->adjacencyMatrix[vertexIndex][col];
 
             // In undirected graphs loops are counted twice:
-            if (col == vertexIndex && !this->isDirected()) {
+            if (adjacencyMatrix[vertexIndex][col] > 0 && col == vertexIndex && !this->isDirected()) {
                 countOutgoingEdges++;
             }
         }
@@ -328,7 +328,7 @@ void Graph::exportFile(const string fileName, const string data) const {
  */
 bool Graph::hasCycle() {
 
-    if(hasCycleFlag) {
+    if (hasCycleFlag) {
         return hasCycleCache;
     }
 
@@ -588,6 +588,57 @@ vector<vector<int>> Graph::addMatrix(const vector<vector<int>> &A, const vector<
     }
 
     return C;
+}
+
+int Graph::getNumberOfEdges() {
+    if (adjacencyMatrix.size() <= 0) {
+        return 0;
+    }
+    int count = 0;
+    long end = adjacencyMatrix.size();
+    for (long i = 0; i < end; i++) {
+        for (long j = 0; j < end; j++) {
+            if (adjacencyMatrix[i][j]) {
+                count++;
+            }
+        }
+    }
+    if (!isDirected()) {
+        count /= 2;
+    }
+    return count;
+}
+
+string Graph::exportDot() {
+    string data = "";
+    if (isDirected()) { data += "digraph {\n"; } else { data += "graph {\n"; }
+
+    //create nodes - in case one node has no edges
+    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+        data += to_string(i) + "\n";
+    }
+
+    for (int x = 0; x < adjacencyMatrix.size(); x++) {
+        if (!isDirected()) {
+            for (long y = 0; y <= x; y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -- ";
+                    data += to_string(y);
+                }
+            }
+        } else {
+            for (int y = 0; y < adjacencyMatrix.size(); y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -> ";
+                    data += to_string(y);
+                }
+            }
+        }
+    }
+    data += "\n}\n";
+    return data;
 }
 
 
