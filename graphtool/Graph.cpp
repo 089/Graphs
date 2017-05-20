@@ -59,16 +59,23 @@ Graph::Graph(string matlabMatrix) {
             throw invalid_argument("There must be a syntax error, because the number of columns are different.");
         }
 
+        // matrix must be square!
+        if (rows.size() != columns.size()) {
+            throw invalid_argument("adjacency matrix has to be symmetrical");
+        }
+
+        // add values to matrix
         for (unsigned long cIndex = 0; cIndex < columns.size(); cIndex++) {
-            adjacencyMatrix.at(rIndex).at(cIndex) = stoi(columns[cIndex]);
+            try {
+                adjacencyMatrix.at(rIndex).at(cIndex) = stoi(columns[cIndex]);
+            } catch (const invalid_argument &e) {
+                throw invalid_argument("matrix entries must be and contain at least one integer.");
+            }
+
         }
     }
 
-    if (isSymmetricMatrix(adjacencyMatrix)) {
-        this->adjacencyMatrix = adjacencyMatrix;
-    } else {
-        throw invalid_argument("adjacency matrix has to be symmetrical");
-    };
+    this->adjacencyMatrix = adjacencyMatrix;
 }
 
 bool Graph::isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const {
