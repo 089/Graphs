@@ -167,6 +167,9 @@ TEST(graph_check, test_free_of_loops) {
     EXPECT_TRUE(g->isFreeOfLoops());
 }
 
+/**
+ * Testing a valid path.
+ */
 TEST(graph_check, test_free_of_loops_2) {
     vector<vector<int>> am = {
             {0, 1, 1, 0},
@@ -176,4 +179,42 @@ TEST(graph_check, test_free_of_loops_2) {
     };
     Graph *g = new Graph(am);
     EXPECT_FALSE(g->isFreeOfLoops());
+}
+
+/**
+ * Testing a valid path, but the path has two times the same node.
+ */
+TEST(graph_check, test_is_simple_path) {
+    vector<vector<int>> am = {
+            {0, 1, 0, 0},
+            {0, 0, 0, 1},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+    };
+    Graph *g = new Graph(am);
+    EXPECT_FALSE(g->isSimplePath({0, 1, 3, 2, 1}));
+}
+
+/**
+ * Testing an invalid path (Exception).
+ */
+TEST(graph_check, test_is_simple_path3) {
+    vector<vector<int>> am = {
+            {0, 1, 0, 0},
+            {0, 0, 0, 1},
+            {0, 1, 0, 0},
+            {0, 0, 1, 0},
+    };
+
+    Graph *g = new Graph(am);
+
+    EXPECT_THROW({
+                     try {
+                         g->isSimplePath({0, 1, 2});
+                     }
+                     catch (const invalid_argument &ia) {
+                         EXPECT_STREQ("The given path is not part of the graph!", ia.what());
+                         throw;
+                     }
+                 }, invalid_argument);
 }

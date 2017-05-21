@@ -645,7 +645,7 @@ string Graph::exportDot() {
 bool Graph::isSimplePath(vector<int> path) const {
 
     if (!hasPath(path))
-        throw invalid_argument("the given path is not part of the graph!");
+        throw invalid_argument("The given path is not part of the graph!");
 
     // sort the vector
     sort(path.begin(), path.end());
