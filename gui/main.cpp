@@ -33,7 +33,7 @@ int main() {
     Graph *g2 = new Graph(am1);
     cout << "Number of edges: " << g->getNumberOfEdges() << ", " << g2->getNumberOfEdges() << endl;
     // Export for sigma js
-    g->exportFile("data.json", g->graphToJson());
+    g->exportFile("../website/data/data.json", g->graphToJson());
 
     // Has cycle
     cout << "cycle: " << g->hasCycle() << endl;
