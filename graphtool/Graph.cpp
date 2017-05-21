@@ -2,6 +2,7 @@
 #include <vector>
 #include <stdexcept>
 #include <fstream>
+#include <algorithm>
 #include "Graph.h"
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
@@ -639,6 +640,23 @@ string Graph::exportDot() {
     }
     data += "\n}\n";
     return data;
+}
+
+bool Graph::isSimplePath(vector<int> path) const {
+
+    if (!hasPath(path))
+        throw invalid_argument("the given path is not part of the graph!");
+
+    // sort the vector
+    sort(path.begin(), path.end());
+
+    // find duplicates
+    for (int i = 0; i < path.size() - 1; i++) {
+        if (path[i] == path[i+1]) {
+            return false;
+        }
+    }
+    return true;
 }
 
 

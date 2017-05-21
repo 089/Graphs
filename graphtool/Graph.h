@@ -289,6 +289,13 @@ public:
     bool hasConnectivity(int s, int t);
 
     /**
+     * Checks, if the given path is a simple path.
+     * @param path vector with path nodes.
+     * @return true if path is a simple path, else false
+     */
+    bool isSimplePath(vector<int> path) const;
+
+    /**
      * Exports the Graph to a dot file.
      * @return The string content for the dot file.
      */

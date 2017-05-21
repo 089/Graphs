@@ -44,6 +44,9 @@ int main() {
     // Has path
     cout << "has path: " << g->hasPath({1, 2, 1, 2, 1, 0, 1, 3, 1, 2, 3}) << endl;
 
+    // Is simple path
+    cout << "is simple path: " << g->isSimplePath({1, 2, 0}) << endl;
+
     cout << "has conncetivity: " << g->hasConnectivity(0, 2) << endl;
 
     cout << "Erreichbarkeiten in Graph G: " << endl;
