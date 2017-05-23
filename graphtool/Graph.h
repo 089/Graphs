@@ -158,6 +158,14 @@ private:
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
+    /**
+     * Constructor for a Graph with a adjacency matrix given in Matlab
+     * notation (e.g. [0 0 1; 1 0 0; 1 1 0]).
+     *
+     * @param matlabMatrix  the matrix in matlab notation
+     */
+    Graph(string matlabMatrix);
+
     bool isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const;
 
     /**
