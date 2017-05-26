@@ -315,3 +315,83 @@ TEST(graph_check, test_are_neighbours_range_4) {
         ASSERT_STREQ("from and to have to be in the range. ", e.what());
     }
 }
+
+
+TEST(graph_check, test_matlab_correct_notation) {
+
+    try {
+        // These graphs should not cause an error.
+        Graph *a = new Graph("[1 0 1; 1 1 1; 0 0 1]");
+        Graph *b = new Graph("  \t [1 0  1;1 \t\t 1 1\t\t\t    ;     0  0  1 ] ");
+        Graph *c = new Graph("[1\t0\t1;1\t1\t1;0\t0\t1]");
+        Graph *d = new Graph(" [ 1   0   1 ;   1   1   1 ;   0   0   1 ] ");
+        Graph *e = new Graph("[1]");
+
+    } catch (const invalid_argument &e) {
+        cout << e.what();
+        FAIL();
+    }
+
+    SUCCEED();
+}
+
+TEST(graph_check, test_matlab_wrong_notation_1) {
+
+    try {
+        Graph *g = new Graph("[1 0 1; 1 1 1 1; 0 0 1]"); // one column too much
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("There must be a syntax error, because the number of columns are different.", e.what());
+    }
+}
+
+TEST(graph_check, test_matlab_wrong_notation_2) {
+
+    try {
+        Graph *g = new Graph("[1 0 1 0; 1 1 1 1; 0 0 1 1]"); // is not square
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("adjacency matrix has to be symmetrical", e.what());
+    }
+}
+
+TEST(graph_check, test_matlab_wrong_notation_3) {
+
+    try {
+        Graph *g = new Graph("[0 1 0; 1 1 1; 0 1 1; 1 1 1]"); // is not square
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("adjacency matrix has to be symmetrical", e.what());
+    }
+
+}
+
+TEST(graph_check, test_matlab_wrong_notation_4) {
+
+    try {
+        Graph *g = new Graph("1 0 1; 1 1 1; 0 0 1");
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("A valid matlab matrix notation must start with '[' and end up with ']'.", e.what());
+    }
+}
+
+TEST(graph_check, test_matlab_wrong_notation_5) {
+
+    try {
+        Graph *g = new Graph("[]");
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("matrix entries must be and contain at least one integer.", e.what());
+    }
+}
+
+TEST(graph_check, test_matlab_wrong_notation_6) {
+
+    try {
+        Graph *g = new Graph("[ a ]");
+        FAIL();
+    } catch (const invalid_argument &e) {
+        ASSERT_STREQ("matrix entries must be and contain at least one integer.", e.what());
+    }
+}

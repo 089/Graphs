@@ -29,6 +29,7 @@ matrix:
             - doxygen-doc
             - doxygen-latex
             - doxygen-gui
+            - libboost-all-dev
             - graphviz
       env: COMPILER=g++-6
     - compiler: clang
@@ -44,6 +45,7 @@ matrix:
             - doxygen-doc
             - doxygen-latex
             - doxygen-gui
+            - libboost-all-dev
             - graphviz
       env: COMPILER=clang++-3.9 GENERATE_DOC=true
 

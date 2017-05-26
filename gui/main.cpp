@@ -24,7 +24,11 @@ int main() {
 
     Graph *g = new Graph(am2);
 
-    cout << (g->getAdjacencyMatrix().at(0).at(1) == 1 ? "Zeile 1, Spalte 2 ist 1"
+    Graph *h = new Graph(" [1  0 1  ; 1    1\t   1  ; 0 0 1   ]    ");
+
+    cout << h->exportDot();
+
+/*    cout << (g->getAdjacencyMatrix().at(0).at(1) == 1 ? "Zeile 1, Spalte 2 ist 1"
                                                       : "Zeile 1, Spalte 2 ist **NICHT** 1") << endl;
 
     // Number of  nodes
@@ -33,7 +37,7 @@ int main() {
     Graph *g2 = new Graph(am1);
     cout << "Number of edges: " << g->getNumberOfEdges() << ", " << g2->getNumberOfEdges() << endl;
     // Export for sigma js
-    g->exportFile("data.json", g->graphToJson());
+    g->exportFile("../website/data/data.json", g->graphToJson());
 
     // Has cycle
     cout << "cycle: " << g->hasCycle() << endl;
@@ -57,5 +61,6 @@ int main() {
     //can be opened by calling this - requires graphviz & imagemagick
     //dot -Tpng dotfile.dot > Graph.png && display Graph.png
     g2->exportFile("/tmp/dotfile.dot", g2->exportDot());
+*/
     return 0;
 }
