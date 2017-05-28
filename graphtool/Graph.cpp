@@ -10,7 +10,7 @@
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
 
-    if (isSymmetricMatrix(adjacencyMatrix)) {
+    if (isSquareMatrix(adjacencyMatrix)) {
         this->adjacencyMatrix = adjacencyMatrix;
     } else {
         throw invalid_argument("adjacency matrix has to be symmetrical");
@@ -78,10 +78,11 @@ Graph::Graph(string matlabMatrix) {
     this->adjacencyMatrix = adjacencyMatrix;
 }
 
-bool Graph::isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const {
+bool Graph::isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const {
     int rows = (int) adjacencyMatrix.size();
     int cols = 0;
     for (vector<int> row : adjacencyMatrix) {
+        // row.size() = number of cols in the current row
         if (row.size() > cols) {
             cols = (int) row.size();
         }

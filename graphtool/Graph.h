@@ -166,7 +166,13 @@ public:
      */
     Graph(string matlabMatrix);
 
-    bool isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const;
+    /**
+     * Checks wheter a given matrix is square or not.
+     *
+     * @param adjacencyMatrix   the matrix
+     * @return true, if matrix is square
+     */
+    bool isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const;
 
     /**
      * Detect the number of nodes of the given graph.
