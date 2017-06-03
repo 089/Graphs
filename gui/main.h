@@ -51,18 +51,18 @@ vector<string> replaceLongWithShortNames(vector<string> args);
  * @param allArgs   all program arguments
  * @return  an array of all options
  */
-vector<string> getUsedOptionsFromArg(const vector<string> &allArgs) ;
+vector<string> getUsedOptionsFromArg(const vector<string> &allArgs);
 
 /**
  * Printf wrapper for verbose mode. Prints a formatted string and the corresponding number of values.
  * @param str   formatted string
  */
-void printv(const char *fstr, ...) ;
+void printv(const char *fstr, ...);
 
 /**
  * prints out the help page.
  */
-void showHelp(void) ;
+void showHelp(void);
 
 /**
  * checks whether there are enough arguments for a certain option.
@@ -77,7 +77,7 @@ void checkNumberOfRequiredArguments(string option, vector<string> optionValues);
  * @param s the string
  * @return true, if string only contains digits
  */
-bool hasOnlyDigits(const string s) ;
+bool hasOnlyDigits(const string s);
 
 /**
  * converts the program arguments to one arry
@@ -86,4 +86,11 @@ bool hasOnlyDigits(const string s) ;
  * @param argv  arguments
  * @return  array with all arguments
  */
-vector<string> getAllArgs(int argc, char **argv) ;
+vector<string> getAllArgs(int argc, char **argv);
+
+/**
+ * Converts a string to a int
+ * @param number string with a number ([0-9]*)
+ * @return string as int
+ */
+int str2int(string number);

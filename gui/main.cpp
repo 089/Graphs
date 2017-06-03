@@ -44,6 +44,8 @@ static struct optionItem options[] =
                 {"",     "",                    0, ""}, // ->
         };
 
+void callIdeg(const vector<string> &allArgs, Graph *currentGraph);
+
 /*                     __            __ ___    __
  * |\/|  /\  | |\ |   |_  /  \ |\ | /    |  | /  \ |\ |
  * |  | /--\ | | \|   |   \__/ | \| \__  |  | \__/ | \|
@@ -92,41 +94,23 @@ int main(int argc, char **argv) {
          */
 
         // do actions for every single graph
-        vector<string> currentValues;
         printv("Apply %d selected functions to %d graphs.", optionArgs.size(), graphs.size());
         for (int gIndex = 0; gIndex < graphs.size(); gIndex++) {
             Graph *currentGraph = graphs[gIndex];
             printf("Select Graph %d.\n", gIndex);
+            cout << "========================================" << endl;
 
             // call all selected functions on the single graph
             for (int argIndex = 0; argIndex < optionArgs.size(); argIndex++) {
                 string currentOption = string(optionArgs[argIndex]);
 
-                if (currentOption == "-ideg") {
-                    currentValues = getValues("ideg", allArgs);
-                    for (int valIndex = 0; currentValues.size(); valIndex++) {
-                        string cVal = currentValues[valIndex];
-
-                        if (hasOnlyDigits(cVal)) {
-                            printf("ideg(%d) = %d\n", atoi(currentValues[0].c_str()),
-                                   currentGraph->getInDeg(atoi(currentValues[0].c_str())));
-                        } else {
-                            printv("ideg(%s) is not possible. Check your call arguments.", cVal);
-                        }
-                    }
-                }
-
                 // check which options (only short names!) are selected
                 if (currentOption == "a") {
                 } else if (currentOption == "b") {
                 } else if (currentOption == "-ideg") {
-                    currentValues = getValues(currentOption, allArgs);
-                    printv("ideg(0)", currentGraph->getInDeg(stoi(currentValues[0])));
-                    cout << "here" << endl;
+                    callIdeg(allArgs, currentGraph);
 
                 } else if (currentOption == "-odeg") {
-                    currentValues = getValues(currentOption, allArgs);
-                    printv("odeg(0)", currentGraph->getInDeg(stoi(currentValues[0])));
 
                 } else if (currentOption == "ex") {
 
@@ -134,7 +118,7 @@ int main(int argc, char **argv) {
 
             }
         }
-        printv("did functions");
+        printv("done functions");
 
         /*   __       ___  __       ___
          *  /  \ /  \  |  |__) /  \  |
@@ -154,6 +138,22 @@ int main(int argc, char **argv) {
 
     showHelp();
     exit(0);
+}
+
+void callIdeg(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("ideg", allArgs);
+    for (int valIndex = 0; valIndex < currentValues.size(); valIndex++) {
+        int val = str2int(currentValues[valIndex]);
+        printf("ideg(%d) = %d\n", val, currentGraph->getInDeg(val));
+    }
+}
+
+int str2int(string number) {
+    if (hasOnlyDigits(number)) {
+        return atoi(number.c_str());
+    } else {
+        throw invalid_argument("'" + number + "' is valid not a number ([0-9]*).");
+    }
 }
 
 typedef list <string> WordList;
