@@ -1,18 +1,16 @@
 .\" Manpage for graphs.
-.\" Contact vivek@nixcraft.net.in to correct errors or typos.
-.TH man 7 "20 May 2017" "1.0" "graphs man page"
+.\" Contact the authors to correct errors or typos.
+.TH man 7 "01 April 2017" "1.0" "graphs man page"
 .SH NAME
-graphs \- Ein tolles Tool für und mit Graphen und <3 und magic
+graphs \- Ein tolles Tool für und mit Graphen und <3 und magic.
 .SH SYNOPSIS
-graphs [OPTION]
+graphs [OPTIONS]
 .SH DESCRIPTION
-nuseradd is high level shell program for adding users to LDAP server.  On Debian, administrators should usually use nuseradd.debian(8) instead.
+Mit diesem Toll können verschiedene Eigenschaften von Graphen ermittelt und ausgegeben werden. Die Ergebnisse werden übersichtlich dargestellt und können in verschiedenen Ausgabeformaten ausgegeben werden. Achte bei den Optionen auf Groß- und Kleinschreibung.
 .SH OPTIONS
-The nuseradd does not take any options. However, you can supply username.
-.SH SEE ALSO
-useradd(8), passwd(5), nuseradd.debian(8)
+// wird von showhelp automatisch generiert
 .SH BUGS
-No known bugs.
+Es gibt bestimmt einige Bugs. Finde sie und schreib sie uns!
 .SH AUTHOR
 Marianus Niggl (marianus.niggl@hm.edu)
 Andreas Reiser (areiser@hm.edu)

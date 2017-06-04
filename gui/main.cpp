@@ -1,8 +1,8 @@
 #include "main.h"
 #include <iostream>
-#include <Graph.h>
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/cxx11/any_of.hpp>
+#include <boost/format.hpp>
 #include <iomanip>
 #include <cstdarg>
 
@@ -16,7 +16,12 @@ bool verbose = false;
 /**
  * number of columns for indention
  */
-int indention = 22;
+const int indention = 32;
+
+/**
+ * fill character
+ */
+const char separator = ' ';
 
 /**
  * One option item.
@@ -34,41 +39,42 @@ struct optionItem {
 static struct optionItem options[] =
         {
                 // input
-                {"i",    "input-csv",           1, ""}, // ->
-                {"iml",  "input-matlab",        1, ""}, // -> Ctor (string matlabMatrix)
-                {"ima",  "input-mathematica",   1, ""}, // ->
-                {"ivn",  "input-vertices-name", 1, ""}, // -> TODO: Die Knotennamen werden eingelesen, auf Anzahl überprüft und bei der Ausgabe übergeben
+                {"",      "",                      0, "EINGABE"},
+                {"-i",    "--input-csv",           1, "Liest die Adjazenzmatrix des Graphen aus der angegebenen CSV-Datei aus."},
+                {"-iml",  "--input-matlab",        1, "Erzeugt einen Graphen aus der in Matlab-Notation angegebenen Adjazenzmatrix."}, // -> Ctor (string matlabMatrix)
+                {"-ima",  "--input-mathematica",   1, "Erzeugt einen Graphen aus der in Mathematica-Notation angegebenen Adjazenzmatrix."},
+                {"-ivn",  "--input-vertices-name", 1, "Übergibt Namen der Knoten. Diese werden bei der Ausgabe anstelle der Knotennummer angegeben."}, // -> TODO: Die Knotennamen werden eingelesen, auf Anzahl überprüft und bei der Ausgabe übergeben
 
                 // output
-                {"o",    "",                    0, ""}, // ->
-                {"v",    "verbose",             0, ""}, // -> activates verbose mode in main function
+                {"",      "",                      0, "AUSGABE"},
+                {"-o",    "--output-csv",          1, "Speichert die Adjazenzmatrix des Graphen in der angegebenen Datei "},
+                {"-oj",   "--output-json",         1, "Speichert den Graphen - als JSON im Format von sigmajs.org - in der angegebenen Datei."},
+                {"-og",   "--output-graphviz",     1, "Speichert den Graphen in der angegebenen Datei im Format von Graphviz (hier: DOT)."},
+                {"-v",    "--verbose",             1, "Aktiviert den wortreichen Modus"},
 
-                // functions
-                {"a",    "no-args",             1, "Ruft alle Funktionen, die keine Argumente benötigen auf und gibt die Ergebnisse aus. "},
-                {"ideg", "indegree",            1, ""}, // -> getInDeg()
-                {"odeg", "outdegree",           1, ""}, // -> getOutDeg()
-                {"n",    "nodes-count",         0, ""}, // -> getNumberOfNodes()
+                // functions with no arguments
+                {"",      "",                      0, "FUNKTIONEN OHNE ARGUMENTE"},
+                {"-h",    "--help",                0, "Zeigt die Hilfe an."},
+                {"-na",   "--no-args",             0, "Ruft alle Funktionen auf, die keine Argumente benötigen und gibt die Ergebnisse aus."},
+                {"-V",    "--vertices-count",      0, "Gibt die Anzahl der Knoten |V| aus."},
+                {"-E",    "--edges-count",         0, "Gibt die Anzahl der Kanten |E| aus."},
+                {"-d",    "--is-directed",         0, "Gibt an, ob der Graph gerichtet ist."},
+                {"-c",    "--is-complete",         0, "Gibt an, ob der Graph vollstaendig ist."},
+                {"-mg",   "--is-multigraph",       0, "Gibt an, ob der Graph ein Multigraph ist."},
+                {"-r",    "--is-regular",          0, "Gibt an, ob der Graph regulaer ist."},
+                {"-s",    "--is-simple",           0, "Gibt an, ob der Graph einfach ist."},
+                {"-cy",   "--has-cycle",           0, "Gibt an, ob der Graph einen Kreis hat."},
+                {"-fol",  "--is-free-of-loops",    0, "Gibt an, ob der Graph kreisfrei ist."},
+
+                // functions with arguments
+                {"",      "",                      0, "FUNKTIONEN MIT ARGUMENTEN"},
+                {"-ideg", "--indegree",            1, "Gibt die Anzahl der eingehenden Kanten eines Knoten (Parameter = Nummern zwischen 0 und |V| - 1) aus."},
+                {"-odeg", "--outdegree",           1, "Gibt die Anzahl der ausgehenden Kanten eines Knoten (Parameter = Nummern zwischen 0 und |V| - 1) aus."},
+                {"-an",   "--are-neighbours",      2, "Gibt an, ob zwei Knoten (Parameter = Nummern zwischen 0 und |V| - 1) Nachbarn sind."},
+                {"-hc",   "--has-connectivity",    2, "Gibt an, ob es zwischen den beiden Knoten (Parameter = Nummern zwischen 0 und |V| - 1) einen Weg gibt."},
+                {"-he",   "--has-edge",            2, "Gibt an, ob es den Knoten mit der gegebenen Nummer zwischen 0 und |V| - 1 gibt."},
+                {"-hp",   "--has-path",            1, "Gibt an, ob die übergebene Kantenfolge (Mindestens ein Parameter = Nummern zwischen 0 und |V| - 1) im Graph existiert."},
         };
-
-void call_getInDeg(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_getNumberOfNodes(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_getNumberOfEdges(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_hasCycle(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isComplete(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isDirected(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isFreeOfLoops(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isMultigraph(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isRegular(const vector <string> &allArgs, Graph *currentGraph);
-
-void call_isSimple(const vector <string> &allArgs, Graph *currentGraph);
 
 /*                     __            __ ___    __
  * |\/|  /\  | |\ |   |_  /  \ |\ | /    |  | /  \ |\ |
@@ -77,21 +83,21 @@ void call_isSimple(const vector <string> &allArgs, Graph *currentGraph);
 int main(int argc, char **argv) {
 
     // get all args as an array
-    const vector <string> allArgs = getAllArgs(argc, argv);
+    const vector<string> allArgs = getAllArgs(argc, argv);
 
     // extract only options from **argv
-    const vector <string> optionArgs = getUsedOptionsFromArg(allArgs);
+    const vector<string> optionArgs = getUsedOptionsFromArg(allArgs);
 
     // (de)activates verbose mode in main
     verbose = boost::algorithm::any_of_equal(optionArgs, "-v")
               || boost::algorithm::any_of_equal(optionArgs, "--verbose");
-    printv("Entered verbose mode.");
+    printv("Wortreicher Modus aktiviert.");
+
+    bool showhelp = false;
 
     // argv[0] = program call
-    if (argc <= 1) {
-        showHelp();
-    } else {
-        vector < Graph * > graphs;
+    if (argc > 1) {
+        vector<Graph *> graphs;
 
         /*         __       ___
          * | |\ | |__) /  \  |
@@ -99,29 +105,31 @@ int main(int argc, char **argv) {
          */
 
         // Get input from csv file
-        // TODO @ForrestFalcon issue #10
+        // TODO @ForrestFalcon issue #10, vgl. Implementierung inputMatlab
 
         // Get input from matlab string
-        vector <string> inputMatlab = getValues("iml", allArgs);
+        vector<string> inputMatlab = getValues("-iml", allArgs);
         for (int i = 0; i < inputMatlab.size(); i++) {
             Graph *g = new Graph(inputMatlab[i]);
+            printv("Graph %d (Matlab-Notation) \"%s\" hinzugefügt.", graphs.size(), inputMatlab[i].c_str());
             graphs.push_back(g);
         }
-        printv("Found %d matlab input strings.", inputMatlab.size());
+        printv("%d Matlab Matrizen gefunden.", inputMatlab.size());
 
         // Get input from mathematica string
         // TODO: issue #42
 
-        /*   __            __ ___    __        __
-         *  |_  /  \ |\ | /    |  | /  \ |\ | (_
-         *  |   \__/ | \| \__  |  | \__/ | \| __)
+        /*    __            __ ___    __        __          __       ___  __       ___
+         *   |_  /  \ |\ | /    |  | /  \ |\ | (_    ()/   /  \ /  \  |  |__) /  \  |
+         *   |   \__/ | \| \__  |  | \__/ | \| __)   (X    \__/ \__/  |  |    \__/  |
+         *
          */
-
         // do actions for every single graph
-        printv("Apply %d selected functions to %d graphs.", optionArgs.size(), graphs.size());
+        printv("Die %d ausgewählten Funktionen werden auf %d Graphen angewendet.", optionArgs.size(), graphs.size());
         for (int gIndex = 0; gIndex < graphs.size(); gIndex++) {
             Graph *currentGraph = graphs[gIndex];
-            printf("Select Graph %d.\n", gIndex);
+            cout << "========================================" << endl;
+            printf("|         Ergebnisse Graph %d.          |\n", gIndex);
             cout << "========================================" << endl;
 
             // call all selected functions on the single graph
@@ -129,7 +137,8 @@ int main(int argc, char **argv) {
                 string currentOption = string(optionArgs[argIndex]);
 
                 // check which options (only short names!) are selected
-                if (currentOption == "-a") {
+                // A) functions with no arguments
+                if (currentOption == "-na") {
                     call_getNumberOfNodes(allArgs, currentGraph);
                     call_getNumberOfEdges(allArgs, currentGraph);
                     call_isDirected(allArgs, currentGraph);
@@ -140,97 +149,179 @@ int main(int argc, char **argv) {
                     call_hasCycle(allArgs, currentGraph);
                     call_isFreeOfLoops(allArgs, currentGraph);
 
-                } else if (currentOption == "-") {
                 } else if (currentOption == "-n") {
                     call_getNumberOfNodes(allArgs, currentGraph);
 
+                } else if (currentOption == "-m") {
+                    call_getNumberOfEdges(allArgs, currentGraph);
+
+                } else if (currentOption == "-d") {
+                    call_isDirected(allArgs, currentGraph);
+
+                } else if (currentOption == "-c") {
+                    call_isComplete(allArgs, currentGraph);
+
+                } else if (currentOption == "-mg") {
+                    call_isMultigraph(allArgs, currentGraph);
+
+                } else if (currentOption == "-r") {
+                    call_isRegular(allArgs, currentGraph);
+
+                } else if (currentOption == "-s") {
+                    call_isSimple(allArgs, currentGraph);
+
+                } else if (currentOption == "-cy") {
+                    call_hasCycle(allArgs, currentGraph);
+
+                } else if (currentOption == "-fol") {
+                    call_isFreeOfLoops(allArgs, currentGraph);
+
+                } else if (currentOption == "-h") {
+                    showhelp = true;
+
+                    // B) functions with no arguments
                 } else if (currentOption == "-ideg") {
                     call_getInDeg(allArgs, currentGraph);
 
                 } else if (currentOption == "-odeg") {
+                    call_getOutDeg(allArgs, currentGraph);
 
-                } else if (currentOption == "ex") {
+                } else if (currentOption == "-an") {
+                    call_areNeighbours(allArgs, currentGraph);
 
+                } else if (currentOption == "-hc") {
+                    call_hasConnectivity(allArgs, currentGraph);
+
+                } else if (currentOption == "-he") {
+                    call_hasEdge(allArgs, currentGraph);
+
+                } else if (currentOption == "-hp") {
+                    call_hasPath(allArgs, currentGraph);
+
+                    // C) output into files
+                } else if (currentOption == "-o") {
+                    const string filename = to_string(gIndex) + "_" + getValues("-o", allArgs)[0];
+                    // TODO @ForrestFalcon issue #11 currentGraph->exportFile(filename, currentGraph->exportCsv());
+
+                } else if (currentOption == "-oj") {
+                    const string filename = to_string(gIndex) + "_" + getValues("-oj", allArgs)[0];
+                    currentGraph->exportFile(filename, currentGraph->graphToJson());
+
+                } else if (currentOption == "-og") {
+                    const string filename = to_string(gIndex) + "_" + getValues("-og", allArgs)[0];
+                    currentGraph->exportFile(filename, currentGraph->exportDot());
+
+                } else if (currentOption == "-") {
+                    // TODO Vorlage für weitere Optionen; Bitte den verschiedenen Bereichen A), B), C) zuordnen
                 }
-
             }
         }
-        printv("done functions");
-
-        /*   __       ___  __       ___
-         *  /  \ /  \  |  |__) /  \  |
-         *  \__/ \__/  |  |    \__/  |
-         */
-
-        vector <string> outputFiles;
-/*
-        string ext = getFileExtension(inputMatlab[i]);
-        if (ext == ".") {
-        } else if (ext == ".") {
-        } else {
-        }
-*/
-
+        printv("Alle Funktionen wurden ausgeführt.");
     }
 
-    showHelp();
+    // too less arguments or explicitly called
+    if (argc <= 1 || showhelp) {
+        showHelp();
+    }
+
     exit(0);
 }
 
 void print_result(string key, int value) {
-    cout << left << key << ": " << setw(indention) << " " << value << endl;
+    cout << left << setw(indention) << setfill(separator) << key << ": " << setw(indention) << setfill(separator)
+         << value << endl;
 }
 
 void print_result(string key, string value) {
-    cout << left << key << ": " << setw(indention) << " " << value << endl;
+    cout << left << setw(indention) << setfill(separator) << key << ": " << setw(indention) << setfill(separator)
+         << value << endl;
 }
 
 void print_result(string key, bool value) {
-    cout << left << key << ": " << setw(indention) << " " << (value ? "ja" : "nein") << endl;
+    cout << left << setw(indention) << setfill(separator) << key << ": " << setw(indention) << setfill(separator)
+         << (value ? "ja" : "nein") << endl;
 }
 
-void call_getNumberOfNodes(const vector <string> &allArgs, Graph *currentGraph) {
+void call_getNumberOfNodes(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Anzahl Knoten", currentGraph->getNumberOfNodes());
 }
 
-void call_getNumberOfEdges(const vector <string> &allArgs, Graph *currentGraph) {
+void call_getNumberOfEdges(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Anzahl Kanten", currentGraph->getNumberOfEdges());
 }
 
-void call_hasCycle(const vector <string> &allArgs, Graph *currentGraph) {
+void call_hasCycle(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Hat einen Kreis", currentGraph->hasCycle());
 }
 
-void call_isComplete(const vector <string> &allArgs, Graph *currentGraph) {
-    print_result("Ist vollständig", currentGraph->isComplete());
+void call_isComplete(const vector<string> &allArgs, Graph *currentGraph) {
+    print_result("Ist vollstaendig", currentGraph->isComplete());
 }
 
-void call_isDirected(const vector <string> &allArgs, Graph *currentGraph) {
+void call_isDirected(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Ist gerichtet", currentGraph->isDirected());
 }
 
-void call_isFreeOfLoops(const vector <string> &allArgs, Graph *currentGraph) {
+void call_isFreeOfLoops(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Ist kreisfrei", currentGraph->isFreeOfLoops());
 }
 
-void call_isMultigraph(const vector <string> &allArgs, Graph *currentGraph) {
+void call_isMultigraph(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Ist ein Multigraph", currentGraph->isMultigraph());
 }
 
-void call_isRegular(const vector <string> &allArgs, Graph *currentGraph) {
-    print_result("Ist regulär", currentGraph->isRegular());
+void call_isRegular(const vector<string> &allArgs, Graph *currentGraph) {
+    print_result("Ist regulaer", currentGraph->isRegular());
 }
 
-void call_isSimple(const vector <string> &allArgs, Graph *currentGraph) {
+void call_isSimple(const vector<string> &allArgs, Graph *currentGraph) {
     print_result("Ist einfach", currentGraph->isSimple());
 }
 
-void call_getInDeg(const vector <string> &allArgs, Graph *currentGraph) {
-    const vector <string> currentValues = getValues("ideg", allArgs);
+void call_getInDeg(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-ideg", allArgs);
     for (int valIndex = 0; valIndex < currentValues.size(); valIndex++) {
         int val = str2int(currentValues[valIndex]);
-        printf("ideg(%d) = %d\n", val, currentGraph->getInDeg(val));
+        const string key = boost::str(boost::format("in degree(%d)") % val);
+        print_result(key, currentGraph->getInDeg(val));
     }
+}
+
+void call_getOutDeg(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-odeg", allArgs);
+    for (int valIndex = 0; valIndex < currentValues.size(); valIndex++) {
+        int val = str2int(currentValues[valIndex]);
+        const string key = boost::str(boost::format("out degree(%d)") % val);
+        print_result(key, currentGraph->getOutDeg(val));
+    }
+}
+
+void call_areNeighbours(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-an", allArgs);
+    const string key = boost::str(boost::format("Sind %d und %d Nachbarn") % currentValues[0] % currentValues[1]);
+    print_result(key, currentGraph->areNeighbours(str2int(currentValues[0]), str2int(currentValues[1])));
+}
+
+void call_hasConnectivity(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-hc", allArgs);
+    const string key = boost::str(boost::format("\u2203 Weg zw. %d und %d") % currentValues[0] % currentValues[1]);
+    print_result(key, currentGraph->hasConnectivity(str2int(currentValues[0]), str2int(currentValues[1])));
+}
+
+void call_hasEdge(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-he", allArgs);
+    const string key = boost::str(boost::format("\u2203 Kante zw. %d und %d") % currentValues[0] % currentValues[1]);
+    print_result(key, currentGraph->hasEdge(str2int(currentValues[0]), str2int(currentValues[1])));
+}
+
+void call_hasPath(const vector<string> &allArgs, Graph *currentGraph) {
+    const vector<string> currentValues = getValues("-hp", allArgs);
+    vector<int> vertices;
+    for (int i = 0; i < currentValues.size(); i++) {
+        vertices.push_back(str2int(currentValues[i]));
+    }
+    const string key = boost::str(boost::format("\u2203 Pfad {%s}") % boost::join(currentValues, ", "));
+    print_result(key, currentGraph->hasPath(vertices));
 }
 
 int str2int(string number) {
@@ -291,26 +382,56 @@ void justifyText(const string &text, int pageWidth, int indent) {
 
 void showHelp(void) {
 
-    // TODO (manpage style)
+    const string preOptions =
+            "NAME\n"
+                    "       graphs - Ein tolles Tool für und mit Graphen und <3 und magic.\n"
+                    "\n"
+                    "SYNOPSIS\n"
+                    "       graphs [OPTIONS]\n"
+                    "\n"
+                    "DESCRIPTION\n"
+                    "       Mit  diesem Tool können verschiedene Eigenschaften von Graphen ermittelt\n"
+                    "       und ausgegeben werden. Die Ergebnisse werden übersichtlich dargestellt\n"
+                    "       und können in verschiedenen Ausgabeformaten ausgegeben werden. Achte bei\n"
+                    "       den Optionen auf Groß- und Kleinschreibung.\n"
+                    "\n"
+                    "OPTIONS";
+
+    const string postOptions = "BUGS\n"
+            "       Es gibt bestimmt einige Bugs. Finde sie und schreib sie uns!\n"
+            "\n"
+            "AUTHOR\n"
+            "       Marianus Niggl (marianus.niggl@hm.edu) Andreas Reiser (areiser@hm.edu)\n"
+            "       Kevin Stieglitz (k.stieglitz@hm.edu) Martin Zell (zell@hm.edu)";
+
+    cout << "\n" << preOptions << endl;
 
     // print options
     int numberOfOptions = sizeof(options) / sizeof(*options);
     for (int i = 0; i < numberOfOptions; i++) {
-        cout << left
-             << setw(4) << " "
-             << "-" << setw(7) << options[i].shortName
-             << "--" << setw(20) << options[i].longName
-             << "\n";
-
-        // print description if available
-        if (options[i].description.length() > 0) {
-            justifyText(options[i].description, 60, 16);
+        if (options[i].shortName.empty() && options[i].longName.empty()) {
+            justifyText(options[i].description, 76, 4);
             cout << endl;
+        } else {
+            cout << left
+                 << setw(4) << " "
+                 << setw(7) << options[i].shortName
+                 << setw(20) << options[i].longName
+                 << " (" << options[i].requiredArguments << ")"
+                 << "\n";
+
+            // print description if available
+            if (options[i].description.length() > 0) {
+                justifyText(options[i].description, 60, 16);
+                cout << endl;
+            }
         }
     }
+
+    cout << "\n" << postOptions << endl;
 }
 
-void checkNumberOfRequiredArguments(string option, vector <string> optionValues) {
+void checkNumberOfRequiredArguments(string option, vector<string> optionValues) {
 // check if number of required arguments is reached
     int numberOfOptions = sizeof(options) / sizeof(*options);
     for (int i = 0; i < numberOfOptions; i++) {
@@ -330,9 +451,9 @@ void checkNumberOfRequiredArguments(string option, vector <string> optionValues)
     }
 }
 
-vector <string> getValues(string option, vector <string> args) {
+vector<string> getValues(string option, vector<string> args) {
 
-    vector <string> optionValues;
+    vector<string> optionValues;
     bool collectData = false;
 
     for (int i = 0; i < args.size(); i++) {
@@ -349,7 +470,7 @@ vector <string> getValues(string option, vector <string> args) {
         }
 
         // option starts e.g "-o"
-        if (args[i] == "-" + string(option)) {
+        if (args[i] == option) {
             collectData = true;
         }
     }
@@ -361,15 +482,14 @@ string getFileExtension(string filename) {
     return filename.substr(filename.find_last_of('.'));
 }
 
-vector <string> replaceLongWithShortNames(vector <string> args) {
+vector<string> replaceLongWithShortNames(vector<string> args) {
 
-    vector <string> shortenOptions;
+    vector<string> shortenOptions;
     int numberOfOptions = sizeof(options) / sizeof(*options);
 
     // check all arguments
     for (int argIndex = 0; argIndex < args.size(); argIndex++) {
         string currentArg = args[argIndex];
-        boost::algorithm::to_lower(currentArg);
 
         // check only arguments which start with double "-"
         if (boost::algorithm::starts_with(currentArg, "--")) {
@@ -377,9 +497,9 @@ vector <string> replaceLongWithShortNames(vector <string> args) {
             for (int optIndex = 0; optIndex < numberOfOptions; optIndex++) {
                 string currentOption = options[optIndex].longName;
 
-                if (currentArg == string("--").append(currentOption)) {
+                if (currentArg == currentOption) {
                     // replace with short name
-                    shortenOptions.push_back("-" + options[optIndex].shortName);
+                    shortenOptions.push_back(options[optIndex].shortName);
                 }
             }
 
@@ -407,8 +527,8 @@ void printv(const char *fstr, ...) {
     }
 }
 
-vector <string> getUsedOptionsFromArg(const vector <string> &allArgs) {
-    vector <string> tmpArgs;
+vector<string> getUsedOptionsFromArg(const vector<string> &allArgs) {
+    vector<string> tmpArgs;
     for (int i = 0; i < allArgs.size(); i++) {
         if (boost::algorithm::starts_with(allArgs[i], "-")) {
             tmpArgs.push_back(allArgs[i]);
@@ -422,8 +542,8 @@ bool hasOnlyDigits(const string s) {
     return s.find_first_not_of("0123456789") == string::npos;
 }
 
-vector <string> getAllArgs(int argc, char **argv) {
-    vector <string> allArgs;
+vector<string> getAllArgs(int argc, char **argv) {
+    vector<string> allArgs;
 
     // split **argv arguments into string array
     // argv[0] is the program call itself

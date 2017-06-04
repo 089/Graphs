@@ -2,6 +2,7 @@
 
 #include <vector>
 #include <string>
+#include <Graph.h>
 
 using namespace std;
 
@@ -94,3 +95,33 @@ vector<string> getAllArgs(int argc, char **argv);
  * @return string as int
  */
 int str2int(string number);
+
+void call_getInDeg(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_getNumberOfNodes(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_getNumberOfEdges(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_hasCycle(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isComplete(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isDirected(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isFreeOfLoops(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isMultigraph(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isRegular(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_isSimple(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_getOutDeg(const vector<string> &allArgs, Graph *currentGraph);
+
+void call_areNeighbours(const vector<string> &allArgs, Graph *currentGraph) ;
+
+void call_hasConnectivity(const vector<string> &allArgs, Graph *currentGraph) ;
+
+void call_hasEdge(const vector<string> &allArgs, Graph *currentGraph) ;
+
+void call_hasPath(const vector<string> &allArgs, Graph *currentGraph) ;
