@@ -12,3 +12,5 @@ if(Boost_FOUND)
     target_link_libraries(graphtoolShared ${Boost_LIBRARIES})
 
 endif()
+
+target_include_directories(graphtoolShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
