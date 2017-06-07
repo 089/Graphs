@@ -60,7 +60,7 @@ if [ "$GENERATE_DOC" = true ] ; then
   # stayed the same and will only update the changed files. So the gh-pages branch
   # can be safely cleaned, and it is sure that everything pushed later is the new
   # documentation.
-  rm -rf *
+  rm -rf doxygen_doc/*
 
   # Need to create a .nojekyll file to allow filenames starting with an underscore
   # to be seen on the gh-pages site. Therefore creating an empty .nojekyll file.
