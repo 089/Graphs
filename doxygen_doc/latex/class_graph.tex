@@ -1,0 +1,363 @@
+\hypertarget{class_graph}{\section{Graph Class Reference}
+\label{class_graph}\index{Graph@{Graph}}
+}
+
+
+{\ttfamily \#include $<$Graph.\-h$>$}
+
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{class_graph_a173fa6ec1022bc0f793e3debfd19ad2c}{Graph} (vector$<$ vector$<$ int $>$$>$ adjacency\-Matrix)
+\item 
+\hyperlink{class_graph_afa40c944594ef9360902cfa3a754d4ef}{Graph} (string matlab\-Matrix)
+\item 
+bool \hyperlink{class_graph_a00f613f4d274a895e08988074a3a9e9a}{is\-Square\-Matrix} (const vector$<$ vector$<$ int $>$$>$ \&adjacency\-Matrix) const 
+\item 
+int \hyperlink{class_graph_a217051ac8e8d46ca74e7837f16fbed96}{get\-Number\-Of\-Nodes} () const 
+\item 
+int \hyperlink{class_graph_ab532b8f903f75621e6ca3469e8dbe0bf}{get\-Number\-Of\-Edges} ()
+\item 
+void \hyperlink{class_graph_ac38ffcb580b1a9fa57142812aac33c46}{export\-File} (const string file\-Name, const string data) const 
+\item 
+string \hyperlink{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}{graph\-To\-Json} () const 
+\item 
+bool \hyperlink{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{has\-Cycle} ()
+\item 
+bool \hyperlink{class_graph_a0a4f1d268e549a905d0451cfdfc6f2db}{has\-Edge} (const int from, const int to)
+\item 
+bool \hyperlink{class_graph_abc5691276d7bab874ae07a40173d50ec}{has\-Path} (const vector$<$ int $>$ path) const 
+\item 
+const vector$<$ vector$<$ int $>$ $>$ \& \hyperlink{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}{get\-Adjacency\-Matrix} () const 
+\item 
+bool \hyperlink{class_graph_afd552af25f5c9672848693d66f27827a}{is\-Directed} ()
+\item 
+int \hyperlink{class_graph_aa22848281e37e921bf4fc998bcf66295}{get\-In\-Deg} (int vertex\-Index)
+\item 
+int \hyperlink{class_graph_a1facc5271ce6c09e06bce134ddaac98c}{get\-Out\-Deg} (int vertex\-Index)
+\item 
+bool \hyperlink{class_graph_a451bbc2d9ddde5e85d6c122a845dbd02}{is\-Free\-Of\-Loops} ()
+\item 
+bool \hyperlink{class_graph_ab410dec3635c080f04c60c6835d91df6}{is\-Multigraph} ()
+\item 
+bool \hyperlink{class_graph_a4095f5949d5b2a420ecf2d0f2bb68dc8}{is\-Simple} ()
+\item 
+bool \hyperlink{class_graph_aba9eba8899f63a67ed270ee00bdfeb4e}{is\-Complete} ()
+\item 
+bool \hyperlink{class_graph_afe19c30e6b7005fd0c66c5f182764ca5}{is\-Regular} ()
+\item 
+bool \hyperlink{class_graph_a46cb0098da247fd0f2b07229df8cd5e7}{has\-Connectivity} (int s, int t)
+\item 
+string \hyperlink{class_graph_aaa3e920d6063f97f1826ced6180962ee}{export\-Dot} ()
+\item 
+bool \hyperlink{class_graph_ad3689ff1213976a5d738813be6ecee0d}{are\-Neighbours} (int from, int to)
+\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+Represents a {\bfseries simple} or {\bfseries directed} graph. Has certain verifiable properties. Its edges are not weighted. 
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{class_graph_a173fa6ec1022bc0f793e3debfd19ad2c}{\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}Graph\-::\-Graph (
+\begin{DoxyParamCaption}
+\item[{vector$<$ vector$<$ int $>$$>$}]{adjacency\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a173fa6ec1022bc0f793e3debfd19ad2c}
+\hypertarget{class_graph_afa40c944594ef9360902cfa3a754d4ef}{\index{Graph@{Graph}!Graph@{Graph}}
+\index{Graph@{Graph}!Graph@{Graph}}
+\subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}Graph\-::\-Graph (
+\begin{DoxyParamCaption}
+\item[{string}]{matlab\-Matrix}
+\end{DoxyParamCaption}
+)}}\label{class_graph_afa40c944594ef9360902cfa3a754d4ef}
+Constructor for a \hyperlink{class_graph}{Graph} with a adjacency matrix given in Matlab notation (e.\-g. \mbox{[}0 0 1; 1 0 0; 1 1 0\mbox{]}).
+
+
+\begin{DoxyParams}{Parameters}
+{\em matlab\-Matrix} & the matrix in matlab notation \\
+\hline
+\end{DoxyParams}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{class_graph_ad3689ff1213976a5d738813be6ecee0d}{\index{Graph@{Graph}!are\-Neighbours@{are\-Neighbours}}
+\index{are\-Neighbours@{are\-Neighbours}!Graph@{Graph}}
+\subsubsection[{are\-Neighbours}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::are\-Neighbours (
+\begin{DoxyParamCaption}
+\item[{int}]{from, }
+\item[{int}]{to}
+\end{DoxyParamCaption}
+)}}\label{class_graph_ad3689ff1213976a5d738813be6ecee0d}
+Returns true, if both given vertices are neighbours in the graph. The direction is only considered in digraphs.
+
+
+\begin{DoxyParams}{Parameters}
+{\em from} & first vertice \\
+\hline
+{\em to} & second vertice \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if both vertices are neighbours in the graph 
+\end{DoxyReturn}
+\hypertarget{class_graph_aaa3e920d6063f97f1826ced6180962ee}{\index{Graph@{Graph}!export\-Dot@{export\-Dot}}
+\index{export\-Dot@{export\-Dot}!Graph@{Graph}}
+\subsubsection[{export\-Dot}]{\setlength{\rightskip}{0pt plus 5cm}string Graph\-::export\-Dot (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_aaa3e920d6063f97f1826ced6180962ee}
+Exports the \hyperlink{class_graph}{Graph} to a dot file. \begin{DoxyReturn}{Returns}
+The string content for the dot file. 
+\end{DoxyReturn}
+\hypertarget{class_graph_ac38ffcb580b1a9fa57142812aac33c46}{\index{Graph@{Graph}!export\-File@{export\-File}}
+\index{export\-File@{export\-File}!Graph@{Graph}}
+\subsubsection[{export\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\-::export\-File (
+\begin{DoxyParamCaption}
+\item[{const string}]{file\-Name, }
+\item[{const string}]{data}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_ac38ffcb580b1a9fa57142812aac33c46}
+Export a given file with custom data. 
+\begin{DoxyParams}{Parameters}
+{\em file\-Name} & string file name. \\
+\hline
+{\em data} & string of data. \\
+\hline
+\end{DoxyParams}
+\hypertarget{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}{\index{Graph@{Graph}!get\-Adjacency\-Matrix@{get\-Adjacency\-Matrix}}
+\index{get\-Adjacency\-Matrix@{get\-Adjacency\-Matrix}!Graph@{Graph}}
+\subsubsection[{get\-Adjacency\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<$ vector$<$ int $>$ $>$ \& Graph\-::get\-Adjacency\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}
+\hypertarget{class_graph_aa22848281e37e921bf4fc998bcf66295}{\index{Graph@{Graph}!get\-In\-Deg@{get\-In\-Deg}}
+\index{get\-In\-Deg@{get\-In\-Deg}!Graph@{Graph}}
+\subsubsection[{get\-In\-Deg}]{\setlength{\rightskip}{0pt plus 5cm}int Graph\-::get\-In\-Deg (
+\begin{DoxyParamCaption}
+\item[{int}]{vertex\-Index}
+\end{DoxyParamCaption}
+)}}\label{class_graph_aa22848281e37e921bf4fc998bcf66295}
+Returns indegree indeg(v). Therefore it counts the ingoing edges. In undirected graphs loops are counted twice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\-Index} & the index of the vertex v \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+indegree indeg(v) 
+\end{DoxyReturn}
+\hypertarget{class_graph_ab532b8f903f75621e6ca3469e8dbe0bf}{\index{Graph@{Graph}!get\-Number\-Of\-Edges@{get\-Number\-Of\-Edges}}
+\index{get\-Number\-Of\-Edges@{get\-Number\-Of\-Edges}!Graph@{Graph}}
+\subsubsection[{get\-Number\-Of\-Edges}]{\setlength{\rightskip}{0pt plus 5cm}int Graph\-::get\-Number\-Of\-Edges (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_ab532b8f903f75621e6ca3469e8dbe0bf}
+Detect the number of edges of the given graph. \begin{DoxyReturn}{Returns}
+number of edges. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a217051ac8e8d46ca74e7837f16fbed96}{\index{Graph@{Graph}!get\-Number\-Of\-Nodes@{get\-Number\-Of\-Nodes}}
+\index{get\-Number\-Of\-Nodes@{get\-Number\-Of\-Nodes}!Graph@{Graph}}
+\subsubsection[{get\-Number\-Of\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}int Graph\-::get\-Number\-Of\-Nodes (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_a217051ac8e8d46ca74e7837f16fbed96}
+Detect the number of nodes of the given graph. \begin{DoxyReturn}{Returns}
+number of nodes. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a1facc5271ce6c09e06bce134ddaac98c}{\index{Graph@{Graph}!get\-Out\-Deg@{get\-Out\-Deg}}
+\index{get\-Out\-Deg@{get\-Out\-Deg}!Graph@{Graph}}
+\subsubsection[{get\-Out\-Deg}]{\setlength{\rightskip}{0pt plus 5cm}int Graph\-::get\-Out\-Deg (
+\begin{DoxyParamCaption}
+\item[{int}]{vertex\-Index}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a1facc5271ce6c09e06bce134ddaac98c}
+Returns outdegree outdeg(v). Therefore it counts the outgoing edges. In undirected graphs loops are counted twice.
+
+
+\begin{DoxyParams}{Parameters}
+{\em vertex\-Index} & the index of the vertex v \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+outdegree outdeg(v) 
+\end{DoxyReturn}
+\hypertarget{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}{\index{Graph@{Graph}!graph\-To\-Json@{graph\-To\-Json}}
+\index{graph\-To\-Json@{graph\-To\-Json}!Graph@{Graph}}
+\subsubsection[{graph\-To\-Json}]{\setlength{\rightskip}{0pt plus 5cm}string Graph\-::graph\-To\-Json (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}
+Return the graph in a json-\/format. \begin{DoxyReturn}{Returns}
+string json.
+\end{DoxyReturn}
+Transform the graph to json-\/format. \begin{DoxyReturn}{Returns}
+string json. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a46cb0098da247fd0f2b07229df8cd5e7}{\index{Graph@{Graph}!has\-Connectivity@{has\-Connectivity}}
+\index{has\-Connectivity@{has\-Connectivity}!Graph@{Graph}}
+\subsubsection[{has\-Connectivity}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::has\-Connectivity (
+\begin{DoxyParamCaption}
+\item[{int}]{s, }
+\item[{int}]{t}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a46cb0098da247fd0f2b07229df8cd5e7}
+Calculates if there is a path from s to t.
+
+
+\begin{DoxyParams}{Parameters}
+{\em s} & number of node 1 \\
+\hline
+{\em t} & number of node 2 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if there is a path from s to t. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{\index{Graph@{Graph}!has\-Cycle@{has\-Cycle}}
+\index{has\-Cycle@{has\-Cycle}!Graph@{Graph}}
+\subsubsection[{has\-Cycle}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::has\-Cycle (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}
+Checks the graph if a cycle exists. D\-F\-S. \begin{DoxyReturn}{Returns}
+true if a cycle exists, else false 
+\end{DoxyReturn}
+\hypertarget{class_graph_a0a4f1d268e549a905d0451cfdfc6f2db}{\index{Graph@{Graph}!has\-Edge@{has\-Edge}}
+\index{has\-Edge@{has\-Edge}!Graph@{Graph}}
+\subsubsection[{has\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::has\-Edge (
+\begin{DoxyParamCaption}
+\item[{const int}]{from, }
+\item[{const int}]{to}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a0a4f1d268e549a905d0451cfdfc6f2db}
+Checks if the graph contains the given edge. 
+\begin{DoxyParams}{Parameters}
+{\em from} & node number \\
+\hline
+{\em to} & node number \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if the edge exists, else if not 
+\end{DoxyReturn}
+\hypertarget{class_graph_abc5691276d7bab874ae07a40173d50ec}{\index{Graph@{Graph}!has\-Path@{has\-Path}}
+\index{has\-Path@{has\-Path}!Graph@{Graph}}
+\subsubsection[{has\-Path}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::has\-Path (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ int $>$}]{path}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_abc5691276d7bab874ae07a40173d50ec}
+Checks, if the graph contains the given path. 
+\begin{DoxyParams}{Parameters}
+{\em path} & vector with path nodes. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true if graph contains the path, else false 
+\end{DoxyReturn}
+\hypertarget{class_graph_aba9eba8899f63a67ed270ee00bdfeb4e}{\index{Graph@{Graph}!is\-Complete@{is\-Complete}}
+\index{is\-Complete@{is\-Complete}!Graph@{Graph}}
+\subsubsection[{is\-Complete}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Complete (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_aba9eba8899f63a67ed270ee00bdfeb4e}
+Specifies whether the graph is a complete graph (simple graph \href{https://en.wikipedia.org/wiki/Complete_graph}{\tt \char`\"{}in which every
+pair of distinct vertices is connected by a unique edge.\char`\"{}}). Checks only undirected graphs! A complete graph is also called K\-\_\-n.
+
+\begin{DoxyReturn}{Returns}
+true, if the graph is a complete graph. 
+\end{DoxyReturn}
+\hypertarget{class_graph_afd552af25f5c9672848693d66f27827a}{\index{Graph@{Graph}!is\-Directed@{is\-Directed}}
+\index{is\-Directed@{is\-Directed}!Graph@{Graph}}
+\subsubsection[{is\-Directed}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Directed (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_afd552af25f5c9672848693d66f27827a}
+Returns if the graph is a directed or undirected graph.
+
+\begin{DoxyReturn}{Returns}
+true, if directed\par
+ false, if undirected 
+\end{DoxyReturn}
+\hypertarget{class_graph_a451bbc2d9ddde5e85d6c122a845dbd02}{\index{Graph@{Graph}!is\-Free\-Of\-Loops@{is\-Free\-Of\-Loops}}
+\index{is\-Free\-Of\-Loops@{is\-Free\-Of\-Loops}!Graph@{Graph}}
+\subsubsection[{is\-Free\-Of\-Loops}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Free\-Of\-Loops (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a451bbc2d9ddde5e85d6c122a845dbd02}
+Specifies whether the graph is free of loops. Loops are edges from and to the same vertex.
+
+\begin{DoxyReturn}{Returns}
+true, if there are no loops in the graph. 
+\end{DoxyReturn}
+\hypertarget{class_graph_ab410dec3635c080f04c60c6835d91df6}{\index{Graph@{Graph}!is\-Multigraph@{is\-Multigraph}}
+\index{is\-Multigraph@{is\-Multigraph}!Graph@{Graph}}
+\subsubsection[{is\-Multigraph}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Multigraph (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_ab410dec3635c080f04c60c6835d91df6}
+Specifies whether the graph is a multigraph (has multiple edges/has \href{https://en.wikipedia.org/wiki/Graph_(discrete_mathematics)#Multigraph}{\tt \char`\"{}two or more edged that connect the same two vertices\char`\"{}})
+
+\begin{DoxyReturn}{Returns}
+true, if it is a multigraph 
+\end{DoxyReturn}
+\hypertarget{class_graph_afe19c30e6b7005fd0c66c5f182764ca5}{\index{Graph@{Graph}!is\-Regular@{is\-Regular}}
+\index{is\-Regular@{is\-Regular}!Graph@{Graph}}
+\subsubsection[{is\-Regular}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Regular (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_afe19c30e6b7005fd0c66c5f182764ca5}
+Specifies whether the graph is a regular graph (\href{https://en.wikipedia.org/wiki/Regular_graph}{\tt \char`\"{}is a graph where each vertex has the same number of neighbors\char`\"{} }).
+
+\begin{DoxyReturn}{Returns}
+true, if the graph is a regular graph. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a4095f5949d5b2a420ecf2d0f2bb68dc8}{\index{Graph@{Graph}!is\-Simple@{is\-Simple}}
+\index{is\-Simple@{is\-Simple}!Graph@{Graph}}
+\subsubsection[{is\-Simple}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Simple (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a4095f5949d5b2a420ecf2d0f2bb68dc8}
+Specifies whether the graph is a simple graph (undirected, no multiple edges, no loops) or not.
+
+\begin{DoxyReturn}{Returns}
+true, if the graph is a simple graph. 
+\end{DoxyReturn}
+\hypertarget{class_graph_a00f613f4d274a895e08988074a3a9e9a}{\index{Graph@{Graph}!is\-Square\-Matrix@{is\-Square\-Matrix}}
+\index{is\-Square\-Matrix@{is\-Square\-Matrix}!Graph@{Graph}}
+\subsubsection[{is\-Square\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Square\-Matrix (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ vector$<$ int $>$$>$ \&}]{adjacency\-Matrix}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_a00f613f4d274a895e08988074a3a9e9a}
+Checks wheter a given matrix is square or not.
+
+
+\begin{DoxyParams}{Parameters}
+{\em adjacency\-Matrix} & the matrix \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if matrix is square 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+/home/travis/build/algdat/blatt-\/2-\/amf0/graphtool/\hyperlink{_graph_8h}{Graph.\-h}\item 
+/home/travis/build/algdat/blatt-\/2-\/amf0/graphtool/\hyperlink{_graph_8cpp}{Graph.\-cpp}\end{DoxyCompactItemize}
