@@ -24,6 +24,9 @@ int main() {
 
     Graph *g = new Graph(am2);
 
+    cout << "Adjacency Matrix: " << endl;
+    cout << g->getAdjacencyMatrixString() << endl;
+
     Graph *h = new Graph(" [1  0 1  ; 1    1\t   1  ; 0 0 1   ]    ");
 
     cout << h->exportDot();
