@@ -20,6 +20,8 @@ int \hyperlink{class_graph_ab532b8f903f75621e6ca3469e8dbe0bf}{get\-Number\-Of\-E
 \item 
 void \hyperlink{class_graph_ac38ffcb580b1a9fa57142812aac33c46}{export\-File} (const string file\-Name, const string data) const 
 \item 
+void \hyperlink{class_graph_a2500973a26b28812291e2c6c142c96f4}{export\-Adjazenzmatrix\-File} (const string file\-Name) const 
+\item 
 string \hyperlink{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}{graph\-To\-Json} () const 
 \item 
 bool \hyperlink{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{has\-Cycle} ()
@@ -29,6 +31,8 @@ bool \hyperlink{class_graph_a0a4f1d268e549a905d0451cfdfc6f2db}{has\-Edge} (const
 bool \hyperlink{class_graph_abc5691276d7bab874ae07a40173d50ec}{has\-Path} (const vector$<$ int $>$ path) const 
 \item 
 const vector$<$ vector$<$ int $>$ $>$ \& \hyperlink{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}{get\-Adjacency\-Matrix} () const 
+\item 
+const string \hyperlink{class_graph_ac1eae6c8e3c1b8ef39536c25d8be7fe1}{get\-Adjacency\-Matrix\-String} () const 
 \item 
 bool \hyperlink{class_graph_afd552af25f5c9672848693d66f27827a}{is\-Directed} ()
 \item 
@@ -102,6 +106,18 @@ Returns true, if both given vertices are neighbours in the graph. The direction 
 \begin{DoxyReturn}{Returns}
 true, if both vertices are neighbours in the graph 
 \end{DoxyReturn}
+\hypertarget{class_graph_a2500973a26b28812291e2c6c142c96f4}{\index{Graph@{Graph}!export\-Adjazenzmatrix\-File@{export\-Adjazenzmatrix\-File}}
+\index{export\-Adjazenzmatrix\-File@{export\-Adjazenzmatrix\-File}!Graph@{Graph}}
+\subsubsection[{export\-Adjazenzmatrix\-File}]{\setlength{\rightskip}{0pt plus 5cm}void Graph\-::export\-Adjazenzmatrix\-File (
+\begin{DoxyParamCaption}
+\item[{const string}]{file\-Name}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_a2500973a26b28812291e2c6c142c96f4}
+Export the adjazenmatrix to a file. 
+\begin{DoxyParams}{Parameters}
+{\em file\-Name} & string file name. \\
+\hline
+\end{DoxyParams}
 \hypertarget{class_graph_aaa3e920d6063f97f1826ced6180962ee}{\index{Graph@{Graph}!export\-Dot@{export\-Dot}}
 \index{export\-Dot@{export\-Dot}!Graph@{Graph}}
 \subsubsection[{export\-Dot}]{\setlength{\rightskip}{0pt plus 5cm}string Graph\-::export\-Dot (
@@ -134,6 +150,13 @@ Export a given file with custom data.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}
+\hypertarget{class_graph_ac1eae6c8e3c1b8ef39536c25d8be7fe1}{\index{Graph@{Graph}!get\-Adjacency\-Matrix\-String@{get\-Adjacency\-Matrix\-String}}
+\index{get\-Adjacency\-Matrix\-String@{get\-Adjacency\-Matrix\-String}!Graph@{Graph}}
+\subsubsection[{get\-Adjacency\-Matrix\-String}]{\setlength{\rightskip}{0pt plus 5cm}const string Graph\-::get\-Adjacency\-Matrix\-String (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{class_graph_ac1eae6c8e3c1b8ef39536c25d8be7fe1}
 \hypertarget{class_graph_aa22848281e37e921bf4fc998bcf66295}{\index{Graph@{Graph}!get\-In\-Deg@{get\-In\-Deg}}
 \index{get\-In\-Deg@{get\-In\-Deg}!Graph@{Graph}}
 \subsubsection[{get\-In\-Deg}]{\setlength{\rightskip}{0pt plus 5cm}int Graph\-::get\-In\-Deg (

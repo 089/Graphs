@@ -1,6 +1,7 @@
 var searchData=
 [
   ['getadjacencymatrix',['getAdjacencyMatrix',['../class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e',1,'Graph']]],
+  ['getadjacencymatrixstring',['getAdjacencyMatrixString',['../class_graph.html#ac1eae6c8e3c1b8ef39536c25d8be7fe1',1,'Graph']]],
   ['getindeg',['getInDeg',['../class_graph.html#aa22848281e37e921bf4fc998bcf66295',1,'Graph']]],
   ['getnumberofedges',['getNumberOfEdges',['../class_graph.html#ab532b8f903f75621e6ca3469e8dbe0bf',1,'Graph']]],
   ['getnumberofnodes',['getNumberOfNodes',['../class_graph.html#a217051ac8e8d46ca74e7837f16fbed96',1,'Graph']]],
