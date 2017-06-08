@@ -30,7 +30,6 @@ file(GLOB TEST_FILES "*.cpp")
 add_executable(runAllTests ${TEST_FILES})
 
 add_dependencies(runAllTests gtest)
-
 target_link_libraries(runAllTests ${gtest_library})
 target_link_libraries(runAllTests ${gtest_main_library})
 target_link_libraries (runAllTests ${CMAKE_THREAD_LIBS_INIT})

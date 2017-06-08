@@ -324,6 +324,12 @@ public:
      */
     bool areNeighbours(int from, int to);
 
+    /**
+     * Exports the string for a dot file.
+     * Takes a path and marks it red in the result dot file.
+     * @param path The path to be colored.
+     * @return The string for a dot file.
+     */
     string exportDot(vector<int> path);
 
 };
