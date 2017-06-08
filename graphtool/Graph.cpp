@@ -9,13 +9,40 @@
 
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
-
+    nodes = vector<string>();
+    for (int i = 0; i < adjacencyMatrix[0].size(); i++) {
+        nodes.push_back(to_string(i));
+    }
     if (isSquareMatrix(adjacencyMatrix)) {
         this->adjacencyMatrix = adjacencyMatrix;
     } else {
         throw invalid_argument("adjacency matrix has to be symmetrical");
     };
 }
+
+
+Graph::Graph(vector<vector<int>> adjacencyMatrix, vector<string> node_names) {
+    cout << "node names: " << endl;
+    for (string str : node_names) {
+        cout << str << endl;
+    }
+    if (isSquareMatrix(adjacencyMatrix)) {
+        this->adjacencyMatrix = adjacencyMatrix;
+    } else {
+        throw invalid_argument("adjacency matrix has to be symmetrical");
+    };
+
+    if (node_names.size() == getNumberOfNodes()) {
+        this->nodes = vector<string>();
+        for(string node : node_names) {
+            nodes.push_back(node);
+        }
+    } else {
+        cout << "Nodes: " << getNumberOfNodes() << ", nodes in argument: " << node_names.size() << endl;
+        throw invalid_argument("Nodes number does not match adjencency matrix:\nNodes: ");
+    }
+}
+
 
 Graph::Graph(string matlabMatrix) {
 
@@ -681,24 +708,24 @@ string Graph::exportDot() {
 
     //create nodes - in case one node has no edges
     for (int i = 0; i < adjacencyMatrix.size(); i++) {
-        data += to_string(i) + "\n";
+        data += nodes[i] + "\n";
     }
 
     for (int x = 0; x < adjacencyMatrix.size(); x++) {
         if (!isDirected()) {
             for (long y = 0; y <= x; y++) {
                 if (adjacencyMatrix[x][y] > 0) {
-                    data += "\t" + to_string(x);
+                    data += "\t" + nodes[x];
                     data += " -- ";
-                    data += to_string(y);
+                    data += nodes[y];
                 }
             }
         } else {
             for (int y = 0; y < adjacencyMatrix.size(); y++) {
                 if (adjacencyMatrix[x][y] > 0) {
-                    data += "\t" + to_string(x);
+                    data += "\t" + nodes[x];
                     data += " -> ";
-                    data += to_string(y);
+                    data += nodes[y];
                 }
             }
         }
@@ -718,6 +745,7 @@ bool Graph::areNeighbours(int from, int to) {
     } else {
         return getAdjacencyMatrix()[from][to] > 0 && getAdjacencyMatrix()[to][from] > 0;
     }
+}
 
 string Graph::exportDot(vector<int> path) {
     if (!hasPath(path)) {
@@ -729,16 +757,16 @@ string Graph::exportDot(vector<int> path) {
 
     //create nodes - in case one node has no edges
     for (int i = 0; i < adjacencyMatrix.size(); i++) {
-        data += to_string(i) + "\n";
+        data += nodes[i] + "\n";
     }
 
     for (int x = 0; x < adjacencyMatrix.size(); x++) {
         if (!isDirected()) {
             for (long y = 0; y <= x; y++) {
                 if (adjacencyMatrix[x][y] > 0) {
-                    data += "\t" + to_string(x);
+                    data += "\t" + nodes[x];
                     data += " -- ";
-                    data += to_string(y);
+                    data += nodes[y];
                     //Create path color
                     for (int i = 1; i <= path.size(); i++) {
                         if (path[i - 1] == x && path[i] == y) {
@@ -751,9 +779,9 @@ string Graph::exportDot(vector<int> path) {
         } else {
             for (int y = 0; y < adjacencyMatrix.size(); y++) {
                 if (adjacencyMatrix[x][y] > 0) {
-                    data += "\t" + to_string(x);
+                    data += "\t" + nodes[x];
                     data += " -> ";
-                    data += to_string(y);
+                    data += nodes[y];
                     //Create path color
                     for (int i = 1; i <= path.size(); i++) {
                         if (path[i - 1] == x && path[i] == y) {
@@ -767,5 +795,3 @@ string Graph::exportDot(vector<int> path) {
     data += "\n}\n";
     return data;
 }
-
-
