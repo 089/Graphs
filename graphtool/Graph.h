@@ -158,7 +158,21 @@ private:
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
 
-    bool isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const;
+    /**
+     * Constructor for a Graph with a adjacency matrix given in Matlab
+     * notation (e.g. [0 0 1; 1 0 0; 1 1 0]).
+     *
+     * @param matlabMatrix  the matrix in matlab notation
+     */
+    Graph(string matlabMatrix);
+
+    /**
+     * Checks wheter a given matrix is square or not.
+     *
+     * @param adjacencyMatrix   the matrix
+     * @return true, if matrix is square
+     */
+    bool isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const;
 
     /**
      * Detect the number of nodes of the given graph.
@@ -294,5 +308,16 @@ public:
      */
     string exportDot();
 
+    /**
+     * Returns true, if both given vertices are neighbours in the graph.
+     * The direction is only considered in digraphs.
+     *
+     * @param from    first vertice
+     * @param to      second vertice
+     * @return true, if both vertices are neighbours in the graph
+     */
+    bool areNeighbours(int from, int to);
+
     string exportDot(vector<int> path);
+
 };

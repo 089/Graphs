@@ -1,22 +1,88 @@
-
 #include <vector>
 #include <stdexcept>
 #include <fstream>
 #include "Graph.h"
+#include <boost/algorithm/string.hpp>
+#include <boost/algorithm/string/trim_all.hpp>
+#include <iostream>
+#include <boost/regex.hpp>
+
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
 
-    if (isSymmetricMatrix(adjacencyMatrix)) {
+    if (isSquareMatrix(adjacencyMatrix)) {
         this->adjacencyMatrix = adjacencyMatrix;
     } else {
         throw invalid_argument("adjacency matrix has to be symmetrical");
     };
 }
 
-bool Graph::isSymmetricMatrix(const vector<vector<int>> &adjacencyMatrix) const {
+Graph::Graph(string matlabMatrix) {
+
+    // replace all tabs
+    boost::replace_all(matlabMatrix, "\t", " ");
+    // remove leading, trailing spaces and compress double spaces
+    boost::trim_all(matlabMatrix);
+
+    // replace spaces before and after semicolons
+    boost::replace_all(matlabMatrix, " ; ", ";");
+    boost::replace_all(matlabMatrix, "; ", ";");
+    boost::replace_all(matlabMatrix, " ;", ";");
+
+    if (!boost::starts_with(matlabMatrix, "[") || !boost::ends_with(matlabMatrix, "]")) {
+        throw invalid_argument("A valid matlab matrix notation must start with '[' and end up with ']'.");
+    }
+
+    // remove square braces and arising (trailing) spaces
+    matlabMatrix.erase(0, 1);
+    matlabMatrix.erase(matlabMatrix.size() - 1);
+    boost::trim(matlabMatrix);
+
+    // split string at ';' ==> get rows of the matrix
+    vector<std::string> rows;
+    boost::split(rows, matlabMatrix, boost::is_any_of(";"));
+    vector<vector<int>> adjacencyMatrix = getZeroizedMatrix((int) rows.size(), (int) rows.size());
+    int columnMax = 0;
+
+    // get columns of the matrix
+    for (unsigned long rIndex = 0; rIndex < rows.size(); rIndex++) {
+        vector<std::string> columns;
+        boost::split(columns, rows[rIndex], boost::is_any_of(" "));
+        boost::trim(rows[rIndex]);
+
+        if (columnMax == 0) {
+            columnMax = (int) columns.size();
+        }
+
+        // Error: There is a row with more ore less columns
+        if (columnMax != columns.size()) {
+            throw invalid_argument("There must be a syntax error, because the number of columns are different.");
+        }
+
+        // matrix must be square!
+        if (rows.size() != columns.size()) {
+            throw invalid_argument("adjacency matrix has to be symmetrical");
+        }
+
+        // add values to matrix
+        for (unsigned long cIndex = 0; cIndex < columns.size(); cIndex++) {
+            try {
+                adjacencyMatrix.at(rIndex).at(cIndex) = stoi(columns[cIndex]);
+            } catch (const invalid_argument &e) {
+                throw invalid_argument("matrix entries must be and contain at least one integer.");
+            }
+
+        }
+    }
+
+    this->adjacencyMatrix = adjacencyMatrix;
+}
+
+bool Graph::isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const {
     int rows = (int) adjacencyMatrix.size();
     int cols = 0;
     for (vector<int> row : adjacencyMatrix) {
+        // row.size() = number of cols in the current row
         if (row.size() > cols) {
             cols = (int) row.size();
         }
@@ -610,7 +676,6 @@ int Graph::getNumberOfEdges() {
 }
 
 string Graph::exportDot() {
-
     string data = "";
     if (isDirected()) { data += "digraph {\n"; } else { data += "graph {\n"; }
 
@@ -641,6 +706,18 @@ string Graph::exportDot() {
     data += "\n}\n";
     return data;
 }
+
+bool Graph::areNeighbours(int from, int to) {
+
+    if (from < 0 || to < 0 || from > getNumberOfNodes() - 1 || to > getNumberOfNodes() - 1) {
+        throw out_of_range("from and to have to be in the range. ");
+    }
+
+    if (isDirected()) {
+        return getAdjacencyMatrix()[from][to] > 0;
+    } else {
+        return getAdjacencyMatrix()[from][to] > 0 && getAdjacencyMatrix()[to][from] > 0;
+    }
 
 string Graph::exportDot(vector<int> path) {
     if (!hasPath(path)) {
