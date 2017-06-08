@@ -56,6 +56,6 @@ int main() {
 
     //can be opened by calling this - requires graphviz & imagemagick
     //dot -Tpng dotfile.dot > Graph.png && display Graph.png
-    g2->exportFile("/tmp/dotfile.dot", g2->exportDot());
+    g2->exportFile("/tmp/dotfile.dot", g2->exportDot(*new vector<int>(1,2)));
     return 0;
 }

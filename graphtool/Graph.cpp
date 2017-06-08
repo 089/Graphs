@@ -610,6 +610,7 @@ int Graph::getNumberOfEdges() {
 }
 
 string Graph::exportDot() {
+
     string data = "";
     if (isDirected()) { data += "digraph {\n"; } else { data += "graph {\n"; }
 
@@ -633,6 +634,55 @@ string Graph::exportDot() {
                     data += "\t" + to_string(x);
                     data += " -> ";
                     data += to_string(y);
+                }
+            }
+        }
+    }
+    data += "\n}\n";
+    return data;
+}
+
+string Graph::exportDot(vector<int> path) {
+    if (!hasPath(path)) {
+        return "error: Not a valid path";
+    }
+
+    string data = "";
+    if (isDirected()) { data += "digraph {\n"; } else { data += "graph {\n"; }
+
+    //create nodes - in case one node has no edges
+    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+        data += to_string(i) + "\n";
+    }
+
+    for (int x = 0; x < adjacencyMatrix.size(); x++) {
+        if (!isDirected()) {
+            for (long y = 0; y <= x; y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -- ";
+                    data += to_string(y);
+                    //Create path color
+                    for (int i = 1; i <= path.size(); i++) {
+                        if (path[i - 1] == x && path[i] == y) {
+                            data += "[color= maroon];";
+                        }
+                    }
+                }
+
+            }
+        } else {
+            for (int y = 0; y < adjacencyMatrix.size(); y++) {
+                if (adjacencyMatrix[x][y] > 0) {
+                    data += "\t" + to_string(x);
+                    data += " -> ";
+                    data += to_string(y);
+                    //Create path color
+                    for (int i = 1; i <= path.size(); i++) {
+                        if (path[i - 1] == x && path[i] == y) {
+                            data += "[color= maroon];";
+                        }
+                    }
                 }
             }
         }

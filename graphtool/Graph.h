@@ -294,4 +294,5 @@ public:
      */
     string exportDot();
 
+    string exportDot(vector<int> path);
 };
