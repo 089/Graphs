@@ -4,6 +4,7 @@
 #include "Graph.h"
 #include <boost/algorithm/string.hpp>
 #include <boost/algorithm/string/trim_all.hpp>
+#include <boost/algorithm/string/join.hpp>
 #include <iostream>
 #include <boost/regex.hpp>
 
@@ -415,6 +416,11 @@ void Graph::exportFile(const string fileName, const string data) const {
     file.close();
 }
 
+
+void Graph::exportAdjazenzmatrixFile(const string fileName) const {
+    return exportFile(fileName, getAdjacencyMatrixString());
+}
+
 /**
  * Checks the graph if a cycle exists. DFS.
  * @return true if a cycle exists, else false
@@ -794,4 +800,22 @@ string Graph::exportDot(vector<int> path) {
     }
     data += "\n}\n";
     return data;
+}
+
+const string Graph::getAdjacencyMatrixString() const {
+    stringstream ss;
+
+    long end = adjacencyMatrix.size();
+    for (long i = 0; i < end; i++) {
+        auto mat = adjacencyMatrix[i];
+
+        std::vector<std::string> list;
+        transform(mat.begin(), mat.end(), std::back_inserter(list),
+                  [](const int i) { return to_string(i); });
+
+        ss << boost::algorithm::join(list, ",");
+        ss << endl;
+    }
+
+    return ss.str();
 }

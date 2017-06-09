@@ -200,6 +200,12 @@ public:
     void exportFile(const string fileName, const string data) const;
 
     /**
+     * Export the adjazenmatrix to a file.
+     * @param fileName string file name.
+     */
+    void exportAdjazenzmatrixFile(const string fileName) const;
+
+    /**
      * Return the graph in a json-format.
      * @return string json.
      */
@@ -227,6 +233,8 @@ public:
     bool hasPath(const vector<int> path) const;
 
     const vector<vector<int>> &getAdjacencyMatrix() const;
+
+    const string getAdjacencyMatrixString() const;
 
     /**
      * Returns if the graph is a directed or undirected graph.

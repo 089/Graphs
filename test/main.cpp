@@ -1,4 +1,6 @@
 #include "gtest/gtest.h"
+#include <string>
+#include <boost/algorithm/string.hpp>
 #include "Graph.h"
 
 TEST(graph_check, test_directed) {
@@ -386,6 +388,7 @@ TEST(graph_check, test_matlab_wrong_notation_5) {
     }
 }
 
+
 TEST(graph_check, test_matlab_wrong_notation_6) {
 
     try {
@@ -415,4 +418,16 @@ TEST(graph_check, test_constructor_names) {
     EXPECT_NE(dot.find("node3 -> node2"), string::npos);
     EXPECT_NE(dot.find("node4 -> test"), string::npos);
     EXPECT_NE(dot.find("node4 -> node2"), string::npos);
+}
+
+TEST(graph_check, test_adjazenzmatrix_string) {
+    Graph *g = new Graph("[1 0 1; 1 1 1; 0 0 1]");
+    string mat = g->getAdjacencyMatrixString();
+
+    std::vector<std::string> strs;
+    boost::split(strs, mat, boost::is_any_of("\n"));
+
+    ASSERT_EQ(strs[0], "1,0,1");
+    ASSERT_EQ(strs[1], "1,1,1");
+    ASSERT_EQ(strs[2], "0,0,1");
 }
