@@ -1,5 +1,11 @@
 build/
 
+# Third party libraries
+third_party/*
+
+# Code blocks? Clion created this file...
+graphtool.cbp
+
 # Doxygen documentation path
 doxygen_doc/
 

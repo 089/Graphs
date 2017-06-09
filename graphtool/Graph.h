@@ -17,6 +17,11 @@ private:
     vector<vector<int>> adjacencyMatrix;
 
     /**
+     * Names of the nodes, filled with numberes if no names are present.
+     */
+    vector<string> nodes;
+
+    /**
      * Cache for result of hasCycle function.
      */
     bool hasCycleCache = false;
@@ -157,6 +162,7 @@ private:
 
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
+    Graph(vector<vector<int>> adjacencyMatrix, vector<string> node_names);
 
     /**
      * Constructor for a Graph with a adjacency matrix given in Matlab
@@ -325,4 +331,13 @@ public:
      * @return true, if both vertices are neighbours in the graph
      */
     bool areNeighbours(int from, int to);
+
+    /**
+     * Exports the string for a dot file.
+     * Takes a path and marks it red in the result dot file.
+     * @param path The path to be colored.
+     * @return The string for a dot file.
+     */
+    string exportDot(vector<int> path);
+
 };

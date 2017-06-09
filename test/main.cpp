@@ -399,6 +399,27 @@ TEST(graph_check, test_matlab_wrong_notation_6) {
     }
 }
 
+TEST(graph_check, test_constructor_names) {
+    vector<vector<int>> am = {
+            {0, 1, 1, 0},
+            {1, 0, 1, 0},
+            {1, 1, 0, 0},
+            {1, 1, 0, 0},
+    };
+    vector<string> nodes = {"test", "node2", "node3", "node4"};
+    Graph *g = new Graph(am, nodes);
+    string dot = g->exportDot();
+    cout << dot << endl;
+    EXPECT_NE(dot.find("test -> node2"), string::npos);
+    EXPECT_NE(dot.find("test -> node3"), string::npos);
+    EXPECT_NE(dot.find("node2 -> test"), string::npos);
+    EXPECT_NE(dot.find("node2 -> node3"), string::npos);
+    EXPECT_NE(dot.find("node3 -> test"), string::npos);
+    EXPECT_NE(dot.find("node3 -> node2"), string::npos);
+    EXPECT_NE(dot.find("node4 -> test"), string::npos);
+    EXPECT_NE(dot.find("node4 -> node2"), string::npos);
+}
+
 TEST(graph_check, test_adjazenzmatrix_string) {
     Graph *g = new Graph("[1 0 1; 1 1 1; 0 0 1]");
     string mat = g->getAdjacencyMatrixString();
