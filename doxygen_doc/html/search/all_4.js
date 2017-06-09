@@ -1,6 +1,7 @@
 var searchData=
 [
   ['getadjacencymatrix',['getAdjacencyMatrix',['../class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e',1,'Graph']]],
+  ['getadjacencymatrixstring',['getAdjacencyMatrixString',['../class_graph.html#ac1eae6c8e3c1b8ef39536c25d8be7fe1',1,'Graph']]],
   ['getallargs',['getAllArgs',['../main_8cpp.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp'],['../main_8h.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp']]],
   ['getfileextension',['getFileExtension',['../main_8cpp.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp'],['../main_8h.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp']]],
   ['getindeg',['getInDeg',['../class_graph.html#aa22848281e37e921bf4fc998bcf66295',1,'Graph']]],

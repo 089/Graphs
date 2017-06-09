@@ -104,6 +104,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:ab532b8f903f75621e6ca3469e8dbe0bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac38ffcb580b1a9fa57142812aac33c46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ac38ffcb580b1a9fa57142812aac33c46">exportFile</a> (const string fileName, const string data) const </td></tr>
 <tr class="separator:ac38ffcb580b1a9fa57142812aac33c46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2500973a26b28812291e2c6c142c96f4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a2500973a26b28812291e2c6c142c96f4">exportAdjazenzmatrixFile</a> (const string fileName) const </td></tr>
+<tr class="separator:a2500973a26b28812291e2c6c142c96f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a027c9787cdf583c5e6d1cc048c3a7c32"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a027c9787cdf583c5e6d1cc048c3a7c32">graphToJson</a> () const </td></tr>
 <tr class="separator:a027c9787cdf583c5e6d1cc048c3a7c32"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6fcbfa381804b43a67d92eed7f30e1d9"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a6fcbfa381804b43a67d92eed7f30e1d9">hasCycle</a> ()</td></tr>
@@ -114,6 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:abc5691276d7bab874ae07a40173d50ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a74d5b2bcc4df084d9c4651d3cb2abf1e"><td class="memItemLeft" align="right" valign="top">const vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e">getAdjacencyMatrix</a> () const </td></tr>
 <tr class="separator:a74d5b2bcc4df084d9c4651d3cb2abf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1eae6c8e3c1b8ef39536c25d8be7fe1"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ac1eae6c8e3c1b8ef39536c25d8be7fe1">getAdjacencyMatrixString</a> () const </td></tr>
+<tr class="separator:ac1eae6c8e3c1b8ef39536c25d8be7fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd552af25f5c9672848693d66f27827a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#afd552af25f5c9672848693d66f27827a">isDirected</a> ()</td></tr>
 <tr class="separator:afd552af25f5c9672848693d66f27827a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa22848281e37e921bf4fc998bcf66295"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#aa22848281e37e921bf4fc998bcf66295">getInDeg</a> (int vertexIndex)</td></tr>
@@ -215,6 +219,29 @@ Public Member Functions</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="a2500973a26b28812291e2c6c142c96f4"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Graph::exportAdjazenzmatrixFile </td>
+          <td>(</td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>fileName</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Export the adjazenmatrix to a file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">fileName</td><td>string file name. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a class="anchor" id="aaa3e920d6063f97f1826ced6180962ee"></a>
 <div class="memitem">
 <div class="memproto">
@@ -272,6 +299,21 @@ Public Member Functions</h2></td></tr>
       <table class="memname">
         <tr>
           <td class="memname">const vector&lt; vector&lt; int &gt; &gt; &amp; Graph::getAdjacencyMatrix </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac1eae6c8e3c1b8ef39536c25d8be7fe1"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const string Graph::getAdjacencyMatrixString </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
           <td> const</td>
