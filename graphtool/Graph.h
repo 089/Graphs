@@ -160,6 +160,18 @@ private:
      */
     bool isSameMatrix(const vector<vector<int>> &A, const vector<vector<int>> &B);
 
+    /**
+     * Checks wheter a given matrix is square or not.
+     *
+     * @param adjacencyMatrix   the matrix
+     * @return true, if matrix is square
+     */
+    bool isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const;
+
+    const vector<vector<int>> &getAdjacencyMatrix() const;
+
+
+
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
     Graph(vector<vector<int>> adjacencyMatrix, vector<string> node_names);
@@ -171,14 +183,6 @@ public:
      * @param matlabMatrix  the matrix in matlab notation
      */
     Graph(string matlabMatrix);
-
-    /**
-     * Checks wheter a given matrix is square or not.
-     *
-     * @param adjacencyMatrix   the matrix
-     * @return true, if matrix is square
-     */
-    bool isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const;
 
     /**
      * Detect the number of nodes of the given graph.
@@ -231,8 +235,6 @@ public:
      * @return true if graph contains the path, else false
      */
     bool hasPath(const vector<int> path) const;
-
-    const vector<vector<int>> &getAdjacencyMatrix() const;
 
     const string getAdjacencyMatrixString() const;
 
