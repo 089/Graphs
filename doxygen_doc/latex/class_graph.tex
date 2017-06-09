@@ -14,8 +14,6 @@
 \item 
 \hyperlink{class_graph_afa40c944594ef9360902cfa3a754d4ef}{Graph} (string matlab\-Matrix)
 \item 
-bool \hyperlink{class_graph_a00f613f4d274a895e08988074a3a9e9a}{is\-Square\-Matrix} (const vector$<$ vector$<$ int $>$$>$ \&adjacency\-Matrix) const 
-\item 
 int \hyperlink{class_graph_a217051ac8e8d46ca74e7837f16fbed96}{get\-Number\-Of\-Nodes} () const 
 \item 
 int \hyperlink{class_graph_ab532b8f903f75621e6ca3469e8dbe0bf}{get\-Number\-Of\-Edges} ()
@@ -31,8 +29,6 @@ bool \hyperlink{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{has\-Cycle} ()
 bool \hyperlink{class_graph_a0a4f1d268e549a905d0451cfdfc6f2db}{has\-Edge} (const int from, const int to)
 \item 
 bool \hyperlink{class_graph_abc5691276d7bab874ae07a40173d50ec}{has\-Path} (const vector$<$ int $>$ path) const 
-\item 
-const vector$<$ vector$<$ int $>$ $>$ \& \hyperlink{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}{get\-Adjacency\-Matrix} () const 
 \item 
 const string \hyperlink{class_graph_ac1eae6c8e3c1b8ef39536c25d8be7fe1}{get\-Adjacency\-Matrix\-String} () const 
 \item 
@@ -170,13 +166,6 @@ Export a given file with custom data.
 {\em data} & string of data. \\
 \hline
 \end{DoxyParams}
-\hypertarget{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}{\index{Graph@{Graph}!get\-Adjacency\-Matrix@{get\-Adjacency\-Matrix}}
-\index{get\-Adjacency\-Matrix@{get\-Adjacency\-Matrix}!Graph@{Graph}}
-\subsubsection[{get\-Adjacency\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}const vector$<$ vector$<$ int $>$ $>$ \& Graph\-::get\-Adjacency\-Matrix (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const}}\label{class_graph_a74d5b2bcc4df084d9c4651d3cb2abf1e}
 \hypertarget{class_graph_ac1eae6c8e3c1b8ef39536c25d8be7fe1}{\index{Graph@{Graph}!get\-Adjacency\-Matrix\-String@{get\-Adjacency\-Matrix\-String}}
 \index{get\-Adjacency\-Matrix\-String@{get\-Adjacency\-Matrix\-String}!Graph@{Graph}}
 \subsubsection[{get\-Adjacency\-Matrix\-String}]{\setlength{\rightskip}{0pt plus 5cm}const string Graph\-::get\-Adjacency\-Matrix\-String (
@@ -387,23 +376,6 @@ Specifies whether the graph is a simple graph (undirected, no multiple edges, no
 
 \begin{DoxyReturn}{Returns}
 true, if the graph is a simple graph. 
-\end{DoxyReturn}
-\hypertarget{class_graph_a00f613f4d274a895e08988074a3a9e9a}{\index{Graph@{Graph}!is\-Square\-Matrix@{is\-Square\-Matrix}}
-\index{is\-Square\-Matrix@{is\-Square\-Matrix}!Graph@{Graph}}
-\subsubsection[{is\-Square\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Square\-Matrix (
-\begin{DoxyParamCaption}
-\item[{const vector$<$ vector$<$ int $>$$>$ \&}]{adjacency\-Matrix}
-\end{DoxyParamCaption}
-) const}}\label{class_graph_a00f613f4d274a895e08988074a3a9e9a}
-Checks wheter a given matrix is square or not.
-
-
-\begin{DoxyParams}{Parameters}
-{\em adjacency\-Matrix} & the matrix \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-true, if matrix is square 
 \end{DoxyReturn}
 
 

@@ -98,8 +98,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a4141e4b0dc83b8637fed7a88b0abb2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa40c944594ef9360902cfa3a754d4ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#afa40c944594ef9360902cfa3a754d4ef">Graph</a> (string matlabMatrix)</td></tr>
 <tr class="separator:afa40c944594ef9360902cfa3a754d4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a00f613f4d274a895e08988074a3a9e9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a00f613f4d274a895e08988074a3a9e9a">isSquareMatrix</a> (const vector&lt; vector&lt; int &gt;&gt; &amp;adjacencyMatrix) const </td></tr>
-<tr class="separator:a00f613f4d274a895e08988074a3a9e9a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a217051ac8e8d46ca74e7837f16fbed96"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a217051ac8e8d46ca74e7837f16fbed96">getNumberOfNodes</a> () const </td></tr>
 <tr class="separator:a217051ac8e8d46ca74e7837f16fbed96"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ab532b8f903f75621e6ca3469e8dbe0bf"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ab532b8f903f75621e6ca3469e8dbe0bf">getNumberOfEdges</a> ()</td></tr>
@@ -116,8 +114,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a0a4f1d268e549a905d0451cfdfc6f2db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abc5691276d7bab874ae07a40173d50ec"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#abc5691276d7bab874ae07a40173d50ec">hasPath</a> (const vector&lt; int &gt; path) const </td></tr>
 <tr class="separator:abc5691276d7bab874ae07a40173d50ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a74d5b2bcc4df084d9c4651d3cb2abf1e"><td class="memItemLeft" align="right" valign="top">const vector&lt; vector&lt; int &gt; &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e">getAdjacencyMatrix</a> () const </td></tr>
-<tr class="separator:a74d5b2bcc4df084d9c4651d3cb2abf1e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac1eae6c8e3c1b8ef39536c25d8be7fe1"><td class="memItemLeft" align="right" valign="top">const string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ac1eae6c8e3c1b8ef39536c25d8be7fe1">getAdjacencyMatrixString</a> () const </td></tr>
 <tr class="separator:ac1eae6c8e3c1b8ef39536c25d8be7fe1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afd552af25f5c9672848693d66f27827a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#afd552af25f5c9672848693d66f27827a">isDirected</a> ()</td></tr>
@@ -344,21 +340,6 @@ Public Member Functions</h2></td></tr>
   </table>
   </dd>
 </dl>
-
-</div>
-</div>
-<a class="anchor" id="a74d5b2bcc4df084d9c4651d3cb2abf1e"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">const vector&lt; vector&lt; int &gt; &gt; &amp; Graph::getAdjacencyMatrix </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
 
 </div>
 </div>
@@ -690,30 +671,6 @@ pair of distinct vertices is connected by a unique edge."</a>). Checks only undi
 </div><div class="memdoc">
 <p>Specifies whether the graph is a simple graph (undirected, no multiple edges, no loops) or not.</p>
 <dl class="section return"><dt>Returns</dt><dd>true, if the graph is a simple graph. </dd></dl>
-
-</div>
-</div>
-<a class="anchor" id="a00f613f4d274a895e08988074a3a9e9a"></a>
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool Graph::isSquareMatrix </td>
-          <td>(</td>
-          <td class="paramtype">const vector&lt; vector&lt; int &gt;&gt; &amp;&#160;</td>
-          <td class="paramname"><em>adjacencyMatrix</em></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<p>Checks wheter a given matrix is square or not.</p>
-<dl class="params"><dt>Parameters</dt><dd>
-  <table class="params">
-    <tr><td class="paramname">adjacencyMatrix</td><td>the matrix </td></tr>
-  </table>
-  </dd>
-</dl>
-<dl class="section return"><dt>Returns</dt><dd>true, if matrix is square </dd></dl>
 
 </div>
 </div>
