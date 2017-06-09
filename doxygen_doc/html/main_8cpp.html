@@ -68,7 +68,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Classes</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Typedefs</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -84,33 +84,1018 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#func-members">Functions</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#typedef-members">Typedefs</a> &#124;
+<a href="#func-members">Functions</a> &#124;
+<a href="#var-members">Variables</a>  </div>
   <div class="headertitle">
 <div class="title">main.cpp File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><code>#include &lt;iostream&gt;</code><br/>
-<code>#include &lt;vector&gt;</code><br/>
-<code>#include &quot;<a class="el" href="_graph_8h_source.html">Graph.h</a>&quot;</code><br/>
+<div class="textblock"><code>#include &quot;<a class="el" href="main_8h_source.html">main.h</a>&quot;</code><br/>
+<code>#include &lt;iostream&gt;</code><br/>
+<code>#include &lt;boost/algorithm/string.hpp&gt;</code><br/>
+<code>#include &lt;boost/algorithm/cxx11/any_of.hpp&gt;</code><br/>
+<code>#include &lt;boost/format.hpp&gt;</code><br/>
+<code>#include &lt;iomanip&gt;</code><br/>
+<code>#include &lt;cstdarg&gt;</code><br/>
 </div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+Classes</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structoption_item.html">optionItem</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+Typedefs</h2></td></tr>
+<tr class="memitem:a6a76bdba10b78cc2b01d30563171cca3"><td class="memItemLeft" align="right" valign="top">typedef list&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a6a76bdba10b78cc2b01d30563171cca3">WordList</a></td></tr>
+<tr class="separator:a6a76bdba10b78cc2b01d30563171cca3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
-<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
-<tr class="separator:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627">main</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a3c04138a5bfe5d72780bb7e82a18e627"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa29cd529161f33ffceccc67ba3b90de7"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa29cd529161f33ffceccc67ba3b90de7">print_result</a> (string key, int value)</td></tr>
+<tr class="separator:aa29cd529161f33ffceccc67ba3b90de7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8f6542c3b1ef8c980ea99fbc2a1e37b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a8f6542c3b1ef8c980ea99fbc2a1e37b0">print_result</a> (string key, string value)</td></tr>
+<tr class="separator:a8f6542c3b1ef8c980ea99fbc2a1e37b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4387302c5caa7771f336664a3d67b48b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4387302c5caa7771f336664a3d67b48b">print_result</a> (string key, bool value)</td></tr>
+<tr class="separator:a4387302c5caa7771f336664a3d67b48b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6cbf8435e555d881315a571cdc35b77"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ac6cbf8435e555d881315a571cdc35b77">call_getNumberOfNodes</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:ac6cbf8435e555d881315a571cdc35b77"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa35156547f135c8b7cb0eebcc441aff9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa35156547f135c8b7cb0eebcc441aff9">call_getNumberOfEdges</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:aa35156547f135c8b7cb0eebcc441aff9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e8ac89b3a553400b3e0831ac461244c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a7e8ac89b3a553400b3e0831ac461244c">call_hasCycle</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a7e8ac89b3a553400b3e0831ac461244c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e1326bac41afc91be2533eb5ed4a09b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a5e1326bac41afc91be2533eb5ed4a09b">call_isComplete</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a5e1326bac41afc91be2533eb5ed4a09b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18183efccc34da9b19cdaa33aa6a2437"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a18183efccc34da9b19cdaa33aa6a2437">call_isDirected</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a18183efccc34da9b19cdaa33aa6a2437"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9ad8ef913f25d7532310d265d2d6225e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9ad8ef913f25d7532310d265d2d6225e">call_isFreeOfLoops</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a9ad8ef913f25d7532310d265d2d6225e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0b169da7268481a7fe233f53ee964f87"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a0b169da7268481a7fe233f53ee964f87">call_isMultigraph</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a0b169da7268481a7fe233f53ee964f87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50795b6e51bc9495460cd9bfa3dabbbb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a50795b6e51bc9495460cd9bfa3dabbbb">call_isRegular</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a50795b6e51bc9495460cd9bfa3dabbbb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aeb598e0cd7f9fd36b3d99576c16a7262"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aeb598e0cd7f9fd36b3d99576c16a7262">call_isSimple</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:aeb598e0cd7f9fd36b3d99576c16a7262"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa58862f3af381ae10449a990dcaa2813"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa58862f3af381ae10449a990dcaa2813">call_getInDeg</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:aa58862f3af381ae10449a990dcaa2813"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae33f31708265b9f74922a767dce18afc"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ae33f31708265b9f74922a767dce18afc">call_getOutDeg</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:ae33f31708265b9f74922a767dce18afc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a850f18663fabf143c7fafad51ac39167"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a850f18663fabf143c7fafad51ac39167">call_areNeighbours</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a850f18663fabf143c7fafad51ac39167"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede7f3b9ca76feab0616befd3dc2534f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aede7f3b9ca76feab0616befd3dc2534f">call_hasConnectivity</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:aede7f3b9ca76feab0616befd3dc2534f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3a107cba69565bf048de10db35be7bcd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a3a107cba69565bf048de10db35be7bcd">call_hasEdge</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a3a107cba69565bf048de10db35be7bcd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a609458501ce69964f0cc07c9c1fc1e40"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a609458501ce69964f0cc07c9c1fc1e40">call_hasPath</a> (const vector&lt; string &gt; &amp;allArgs, <a class="el" href="class_graph.html">Graph</a> *currentGraph)</td></tr>
+<tr class="separator:a609458501ce69964f0cc07c9c1fc1e40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adfab2e4ba1f993249ee323ce2ab3b91d"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#adfab2e4ba1f993249ee323ce2ab3b91d">str2int</a> (string number)</td></tr>
+<tr class="separator:adfab2e4ba1f993249ee323ce2ab3b91d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a347c2b227ddbe97bf43dccd97677a4f2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="main_8cpp.html#a6a76bdba10b78cc2b01d30563171cca3">WordList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a347c2b227ddbe97bf43dccd97677a4f2">splitTextIntoWords</a> (const string &amp;text)</td></tr>
+<tr class="separator:a347c2b227ddbe97bf43dccd97677a4f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3af88a23d887ed3bb8309d3309d720b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#aa3af88a23d887ed3bb8309d3309d720b">justifyLine</a> (string line, int pageWidth, int indent)</td></tr>
+<tr class="separator:aa3af88a23d887ed3bb8309d3309d720b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad897add4c0c9f745f88467be3aeab7fa"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ad897add4c0c9f745f88467be3aeab7fa">justifyText</a> (const string &amp;text, int pageWidth, int indent)</td></tr>
+<tr class="separator:ad897add4c0c9f745f88467be3aeab7fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a44f67f22a01cccbe380487f8d03e4bd3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a44f67f22a01cccbe380487f8d03e4bd3">showHelp</a> (void)</td></tr>
+<tr class="separator:a44f67f22a01cccbe380487f8d03e4bd3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9281e82ca13b2814405e39b9f3d9f11e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a9281e82ca13b2814405e39b9f3d9f11e">checkNumberOfRequiredArguments</a> (string option, vector&lt; string &gt; optionValues)</td></tr>
+<tr class="separator:a9281e82ca13b2814405e39b9f3d9f11e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08e04f7a6d8676f275e9bbc536775327"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a08e04f7a6d8676f275e9bbc536775327">getValues</a> (string option, vector&lt; string &gt; args)</td></tr>
+<tr class="separator:a08e04f7a6d8676f275e9bbc536775327"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6946684658dcde9f3dc85e2172fb544f"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a6946684658dcde9f3dc85e2172fb544f">getFileExtension</a> (string filename)</td></tr>
+<tr class="separator:a6946684658dcde9f3dc85e2172fb544f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a387f7696832e43d20cf0c91e6fda9cda"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a387f7696832e43d20cf0c91e6fda9cda">replaceLongWithShortNames</a> (vector&lt; string &gt; args)</td></tr>
+<tr class="separator:a387f7696832e43d20cf0c91e6fda9cda"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:affc475965117d272a60745244d5a6885"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#affc475965117d272a60745244d5a6885">printv</a> (const char *fstr,...)</td></tr>
+<tr class="separator:affc475965117d272a60745244d5a6885"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4a57e98db12401a97ca8defea156df3e"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a4a57e98db12401a97ca8defea156df3e">getUsedOptionsFromArg</a> (const vector&lt; string &gt; &amp;allArgs)</td></tr>
+<tr class="separator:a4a57e98db12401a97ca8defea156df3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab256f1d33d38b33f45a1c6cad963296a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab256f1d33d38b33f45a1c6cad963296a">hasOnlyDigits</a> (const string s)</td></tr>
+<tr class="separator:ab256f1d33d38b33f45a1c6cad963296a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1015c4fda0e6f43977b94a8cbd41c10c"><td class="memItemLeft" align="right" valign="top">vector&lt; string &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a1015c4fda0e6f43977b94a8cbd41c10c">getAllArgs</a> (int argc, char **argv)</td></tr>
+<tr class="separator:a1015c4fda0e6f43977b94a8cbd41c10c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+Variables</h2></td></tr>
+<tr class="memitem:ab3f078684998b83967d507d0f453f454"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ab3f078684998b83967d507d0f453f454">verbose</a> = false</td></tr>
+<tr class="separator:ab3f078684998b83967d507d0f453f454"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a18607dcec51a14316e0625041d45fe87"><td class="memItemLeft" align="right" valign="top">const int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#a18607dcec51a14316e0625041d45fe87">indention</a> = 32</td></tr>
+<tr class="separator:a18607dcec51a14316e0625041d45fe87"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad41c3c3c94312099c3f91a539621391e"><td class="memItemLeft" align="right" valign="top">const char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="main_8cpp.html#ad41c3c3c94312099c3f91a539621391e">separator</a> = ' '</td></tr>
+<tr class="separator:ad41c3c3c94312099c3f91a539621391e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Typedef Documentation</h2>
+<a class="anchor" id="a6a76bdba10b78cc2b01d30563171cca3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef list&lt;string&gt; <a class="el" href="main_8cpp.html#a6a76bdba10b78cc2b01d30563171cca3">WordList</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 <h2 class="groupheader">Function Documentation</h2>
-<a class="anchor" id="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<a class="anchor" id="a850f18663fabf143c7fafad51ac39167"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_areNeighbours </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa58862f3af381ae10449a990dcaa2813"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_getInDeg </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa35156547f135c8b7cb0eebcc441aff9"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_getNumberOfEdges </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ac6cbf8435e555d881315a571cdc35b77"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_getNumberOfNodes </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ae33f31708265b9f74922a767dce18afc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_getOutDeg </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aede7f3b9ca76feab0616befd3dc2534f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_hasConnectivity </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a7e8ac89b3a553400b3e0831ac461244c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_hasCycle </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a3a107cba69565bf048de10db35be7bcd"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_hasEdge </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a609458501ce69964f0cc07c9c1fc1e40"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_hasPath </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a5e1326bac41afc91be2533eb5ed4a09b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isComplete </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a18183efccc34da9b19cdaa33aa6a2437"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isDirected </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9ad8ef913f25d7532310d265d2d6225e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isFreeOfLoops </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a0b169da7268481a7fe233f53ee964f87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isMultigraph </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a50795b6e51bc9495460cd9bfa3dabbbb"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isRegular </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aeb598e0cd7f9fd36b3d99576c16a7262"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void call_isSimple </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="class_graph.html">Graph</a> *&#160;</td>
+          <td class="paramname"><em>currentGraph</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a9281e82ca13b2814405e39b9f3d9f11e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void checkNumberOfRequiredArguments </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>optionValues</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>checks whether there are enough arguments for a certain option.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>the option </td></tr>
+    <tr><td class="paramname">optionValues</td><td>its values </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a1015c4fda0e6f43977b94a8cbd41c10c"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;string&gt; getAllArgs </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>converts the program arguments to one arry</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">argc</td><td>argument count </td></tr>
+    <tr><td class="paramname">argv</td><td>arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array with all arguments </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a6946684658dcde9f3dc85e2172fb544f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string getFileExtension </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>filename</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Returns the extension of a filename.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">filename</td><td>the filename </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the file ext. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a4a57e98db12401a97ca8defea156df3e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;string&gt; getUsedOptionsFromArg </td>
+          <td>(</td>
+          <td class="paramtype">const vector&lt; string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>allArgs</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extracts als used options in arguments.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">allArgs</td><td>all program arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an array of all options </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a08e04f7a6d8676f275e9bbc536775327"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;string&gt; getValues </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>option</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>args</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Extracts all values corresponding to a given option.</p>
+<p>e.g. we have a command line like "-a foo1 foo2 foo3 -b ffoo" and call getOptionValues("a", "-a foo1 foo2 foo3 -b ffoo") ==&gt; returns an array with {"foo1", "foo2", "foo3"}</p>
+<p><b>checks only short names of options!</b></p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">option</td><td>an option </td></tr>
+    <tr><td class="paramname">args</td><td>all arguments (from main **argv) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>an array with all values of the given option </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="ab256f1d33d38b33f45a1c6cad963296a"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool hasOnlyDigits </td>
+          <td>(</td>
+          <td class="paramtype">const string&#160;</td>
+          <td class="paramname"><em>s</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>checks whether a string contains only digits </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>the string </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>true, if string only contains digits </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="aa3af88a23d887ed3bb8309d3309d720b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void justifyLine </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pageWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="ad897add4c0c9f745f88467be3aeab7fa"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void justifyText </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>text</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>pageWidth</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>indent</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>justifies the given text.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">text</td><td>the text </td></tr>
+    <tr><td class="paramname">pageWidth</td><td>the page width </td></tr>
+    <tr><td class="paramname">indent</td><td>the indention </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a3c04138a5bfe5d72780bb7e82a18e627"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">int main </td>
           <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>argc</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">char **&#160;</td>
+          <td class="paramname"><em>argv</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="aa29cd529161f33ffceccc67ba3b90de7"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_result </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a8f6542c3b1ef8c980ea99fbc2a1e37b0"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_result </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4387302c5caa7771f336664a3d67b48b"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void print_result </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>key</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">bool&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="affc475965117d272a60745244d5a6885"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void printv </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>fstr</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">&#160;</td>
+          <td class="paramname"><em>...</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Printf wrapper for verbose mode. Prints a formatted string and the corresponding number of values. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">str</td><td>formatted string </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a class="anchor" id="a387f7696832e43d20cf0c91e6fda9cda"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;string&gt; replaceLongWithShortNames </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Replace all long name options with their corresponding short name</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">args</td><td>array with arguments </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>array with shorten options </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a44f67f22a01cccbe380487f8d03e4bd3"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void showHelp </td>
+          <td>(</td>
+          <td class="paramtype">void&#160;</td>
           <td class="paramname"></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
+<p>prints out the help page. </p>
+
+</div>
+</div>
+<a class="anchor" id="a347c2b227ddbe97bf43dccd97677a4f2"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="main_8cpp.html#a6a76bdba10b78cc2b01d30563171cca3">WordList</a> splitTextIntoWords </td>
+          <td>(</td>
+          <td class="paramtype">const string &amp;&#160;</td>
+          <td class="paramname"><em>text</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="adfab2e4ba1f993249ee323ce2ab3b91d"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int str2int </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>number</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Converts a string to a int </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">number</td><td>string with a number ([0-9]*) </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>string as int </dd></dl>
+
+</div>
+</div>
+<h2 class="groupheader">Variable Documentation</h2>
+<a class="anchor" id="a18607dcec51a14316e0625041d45fe87"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const int indention = 32</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>number of columns for indention </p>
+
+</div>
+</div>
+<a class="anchor" id="ad41c3c3c94312099c3f91a539621391e"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const char separator = ' '</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>fill character </p>
+
+</div>
+</div>
+<a class="anchor" id="ab3f078684998b83967d507d0f453f454"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool verbose = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>switch for verbose mode </p>
 
 </div>
 </div>

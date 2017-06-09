@@ -1,7 +1,14 @@
 var searchData=
 [
-  ['hasconnectivity',['hasConnectivity',['../class_graph.html#a46cb0098da247fd0f2b07229df8cd5e7',1,'Graph']]],
-  ['hascycle',['hasCycle',['../class_graph.html#a6fcbfa381804b43a67d92eed7f30e1d9',1,'Graph']]],
-  ['hasedge',['hasEdge',['../class_graph.html#a0a4f1d268e549a905d0451cfdfc6f2db',1,'Graph']]],
-  ['haspath',['hasPath',['../class_graph.html#abc5691276d7bab874ae07a40173d50ec',1,'Graph']]]
+  ['getadjacencymatrix',['getAdjacencyMatrix',['../class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e',1,'Graph']]],
+  ['getallargs',['getAllArgs',['../main_8cpp.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp'],['../main_8h.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp']]],
+  ['getfileextension',['getFileExtension',['../main_8cpp.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp'],['../main_8h.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp']]],
+  ['getindeg',['getInDeg',['../class_graph.html#aa22848281e37e921bf4fc998bcf66295',1,'Graph']]],
+  ['getnumberofedges',['getNumberOfEdges',['../class_graph.html#ab532b8f903f75621e6ca3469e8dbe0bf',1,'Graph']]],
+  ['getnumberofnodes',['getNumberOfNodes',['../class_graph.html#a217051ac8e8d46ca74e7837f16fbed96',1,'Graph']]],
+  ['getoutdeg',['getOutDeg',['../class_graph.html#a1facc5271ce6c09e06bce134ddaac98c',1,'Graph']]],
+  ['getusedoptionsfromarg',['getUsedOptionsFromArg',['../main_8cpp.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp'],['../main_8h.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp']]],
+  ['getvalues',['getValues',['../main_8cpp.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp'],['../main_8h.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp']]],
+  ['graph',['Graph',['../class_graph.html#a173fa6ec1022bc0f793e3debfd19ad2c',1,'Graph::Graph(vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix)'],['../class_graph.html#afa40c944594ef9360902cfa3a754d4ef',1,'Graph::Graph(string matlabMatrix)']]],
+  ['graphtojson',['graphToJson',['../class_graph.html#a027c9787cdf583c5e6d1cc048c3a7c32',1,'Graph']]]
 ];

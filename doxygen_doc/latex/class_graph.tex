@@ -10,8 +10,6 @@
 \item 
 \hyperlink{class_graph_a173fa6ec1022bc0f793e3debfd19ad2c}{Graph} (vector$<$ vector$<$ int $>$$>$ adjacency\-Matrix)
 \item 
-\hyperlink{class_graph_a4141e4b0dc83b8637fed7a88b0abb2a8}{Graph} (vector$<$ vector$<$ int $>$$>$ adjacency\-Matrix, vector$<$ string $>$ node\-\_\-names)
-\item 
 \hyperlink{class_graph_afa40c944594ef9360902cfa3a754d4ef}{Graph} (string matlab\-Matrix)
 \item 
 bool \hyperlink{class_graph_a00f613f4d274a895e08988074a3a9e9a}{is\-Square\-Matrix} (const vector$<$ vector$<$ int $>$$>$ \&adjacency\-Matrix) const 
@@ -53,8 +51,6 @@ bool \hyperlink{class_graph_a46cb0098da247fd0f2b07229df8cd5e7}{has\-Connectivity
 string \hyperlink{class_graph_aaa3e920d6063f97f1826ced6180962ee}{export\-Dot} ()
 \item 
 bool \hyperlink{class_graph_ad3689ff1213976a5d738813be6ecee0d}{are\-Neighbours} (int from, int to)
-\item 
-string \hyperlink{class_graph_a5898714a35ec10f29610e6e06f82c8c8}{export\-Dot} (vector$<$ int $>$ path)
 \end{DoxyCompactItemize}
 
 
@@ -69,14 +65,6 @@ Represents a {\bfseries simple} or {\bfseries directed} graph. Has certain verif
 \item[{vector$<$ vector$<$ int $>$$>$}]{adjacency\-Matrix}
 \end{DoxyParamCaption}
 )}}\label{class_graph_a173fa6ec1022bc0f793e3debfd19ad2c}
-\hypertarget{class_graph_a4141e4b0dc83b8637fed7a88b0abb2a8}{\index{Graph@{Graph}!Graph@{Graph}}
-\index{Graph@{Graph}!Graph@{Graph}}
-\subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}Graph\-::\-Graph (
-\begin{DoxyParamCaption}
-\item[{vector$<$ vector$<$ int $>$$>$}]{adjacency\-Matrix, }
-\item[{vector$<$ string $>$}]{node\-\_\-names}
-\end{DoxyParamCaption}
-)}}\label{class_graph_a4141e4b0dc83b8637fed7a88b0abb2a8}
 \hypertarget{class_graph_afa40c944594ef9360902cfa3a754d4ef}{\index{Graph@{Graph}!Graph@{Graph}}
 \index{Graph@{Graph}!Graph@{Graph}}
 \subsubsection[{Graph}]{\setlength{\rightskip}{0pt plus 5cm}Graph\-::\-Graph (
@@ -123,21 +111,6 @@ true, if both vertices are neighbours in the graph
 )}}\label{class_graph_aaa3e920d6063f97f1826ced6180962ee}
 Exports the \hyperlink{class_graph}{Graph} to a dot file. \begin{DoxyReturn}{Returns}
 The string content for the dot file. 
-\end{DoxyReturn}
-\hypertarget{class_graph_a5898714a35ec10f29610e6e06f82c8c8}{\index{Graph@{Graph}!export\-Dot@{export\-Dot}}
-\index{export\-Dot@{export\-Dot}!Graph@{Graph}}
-\subsubsection[{export\-Dot}]{\setlength{\rightskip}{0pt plus 5cm}string Graph\-::export\-Dot (
-\begin{DoxyParamCaption}
-\item[{vector$<$ int $>$}]{path}
-\end{DoxyParamCaption}
-)}}\label{class_graph_a5898714a35ec10f29610e6e06f82c8c8}
-Exports the string for a dot file. Takes a path and marks it red in the result dot file. 
-\begin{DoxyParams}{Parameters}
-{\em path} & The path to be colored. \\
-\hline
-\end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-The string for a dot file. 
 \end{DoxyReturn}
 \hypertarget{class_graph_ac38ffcb580b1a9fa57142812aac33c46}{\index{Graph@{Graph}!export\-File@{export\-File}}
 \index{export\-File@{export\-File}!Graph@{Graph}}

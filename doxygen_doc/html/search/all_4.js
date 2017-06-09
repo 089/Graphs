@@ -1,10 +1,16 @@
 var searchData=
 [
-  ['iscomplete',['isComplete',['../class_graph.html#aba9eba8899f63a67ed270ee00bdfeb4e',1,'Graph']]],
-  ['isdirected',['isDirected',['../class_graph.html#afd552af25f5c9672848693d66f27827a',1,'Graph']]],
-  ['isfreeofloops',['isFreeOfLoops',['../class_graph.html#a451bbc2d9ddde5e85d6c122a845dbd02',1,'Graph']]],
-  ['ismultigraph',['isMultigraph',['../class_graph.html#ab410dec3635c080f04c60c6835d91df6',1,'Graph']]],
-  ['isregular',['isRegular',['../class_graph.html#afe19c30e6b7005fd0c66c5f182764ca5',1,'Graph']]],
-  ['issimple',['isSimple',['../class_graph.html#a4095f5949d5b2a420ecf2d0f2bb68dc8',1,'Graph']]],
-  ['issquarematrix',['isSquareMatrix',['../class_graph.html#a00f613f4d274a895e08988074a3a9e9a',1,'Graph']]]
+  ['getadjacencymatrix',['getAdjacencyMatrix',['../class_graph.html#a74d5b2bcc4df084d9c4651d3cb2abf1e',1,'Graph']]],
+  ['getallargs',['getAllArgs',['../main_8cpp.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp'],['../main_8h.html#a1015c4fda0e6f43977b94a8cbd41c10c',1,'getAllArgs(int argc, char **argv):&#160;main.cpp']]],
+  ['getfileextension',['getFileExtension',['../main_8cpp.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp'],['../main_8h.html#a6946684658dcde9f3dc85e2172fb544f',1,'getFileExtension(string filename):&#160;main.cpp']]],
+  ['getindeg',['getInDeg',['../class_graph.html#aa22848281e37e921bf4fc998bcf66295',1,'Graph']]],
+  ['getnumberofedges',['getNumberOfEdges',['../class_graph.html#ab532b8f903f75621e6ca3469e8dbe0bf',1,'Graph']]],
+  ['getnumberofnodes',['getNumberOfNodes',['../class_graph.html#a217051ac8e8d46ca74e7837f16fbed96',1,'Graph']]],
+  ['getoutdeg',['getOutDeg',['../class_graph.html#a1facc5271ce6c09e06bce134ddaac98c',1,'Graph']]],
+  ['getusedoptionsfromarg',['getUsedOptionsFromArg',['../main_8cpp.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp'],['../main_8h.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp']]],
+  ['getvalues',['getValues',['../main_8cpp.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp'],['../main_8h.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp']]],
+  ['graph',['Graph',['../class_graph.html',1,'Graph'],['../class_graph.html#a173fa6ec1022bc0f793e3debfd19ad2c',1,'Graph::Graph(vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix)'],['../class_graph.html#afa40c944594ef9360902cfa3a754d4ef',1,'Graph::Graph(string matlabMatrix)']]],
+  ['graph_2ecpp',['Graph.cpp',['../_graph_8cpp.html',1,'']]],
+  ['graph_2eh',['Graph.h',['../_graph_8h.html',1,'']]],
+  ['graphtojson',['graphToJson',['../class_graph.html#a027c9787cdf583c5e6d1cc048c3a7c32',1,'Graph']]]
 ];

@@ -1,21 +1,468 @@
 \hypertarget{main_8cpp}{\section{/home/travis/build/algdat/blatt-\/2-\/amf0/gui/main.cpp File Reference}
 \label{main_8cpp}\index{/home/travis/build/algdat/blatt-\/2-\/amf0/gui/main.\-cpp@{/home/travis/build/algdat/blatt-\/2-\/amf0/gui/main.\-cpp}}
 }
+{\ttfamily \#include \char`\"{}main.\-h\char`\"{}}\\*
 {\ttfamily \#include $<$iostream$>$}\\*
-{\ttfamily \#include $<$vector$>$}\\*
-{\ttfamily \#include \char`\"{}Graph.\-h\char`\"{}}\\*
+{\ttfamily \#include $<$boost/algorithm/string.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/algorithm/cxx11/any\-\_\-of.\-hpp$>$}\\*
+{\ttfamily \#include $<$boost/format.\-hpp$>$}\\*
+{\ttfamily \#include $<$iomanip$>$}\\*
+{\ttfamily \#include $<$cstdarg$>$}\\*
+\subsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \hyperlink{structoption_item}{option\-Item}
+\end{DoxyCompactItemize}
+\subsection*{Typedefs}
+\begin{DoxyCompactItemize}
+\item 
+typedef list$<$ string $>$ \hyperlink{main_8cpp_a6a76bdba10b78cc2b01d30563171cca3}{Word\-List}
+\end{DoxyCompactItemize}
 \subsection*{Functions}
 \begin{DoxyCompactItemize}
 \item 
-int \hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main} ()
+int \hyperlink{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main} (int argc, char $\ast$$\ast$argv)
+\item 
+void \hyperlink{main_8cpp_aa29cd529161f33ffceccc67ba3b90de7}{print\-\_\-result} (string key, int value)
+\item 
+void \hyperlink{main_8cpp_a8f6542c3b1ef8c980ea99fbc2a1e37b0}{print\-\_\-result} (string key, string value)
+\item 
+void \hyperlink{main_8cpp_a4387302c5caa7771f336664a3d67b48b}{print\-\_\-result} (string key, bool value)
+\item 
+void \hyperlink{main_8cpp_ac6cbf8435e555d881315a571cdc35b77}{call\-\_\-get\-Number\-Of\-Nodes} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_aa35156547f135c8b7cb0eebcc441aff9}{call\-\_\-get\-Number\-Of\-Edges} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a7e8ac89b3a553400b3e0831ac461244c}{call\-\_\-has\-Cycle} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a5e1326bac41afc91be2533eb5ed4a09b}{call\-\_\-is\-Complete} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a18183efccc34da9b19cdaa33aa6a2437}{call\-\_\-is\-Directed} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a9ad8ef913f25d7532310d265d2d6225e}{call\-\_\-is\-Free\-Of\-Loops} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a0b169da7268481a7fe233f53ee964f87}{call\-\_\-is\-Multigraph} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a50795b6e51bc9495460cd9bfa3dabbbb}{call\-\_\-is\-Regular} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_aeb598e0cd7f9fd36b3d99576c16a7262}{call\-\_\-is\-Simple} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_aa58862f3af381ae10449a990dcaa2813}{call\-\_\-get\-In\-Deg} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_ae33f31708265b9f74922a767dce18afc}{call\-\_\-get\-Out\-Deg} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a850f18663fabf143c7fafad51ac39167}{call\-\_\-are\-Neighbours} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_aede7f3b9ca76feab0616befd3dc2534f}{call\-\_\-has\-Connectivity} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a3a107cba69565bf048de10db35be7bcd}{call\-\_\-has\-Edge} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+void \hyperlink{main_8cpp_a609458501ce69964f0cc07c9c1fc1e40}{call\-\_\-has\-Path} (const vector$<$ string $>$ \&all\-Args, \hyperlink{class_graph}{Graph} $\ast$current\-Graph)
+\item 
+int \hyperlink{main_8cpp_adfab2e4ba1f993249ee323ce2ab3b91d}{str2int} (string number)
+\item 
+\hyperlink{main_8cpp_a6a76bdba10b78cc2b01d30563171cca3}{Word\-List} \hyperlink{main_8cpp_a347c2b227ddbe97bf43dccd97677a4f2}{split\-Text\-Into\-Words} (const string \&text)
+\item 
+void \hyperlink{main_8cpp_aa3af88a23d887ed3bb8309d3309d720b}{justify\-Line} (string line, int page\-Width, int indent)
+\item 
+void \hyperlink{main_8cpp_ad897add4c0c9f745f88467be3aeab7fa}{justify\-Text} (const string \&text, int page\-Width, int indent)
+\item 
+void \hyperlink{main_8cpp_a44f67f22a01cccbe380487f8d03e4bd3}{show\-Help} (void)
+\item 
+void \hyperlink{main_8cpp_a9281e82ca13b2814405e39b9f3d9f11e}{check\-Number\-Of\-Required\-Arguments} (string option, vector$<$ string $>$ option\-Values)
+\item 
+vector$<$ string $>$ \hyperlink{main_8cpp_a08e04f7a6d8676f275e9bbc536775327}{get\-Values} (string option, vector$<$ string $>$ args)
+\item 
+string \hyperlink{main_8cpp_a6946684658dcde9f3dc85e2172fb544f}{get\-File\-Extension} (string filename)
+\item 
+vector$<$ string $>$ \hyperlink{main_8cpp_a387f7696832e43d20cf0c91e6fda9cda}{replace\-Long\-With\-Short\-Names} (vector$<$ string $>$ args)
+\item 
+void \hyperlink{main_8cpp_affc475965117d272a60745244d5a6885}{printv} (const char $\ast$fstr,...)
+\item 
+vector$<$ string $>$ \hyperlink{main_8cpp_a4a57e98db12401a97ca8defea156df3e}{get\-Used\-Options\-From\-Arg} (const vector$<$ string $>$ \&all\-Args)
+\item 
+bool \hyperlink{main_8cpp_ab256f1d33d38b33f45a1c6cad963296a}{has\-Only\-Digits} (const string s)
+\item 
+vector$<$ string $>$ \hyperlink{main_8cpp_a1015c4fda0e6f43977b94a8cbd41c10c}{get\-All\-Args} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+\subsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{main_8cpp_ab3f078684998b83967d507d0f453f454}{verbose} = false
+\item 
+const int \hyperlink{main_8cpp_a18607dcec51a14316e0625041d45fe87}{indention} = 32
+\item 
+const char \hyperlink{main_8cpp_ad41c3c3c94312099c3f91a539621391e}{separator} = ' '
 \end{DoxyCompactItemize}
 
 
+\subsection{Typedef Documentation}
+\hypertarget{main_8cpp_a6a76bdba10b78cc2b01d30563171cca3}{\index{main.\-cpp@{main.\-cpp}!Word\-List@{Word\-List}}
+\index{Word\-List@{Word\-List}!main.cpp@{main.\-cpp}}
+\subsubsection[{Word\-List}]{\setlength{\rightskip}{0pt plus 5cm}typedef list$<$string$>$ {\bf Word\-List}}}\label{main_8cpp_a6a76bdba10b78cc2b01d30563171cca3}
+
+
 \subsection{Function Documentation}
-\hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{\index{main.\-cpp@{main.\-cpp}!main@{main}}
+\hypertarget{main_8cpp_a850f18663fabf143c7fafad51ac39167}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-are\-Neighbours@{call\-\_\-are\-Neighbours}}
+\index{call\-\_\-are\-Neighbours@{call\-\_\-are\-Neighbours}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-are\-Neighbours}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-are\-Neighbours (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a850f18663fabf143c7fafad51ac39167}
+\hypertarget{main_8cpp_aa58862f3af381ae10449a990dcaa2813}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-get\-In\-Deg@{call\-\_\-get\-In\-Deg}}
+\index{call\-\_\-get\-In\-Deg@{call\-\_\-get\-In\-Deg}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-get\-In\-Deg}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-get\-In\-Deg (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aa58862f3af381ae10449a990dcaa2813}
+\hypertarget{main_8cpp_aa35156547f135c8b7cb0eebcc441aff9}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-get\-Number\-Of\-Edges@{call\-\_\-get\-Number\-Of\-Edges}}
+\index{call\-\_\-get\-Number\-Of\-Edges@{call\-\_\-get\-Number\-Of\-Edges}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-get\-Number\-Of\-Edges}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-get\-Number\-Of\-Edges (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aa35156547f135c8b7cb0eebcc441aff9}
+\hypertarget{main_8cpp_ac6cbf8435e555d881315a571cdc35b77}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-get\-Number\-Of\-Nodes@{call\-\_\-get\-Number\-Of\-Nodes}}
+\index{call\-\_\-get\-Number\-Of\-Nodes@{call\-\_\-get\-Number\-Of\-Nodes}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-get\-Number\-Of\-Nodes}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-get\-Number\-Of\-Nodes (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ac6cbf8435e555d881315a571cdc35b77}
+\hypertarget{main_8cpp_ae33f31708265b9f74922a767dce18afc}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-get\-Out\-Deg@{call\-\_\-get\-Out\-Deg}}
+\index{call\-\_\-get\-Out\-Deg@{call\-\_\-get\-Out\-Deg}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-get\-Out\-Deg}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-get\-Out\-Deg (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ae33f31708265b9f74922a767dce18afc}
+\hypertarget{main_8cpp_aede7f3b9ca76feab0616befd3dc2534f}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-has\-Connectivity@{call\-\_\-has\-Connectivity}}
+\index{call\-\_\-has\-Connectivity@{call\-\_\-has\-Connectivity}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-has\-Connectivity}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-has\-Connectivity (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aede7f3b9ca76feab0616befd3dc2534f}
+\hypertarget{main_8cpp_a7e8ac89b3a553400b3e0831ac461244c}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-has\-Cycle@{call\-\_\-has\-Cycle}}
+\index{call\-\_\-has\-Cycle@{call\-\_\-has\-Cycle}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-has\-Cycle}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-has\-Cycle (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a7e8ac89b3a553400b3e0831ac461244c}
+\hypertarget{main_8cpp_a3a107cba69565bf048de10db35be7bcd}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-has\-Edge@{call\-\_\-has\-Edge}}
+\index{call\-\_\-has\-Edge@{call\-\_\-has\-Edge}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-has\-Edge}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-has\-Edge (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a3a107cba69565bf048de10db35be7bcd}
+\hypertarget{main_8cpp_a609458501ce69964f0cc07c9c1fc1e40}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-has\-Path@{call\-\_\-has\-Path}}
+\index{call\-\_\-has\-Path@{call\-\_\-has\-Path}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-has\-Path}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-has\-Path (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a609458501ce69964f0cc07c9c1fc1e40}
+\hypertarget{main_8cpp_a5e1326bac41afc91be2533eb5ed4a09b}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Complete@{call\-\_\-is\-Complete}}
+\index{call\-\_\-is\-Complete@{call\-\_\-is\-Complete}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Complete}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Complete (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a5e1326bac41afc91be2533eb5ed4a09b}
+\hypertarget{main_8cpp_a18183efccc34da9b19cdaa33aa6a2437}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Directed@{call\-\_\-is\-Directed}}
+\index{call\-\_\-is\-Directed@{call\-\_\-is\-Directed}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Directed}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Directed (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a18183efccc34da9b19cdaa33aa6a2437}
+\hypertarget{main_8cpp_a9ad8ef913f25d7532310d265d2d6225e}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Free\-Of\-Loops@{call\-\_\-is\-Free\-Of\-Loops}}
+\index{call\-\_\-is\-Free\-Of\-Loops@{call\-\_\-is\-Free\-Of\-Loops}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Free\-Of\-Loops}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Free\-Of\-Loops (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a9ad8ef913f25d7532310d265d2d6225e}
+\hypertarget{main_8cpp_a0b169da7268481a7fe233f53ee964f87}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Multigraph@{call\-\_\-is\-Multigraph}}
+\index{call\-\_\-is\-Multigraph@{call\-\_\-is\-Multigraph}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Multigraph}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Multigraph (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a0b169da7268481a7fe233f53ee964f87}
+\hypertarget{main_8cpp_a50795b6e51bc9495460cd9bfa3dabbbb}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Regular@{call\-\_\-is\-Regular}}
+\index{call\-\_\-is\-Regular@{call\-\_\-is\-Regular}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Regular}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Regular (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a50795b6e51bc9495460cd9bfa3dabbbb}
+\hypertarget{main_8cpp_aeb598e0cd7f9fd36b3d99576c16a7262}{\index{main.\-cpp@{main.\-cpp}!call\-\_\-is\-Simple@{call\-\_\-is\-Simple}}
+\index{call\-\_\-is\-Simple@{call\-\_\-is\-Simple}!main.cpp@{main.\-cpp}}
+\subsubsection[{call\-\_\-is\-Simple}]{\setlength{\rightskip}{0pt plus 5cm}void call\-\_\-is\-Simple (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args, }
+\item[{{\bf Graph} $\ast$}]{current\-Graph}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aeb598e0cd7f9fd36b3d99576c16a7262}
+\hypertarget{main_8cpp_a9281e82ca13b2814405e39b9f3d9f11e}{\index{main.\-cpp@{main.\-cpp}!check\-Number\-Of\-Required\-Arguments@{check\-Number\-Of\-Required\-Arguments}}
+\index{check\-Number\-Of\-Required\-Arguments@{check\-Number\-Of\-Required\-Arguments}!main.cpp@{main.\-cpp}}
+\subsubsection[{check\-Number\-Of\-Required\-Arguments}]{\setlength{\rightskip}{0pt plus 5cm}void check\-Number\-Of\-Required\-Arguments (
+\begin{DoxyParamCaption}
+\item[{string}]{option, }
+\item[{vector$<$ string $>$}]{option\-Values}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a9281e82ca13b2814405e39b9f3d9f11e}
+checks whether there are enough arguments for a certain option.
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & the option \\
+\hline
+{\em option\-Values} & its values \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8cpp_a1015c4fda0e6f43977b94a8cbd41c10c}{\index{main.\-cpp@{main.\-cpp}!get\-All\-Args@{get\-All\-Args}}
+\index{get\-All\-Args@{get\-All\-Args}!main.cpp@{main.\-cpp}}
+\subsubsection[{get\-All\-Args}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ get\-All\-Args (
+\begin{DoxyParamCaption}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a1015c4fda0e6f43977b94a8cbd41c10c}
+converts the program arguments to one arry
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & argument count \\
+\hline
+{\em argv} & arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array with all arguments 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_a6946684658dcde9f3dc85e2172fb544f}{\index{main.\-cpp@{main.\-cpp}!get\-File\-Extension@{get\-File\-Extension}}
+\index{get\-File\-Extension@{get\-File\-Extension}!main.cpp@{main.\-cpp}}
+\subsubsection[{get\-File\-Extension}]{\setlength{\rightskip}{0pt plus 5cm}string get\-File\-Extension (
+\begin{DoxyParamCaption}
+\item[{string}]{filename}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a6946684658dcde9f3dc85e2172fb544f}
+Returns the extension of a filename.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & the filename \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+the file ext. 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_a4a57e98db12401a97ca8defea156df3e}{\index{main.\-cpp@{main.\-cpp}!get\-Used\-Options\-From\-Arg@{get\-Used\-Options\-From\-Arg}}
+\index{get\-Used\-Options\-From\-Arg@{get\-Used\-Options\-From\-Arg}!main.cpp@{main.\-cpp}}
+\subsubsection[{get\-Used\-Options\-From\-Arg}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ get\-Used\-Options\-From\-Arg (
+\begin{DoxyParamCaption}
+\item[{const vector$<$ string $>$ \&}]{all\-Args}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a4a57e98db12401a97ca8defea156df3e}
+Extracts als used options in arguments.
+
+
+\begin{DoxyParams}{Parameters}
+{\em all\-Args} & all program arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an array of all options 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_a08e04f7a6d8676f275e9bbc536775327}{\index{main.\-cpp@{main.\-cpp}!get\-Values@{get\-Values}}
+\index{get\-Values@{get\-Values}!main.cpp@{main.\-cpp}}
+\subsubsection[{get\-Values}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ get\-Values (
+\begin{DoxyParamCaption}
+\item[{string}]{option, }
+\item[{vector$<$ string $>$}]{args}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a08e04f7a6d8676f275e9bbc536775327}
+Extracts all values corresponding to a given option.
+
+e.\-g. we have a command line like \char`\"{}-\/a foo1 foo2 foo3 -\/b ffoo\char`\"{} and call get\-Option\-Values(\char`\"{}a\char`\"{}, \char`\"{}-\/a foo1 foo2 foo3 -\/b ffoo\char`\"{}) ==$>$ returns an array with \{\char`\"{}foo1\char`\"{}, \char`\"{}foo2\char`\"{}, \char`\"{}foo3\char`\"{}\}
+
+{\bfseries checks only short names of options!}
+
+
+\begin{DoxyParams}{Parameters}
+{\em option} & an option \\
+\hline
+{\em args} & all arguments (from main $\ast$$\ast$argv) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+an array with all values of the given option 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_ab256f1d33d38b33f45a1c6cad963296a}{\index{main.\-cpp@{main.\-cpp}!has\-Only\-Digits@{has\-Only\-Digits}}
+\index{has\-Only\-Digits@{has\-Only\-Digits}!main.cpp@{main.\-cpp}}
+\subsubsection[{has\-Only\-Digits}]{\setlength{\rightskip}{0pt plus 5cm}bool has\-Only\-Digits (
+\begin{DoxyParamCaption}
+\item[{const string}]{s}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ab256f1d33d38b33f45a1c6cad963296a}
+checks whether a string contains only digits 
+\begin{DoxyParams}{Parameters}
+{\em s} & the string \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+true, if string only contains digits 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_aa3af88a23d887ed3bb8309d3309d720b}{\index{main.\-cpp@{main.\-cpp}!justify\-Line@{justify\-Line}}
+\index{justify\-Line@{justify\-Line}!main.cpp@{main.\-cpp}}
+\subsubsection[{justify\-Line}]{\setlength{\rightskip}{0pt plus 5cm}void justify\-Line (
+\begin{DoxyParamCaption}
+\item[{string}]{line, }
+\item[{int}]{page\-Width, }
+\item[{int}]{indent}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aa3af88a23d887ed3bb8309d3309d720b}
+\hypertarget{main_8cpp_ad897add4c0c9f745f88467be3aeab7fa}{\index{main.\-cpp@{main.\-cpp}!justify\-Text@{justify\-Text}}
+\index{justify\-Text@{justify\-Text}!main.cpp@{main.\-cpp}}
+\subsubsection[{justify\-Text}]{\setlength{\rightskip}{0pt plus 5cm}void justify\-Text (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{text, }
+\item[{int}]{page\-Width, }
+\item[{int}]{indent}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_ad897add4c0c9f745f88467be3aeab7fa}
+justifies the given text.
+
+
+\begin{DoxyParams}{Parameters}
+{\em text} & the text \\
+\hline
+{\em page\-Width} & the page width \\
+\hline
+{\em indent} & the indention \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{\index{main.\-cpp@{main.\-cpp}!main@{main}}
 \index{main@{main}!main.cpp@{main.\-cpp}}
 \subsubsection[{main}]{\setlength{\rightskip}{0pt plus 5cm}int main (
 \begin{DoxyParamCaption}
-{}
+\item[{int}]{argc, }
+\item[{char $\ast$$\ast$}]{argv}
 \end{DoxyParamCaption}
-)}}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}
+)}}\label{main_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}
+\hypertarget{main_8cpp_aa29cd529161f33ffceccc67ba3b90de7}{\index{main.\-cpp@{main.\-cpp}!print\-\_\-result@{print\-\_\-result}}
+\index{print\-\_\-result@{print\-\_\-result}!main.cpp@{main.\-cpp}}
+\subsubsection[{print\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{string}]{key, }
+\item[{int}]{value}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_aa29cd529161f33ffceccc67ba3b90de7}
+\hypertarget{main_8cpp_a8f6542c3b1ef8c980ea99fbc2a1e37b0}{\index{main.\-cpp@{main.\-cpp}!print\-\_\-result@{print\-\_\-result}}
+\index{print\-\_\-result@{print\-\_\-result}!main.cpp@{main.\-cpp}}
+\subsubsection[{print\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{string}]{key, }
+\item[{string}]{value}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a8f6542c3b1ef8c980ea99fbc2a1e37b0}
+\hypertarget{main_8cpp_a4387302c5caa7771f336664a3d67b48b}{\index{main.\-cpp@{main.\-cpp}!print\-\_\-result@{print\-\_\-result}}
+\index{print\-\_\-result@{print\-\_\-result}!main.cpp@{main.\-cpp}}
+\subsubsection[{print\-\_\-result}]{\setlength{\rightskip}{0pt plus 5cm}void print\-\_\-result (
+\begin{DoxyParamCaption}
+\item[{string}]{key, }
+\item[{bool}]{value}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a4387302c5caa7771f336664a3d67b48b}
+\hypertarget{main_8cpp_affc475965117d272a60745244d5a6885}{\index{main.\-cpp@{main.\-cpp}!printv@{printv}}
+\index{printv@{printv}!main.cpp@{main.\-cpp}}
+\subsubsection[{printv}]{\setlength{\rightskip}{0pt plus 5cm}void printv (
+\begin{DoxyParamCaption}
+\item[{const char $\ast$}]{fstr, }
+\item[{}]{...}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_affc475965117d272a60745244d5a6885}
+Printf wrapper for verbose mode. Prints a formatted string and the corresponding number of values. 
+\begin{DoxyParams}{Parameters}
+{\em str} & formatted string \\
+\hline
+\end{DoxyParams}
+\hypertarget{main_8cpp_a387f7696832e43d20cf0c91e6fda9cda}{\index{main.\-cpp@{main.\-cpp}!replace\-Long\-With\-Short\-Names@{replace\-Long\-With\-Short\-Names}}
+\index{replace\-Long\-With\-Short\-Names@{replace\-Long\-With\-Short\-Names}!main.cpp@{main.\-cpp}}
+\subsubsection[{replace\-Long\-With\-Short\-Names}]{\setlength{\rightskip}{0pt plus 5cm}vector$<$string$>$ replace\-Long\-With\-Short\-Names (
+\begin{DoxyParamCaption}
+\item[{vector$<$ string $>$}]{args}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a387f7696832e43d20cf0c91e6fda9cda}
+Replace all long name options with their corresponding short name
+
+
+\begin{DoxyParams}{Parameters}
+{\em args} & array with arguments \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+array with shorten options 
+\end{DoxyReturn}
+\hypertarget{main_8cpp_a44f67f22a01cccbe380487f8d03e4bd3}{\index{main.\-cpp@{main.\-cpp}!show\-Help@{show\-Help}}
+\index{show\-Help@{show\-Help}!main.cpp@{main.\-cpp}}
+\subsubsection[{show\-Help}]{\setlength{\rightskip}{0pt plus 5cm}void show\-Help (
+\begin{DoxyParamCaption}
+\item[{void}]{}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a44f67f22a01cccbe380487f8d03e4bd3}
+prints out the help page. \hypertarget{main_8cpp_a347c2b227ddbe97bf43dccd97677a4f2}{\index{main.\-cpp@{main.\-cpp}!split\-Text\-Into\-Words@{split\-Text\-Into\-Words}}
+\index{split\-Text\-Into\-Words@{split\-Text\-Into\-Words}!main.cpp@{main.\-cpp}}
+\subsubsection[{split\-Text\-Into\-Words}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Word\-List} split\-Text\-Into\-Words (
+\begin{DoxyParamCaption}
+\item[{const string \&}]{text}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_a347c2b227ddbe97bf43dccd97677a4f2}
+\hypertarget{main_8cpp_adfab2e4ba1f993249ee323ce2ab3b91d}{\index{main.\-cpp@{main.\-cpp}!str2int@{str2int}}
+\index{str2int@{str2int}!main.cpp@{main.\-cpp}}
+\subsubsection[{str2int}]{\setlength{\rightskip}{0pt plus 5cm}int str2int (
+\begin{DoxyParamCaption}
+\item[{string}]{number}
+\end{DoxyParamCaption}
+)}}\label{main_8cpp_adfab2e4ba1f993249ee323ce2ab3b91d}
+Converts a string to a int 
+\begin{DoxyParams}{Parameters}
+{\em number} & string with a number (\mbox{[}0-\/9\mbox{]}$\ast$) \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+string as int 
+\end{DoxyReturn}
+
+
+\subsection{Variable Documentation}
+\hypertarget{main_8cpp_a18607dcec51a14316e0625041d45fe87}{\index{main.\-cpp@{main.\-cpp}!indention@{indention}}
+\index{indention@{indention}!main.cpp@{main.\-cpp}}
+\subsubsection[{indention}]{\setlength{\rightskip}{0pt plus 5cm}const int indention = 32}}\label{main_8cpp_a18607dcec51a14316e0625041d45fe87}
+number of columns for indention \hypertarget{main_8cpp_ad41c3c3c94312099c3f91a539621391e}{\index{main.\-cpp@{main.\-cpp}!separator@{separator}}
+\index{separator@{separator}!main.cpp@{main.\-cpp}}
+\subsubsection[{separator}]{\setlength{\rightskip}{0pt plus 5cm}const char separator = ' '}}\label{main_8cpp_ad41c3c3c94312099c3f91a539621391e}
+fill character \hypertarget{main_8cpp_ab3f078684998b83967d507d0f453f454}{\index{main.\-cpp@{main.\-cpp}!verbose@{verbose}}
+\index{verbose@{verbose}!main.cpp@{main.\-cpp}}
+\subsubsection[{verbose}]{\setlength{\rightskip}{0pt plus 5cm}bool verbose = false}}\label{main_8cpp_ab3f078684998b83967d507d0f453f454}
+switch for verbose mode 
