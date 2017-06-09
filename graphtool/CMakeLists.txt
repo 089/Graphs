@@ -13,4 +13,4 @@ if(Boost_FOUND)
 
 endif()
 
-target_include_directories (graphtoolShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
+target_include_directories(graphtoolShared PUBLIC ${CMAKE_CURRENT_SOURCE_DIR})
