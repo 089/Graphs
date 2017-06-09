@@ -94,6 +94,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a173fa6ec1022bc0f793e3debfd19ad2c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a173fa6ec1022bc0f793e3debfd19ad2c">Graph</a> (vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix)</td></tr>
 <tr class="separator:a173fa6ec1022bc0f793e3debfd19ad2c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4141e4b0dc83b8637fed7a88b0abb2a8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4141e4b0dc83b8637fed7a88b0abb2a8">Graph</a> (vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix, vector&lt; string &gt; node_names)</td></tr>
+<tr class="separator:a4141e4b0dc83b8637fed7a88b0abb2a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa40c944594ef9360902cfa3a754d4ef"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#afa40c944594ef9360902cfa3a754d4ef">Graph</a> (string matlabMatrix)</td></tr>
 <tr class="separator:afa40c944594ef9360902cfa3a754d4ef"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a00f613f4d274a895e08988074a3a9e9a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a00f613f4d274a895e08988074a3a9e9a">isSquareMatrix</a> (const vector&lt; vector&lt; int &gt;&gt; &amp;adjacencyMatrix) const </td></tr>
@@ -140,6 +142,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aaa3e920d6063f97f1826ced6180962ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad3689ff1213976a5d738813be6ecee0d"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#ad3689ff1213976a5d738813be6ecee0d">areNeighbours</a> (int from, int to)</td></tr>
 <tr class="separator:ad3689ff1213976a5d738813be6ecee0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5898714a35ec10f29610e6e06f82c8c8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a5898714a35ec10f29610e6e06f82c8c8">exportDot</a> (vector&lt; int &gt; path)</td></tr>
+<tr class="separator:a5898714a35ec10f29610e6e06f82c8c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Represents a <b>simple</b> or <b>directed</b> graph. Has certain verifiable properties. Its edges are not weighted. </p>
@@ -154,6 +158,32 @@ Public Member Functions</h2></td></tr>
           <td class="paramtype">vector&lt; vector&lt; int &gt;&gt;&#160;</td>
           <td class="paramname"><em>adjacencyMatrix</em></td><td>)</td>
           <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a class="anchor" id="a4141e4b0dc83b8637fed7a88b0abb2a8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Graph::Graph </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; vector&lt; int &gt;&gt;&#160;</td>
+          <td class="paramname"><em>adjacencyMatrix</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; string &gt;&#160;</td>
+          <td class="paramname"><em>node_names</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -256,6 +286,30 @@ Public Member Functions</h2></td></tr>
 </div><div class="memdoc">
 <p>Exports the <a class="el" href="class_graph.html">Graph</a> to a dot file. </p>
 <dl class="section return"><dt>Returns</dt><dd>The string content for the dot file. </dd></dl>
+
+</div>
+</div>
+<a class="anchor" id="a5898714a35ec10f29610e6e06f82c8c8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Graph::exportDot </td>
+          <td>(</td>
+          <td class="paramtype">vector&lt; int &gt;&#160;</td>
+          <td class="paramname"><em>path</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Exports the string for a dot file. Takes a path and marks it red in the result dot file. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">path</td><td>The path to be colored. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The string for a dot file. </dd></dl>
 
 </div>
 </div>

@@ -10,6 +10,6 @@ var searchData=
   ['getoutdeg',['getOutDeg',['../class_graph.html#a1facc5271ce6c09e06bce134ddaac98c',1,'Graph']]],
   ['getusedoptionsfromarg',['getUsedOptionsFromArg',['../main_8cpp.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp'],['../main_8h.html#a4a57e98db12401a97ca8defea156df3e',1,'getUsedOptionsFromArg(const vector&lt; string &gt; &amp;allArgs):&#160;main.cpp']]],
   ['getvalues',['getValues',['../main_8cpp.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp'],['../main_8h.html#a08e04f7a6d8676f275e9bbc536775327',1,'getValues(string option, vector&lt; string &gt; args):&#160;main.cpp']]],
-  ['graph',['Graph',['../class_graph.html#a173fa6ec1022bc0f793e3debfd19ad2c',1,'Graph::Graph(vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix)'],['../class_graph.html#afa40c944594ef9360902cfa3a754d4ef',1,'Graph::Graph(string matlabMatrix)']]],
+  ['graph',['Graph',['../class_graph.html#a173fa6ec1022bc0f793e3debfd19ad2c',1,'Graph::Graph(vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix)'],['../class_graph.html#a4141e4b0dc83b8637fed7a88b0abb2a8',1,'Graph::Graph(vector&lt; vector&lt; int &gt;&gt; adjacencyMatrix, vector&lt; string &gt; node_names)'],['../class_graph.html#afa40c944594ef9360902cfa3a754d4ef',1,'Graph::Graph(string matlabMatrix)']]],
   ['graphtojson',['graphToJson',['../class_graph.html#a027c9787cdf583c5e6d1cc048c3a7c32',1,'Graph']]]
 ];
