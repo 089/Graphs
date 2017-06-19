@@ -148,7 +148,7 @@ private:
      *
      * @return a zeroized matrix
      */
-    vector<vector<int>> getZeroizedMatrix(int rows, int cols);
+    static vector<vector<int>> getZeroizedMatrix(int rows, int cols);
 
     /**
      * Checks whether matrix A (m x n) and B (m x n) are identical.
@@ -171,9 +171,9 @@ private:
     const vector<vector<int>> &getAdjacencyMatrix() const;
 
 
-
 public:
     Graph(vector<vector<int>> adjacencyMatrix);
+
     Graph(vector<vector<int>> adjacencyMatrix, vector<string> node_names);
 
     /**
@@ -342,4 +342,10 @@ public:
      */
     string exportDot(vector<int> path);
 
+    /**
+     * Load the Graph from a file within an adjacency matrix.
+     * @param file Path to the file
+     * @return New Graph object
+     */
+    static Graph *loadAdjacencyFile(string file);
 };
