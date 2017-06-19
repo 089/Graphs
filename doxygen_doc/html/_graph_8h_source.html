@@ -140,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;</div>
 <div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;    vector&lt;vector&lt;int&gt;&gt; addMatrix(<span class="keyword">const</span> vector&lt;vector&lt;int&gt;&gt; &amp;A, <span class="keyword">const</span> vector&lt;vector&lt;int&gt;&gt; &amp;B);</div>
 <div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;</div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    vector&lt;vector&lt;int&gt;&gt; getZeroizedMatrix(<span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols);</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;    <span class="keyword">static</span> vector&lt;vector&lt;int&gt;&gt; getZeroizedMatrix(<span class="keywordtype">int</span> rows, <span class="keywordtype">int</span> cols);</div>
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;</div>
 <div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    <span class="keywordtype">bool</span> isSameMatrix(<span class="keyword">const</span> vector&lt;vector&lt;int&gt;&gt; &amp;A, <span class="keyword">const</span> vector&lt;vector&lt;int&gt;&gt; &amp;B);</div>
 <div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;</div>
@@ -149,9 +149,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;    <span class="keyword">const</span> vector&lt;vector&lt;int&gt;&gt; &amp;getAdjacencyMatrix() <span class="keyword">const</span>;</div>
 <div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;</div>
 <div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="class_graph.html">Graph</a>(vector&lt;vector&lt;int&gt;&gt; adjacencyMatrix);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    <a class="code" href="class_graph.html">Graph</a>(vector&lt;vector&lt;int&gt;&gt; adjacencyMatrix);</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;</div>
 <div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <a class="code" href="class_graph.html">Graph</a>(vector&lt;vector&lt;int&gt;&gt; adjacencyMatrix, vector&lt;string&gt; node_names);</div>
 <div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;</div>
 <div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    <a class="code" href="class_graph.html">Graph</a>(<span class="keywordtype">string</span> matlabMatrix);</div>
@@ -198,7 +198,8 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;</div>
 <div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;    <span class="keywordtype">string</span> exportDot(vector&lt;int&gt; path);</div>
 <div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;};</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;    <span class="keyword">static</span> <a class="code" href="class_graph.html">Graph</a> *loadAdjacencyFile(<span class="keywordtype">string</span> file);</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;};</div>
 <div class="ttc" id="class_graph_html"><div class="ttname"><a href="class_graph.html">Graph</a></div><div class="ttdef"><b>Definition:</b> Graph.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->

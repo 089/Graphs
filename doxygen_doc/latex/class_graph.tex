@@ -56,6 +56,11 @@ bool \hyperlink{class_graph_ad3689ff1213976a5d738813be6ecee0d}{are\-Neighbours} 
 \item 
 string \hyperlink{class_graph_a5898714a35ec10f29610e6e06f82c8c8}{export\-Dot} (vector$<$ int $>$ path)
 \end{DoxyCompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static \hyperlink{class_graph}{Graph} $\ast$ \hyperlink{class_graph_ac7aae6ec6ef87e6273c4cd4f5bbd4efa}{load\-Adjacency\-File} (string file)
+\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -376,6 +381,21 @@ Specifies whether the graph is a simple graph (undirected, no multiple edges, no
 
 \begin{DoxyReturn}{Returns}
 true, if the graph is a simple graph. 
+\end{DoxyReturn}
+\hypertarget{class_graph_ac7aae6ec6ef87e6273c4cd4f5bbd4efa}{\index{Graph@{Graph}!load\-Adjacency\-File@{load\-Adjacency\-File}}
+\index{load\-Adjacency\-File@{load\-Adjacency\-File}!Graph@{Graph}}
+\subsubsection[{load\-Adjacency\-File}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Graph} $\ast$ Graph\-::load\-Adjacency\-File (
+\begin{DoxyParamCaption}
+\item[{string}]{file}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [static]}}}\label{class_graph_ac7aae6ec6ef87e6273c4cd4f5bbd4efa}
+Load the \hyperlink{class_graph}{Graph} from a file within an adjacency matrix. 
+\begin{DoxyParams}{Parameters}
+{\em file} & Path to the file \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+New \hyperlink{class_graph}{Graph} object 
 \end{DoxyReturn}
 
 
