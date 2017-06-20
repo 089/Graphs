@@ -24,7 +24,7 @@
 
 <body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
 
-    <nav class="navbar navbar-default navbar-fixed-top">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -36,12 +36,55 @@
             </div>
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
-                    <li><a href="#ygraph">your graph</a></li>
-                    <li><a href="#properties">properties</a></li>
+                    <li><a href="#descr">Beschreibung</a></li>
+                    <li><a href="#help">Hilfefunktionen</a></li>
+                    <li><a href="#example">Beispiel</a></li>
+                    <li><a data-toggle="modal" data-target="#myModal">Dein Graph</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+
+    <div class="modal fade" id="myModal" role="dialog">
+        <div class="modal-dialog">
+
+            <!-- Modal content-->
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Dein Graph</h4>
+                </div>
+                <div class="modal-body">
+                    <p>Graph festlegen (json-Format)</p>
+                    <textarea id="graphJsonArea" class="form-control" rows="2"></textarea>
+                    <div id="showBox">
+                        <h4>Graph</h4>
+                        <div class="row">
+                            <div class="col-sm-12" style="position: relative; height: 300px; width: 100%;">
+                                <div id="yourGraph" style="height: 300px" class=""></div>
+                            </div>
+                        </div>
+                        <h4>Eigenschaften</h4>
+                        <table class="table">
+                            <thead>
+                                <tr>
+                                    <th>Eigenschaft</th>
+                                    <th>Wert</th>
+                                </tr>
+                            </thead>
+                            <tbody id="properties">
+                            </tbody>
+                        </table>
+                    </div>
+                    <div class="modal-footer">
+                        <button id="showGraph" type="button" class="btn btn-primary">Graph anzeigen</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <div id="intro" class="intro text-center">
         <h1>graphs</h1>
@@ -49,24 +92,147 @@
     </div>
     </div>
 
-    <div id="ygraph" class="container-fluid">
-        <div class="row">
-            <div class="col-sm-8" style="position: relative; height: 500px;">
-                <div id="container" class="slideanim"></div>
-            </div>
-            <div class="col-sm-4">
-                <h2 class="slideanim">your graph</h2><br>
-                <h4>Your graph is displayed on the left.<br>This is one way to draw your graph.</h4>
-                <p>You can change the representation of your graph by klicking and moving the nodes - just drag the nodes.</p>
-            </div>
-        </div>
+    <div id="descr" class="container text-center">
+        <br><br>
+        <h2>Graphs</h2>
+        <p>Ein tolles Tool für und mit Graphen. Mit diesem Tool können verschiedene Eigenschaften von Graphen ermittelt und ausgegeben werden. Die Ergebnisse werden übersichtlich dargestellt und können in verschiedenen Ausgabeformaten ausgegeben werden.
+            Achte bei den Optionen auf Groß- und Kleinschreibung.</p>
     </div>
 
-    <div id="properties" class="container-fluid text-center bg-grey">
-        <h2>properties</h2>
-        <h4>Your graph has the following properties</h4>
-        <br>
-        <br><br>
+    <div id="help" class="container text-center c-line">
+        <h2>Hilfefunktionen</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Eingabe</th>
+                    <th>Beschreibnung</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>-i --input-csv (1)</td>
+                    <td>Liest die Adjazenzmatrix des Graphen aus der angegebenen CSV-Datei aus.</td>
+                </tr>
+                <tr>
+                    <td>-iml --input-matlab (1)</td>
+                    <td>Erzeugt einen Graphen aus der in Matlab-Notation angegebenen Adjazenzmatrix.
+                    </td>
+                </tr>
+                <tr>
+                    <td>-h --help (0)</td>
+                    <td>Zeigt die Hilfe an.</td>
+                </tr>
+                <tr>
+                    <td>-na --no-args (0)</td>
+                    <td>Ruft alle Funktionen auf, die keine Argumente benötigen und gibt die Ergebnisse aus.
+                    </td>
+                </tr>
+                <tr>
+                    <td>-V --vertices-count (0)</td>
+                    <td>Gibt die Anzahl der Knoten |V| aus.</td>
+                </tr>
+                <tr>
+                    <td>-E --edges-count (0)</td>
+                    <td>Gibt die Anzahl der Kanten |E| aus.</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div id="example" class="container text-center c-line">
+        <h2>Beispiel</h2>
+        <p>Eine Matrix in Matlab-Notation und alle Funktionen ausführt, die keine Argumente benötigen:</p>
+        <p><i>`graphs -iml "[1 1 0; 1 0 1; 1 1 0]" -na -oj example.json</i></p>
+
+        <div class="row slideanim slide">
+            <div class="col-sm-4 box">
+                <h4>Konsolen-Ausgabe</h4>
+                <img src="img/output.png" width="100%">
+            </div>
+            <div class="col-sm-4 box">
+                <h4>json-Ausgabe</h4>
+                <div class="box-code">
+                    <code>
+{
+  "nodes": [
+    {
+      "id": "0",
+      "label": "0",
+      "x": "3",
+      "y": "6",
+      "size": "1"
+    },
+    {
+      "id": "1",
+      "label": "1",
+      "x": "7",
+      "y": "5",
+      "size": "1"
+    },
+    {
+      "id": "2",
+      "label": "2",
+      "x": "3",
+      "y": "5",
+      "size": "1"
+    }
+  ],
+  "edges": [
+    {
+      "id": "0",
+      "source": "0",
+      "target": "0",
+      "type": "arrow",
+      "size": "1"
+    },
+    {
+      "id": "1",
+      "source": "0",
+      "target": "1",
+      "type": "arrow",
+      "size": "1"
+    },
+    {
+      "id": "2",
+      "source": "1",
+      "target": "0",
+      "type": "arrow",
+      "size": "1"
+    },
+    {
+      "id": "3",
+      "source": "1",
+      "target": "2",
+      "type": "arrow",
+      "size": "1"
+    },
+    {
+      "id": "4",
+      "source": "2",
+      "target": "0",
+      "type": "arrow",
+      "size": "1"
+    },
+    {
+      "id": "5",
+      "source": "2",
+      "target": "1",
+      "type": "arrow",
+      "size": "1"
+    }
+  ]
+}
+</code>
+                </div>
+            </div>
+            <div class="col-sm-4 box">
+                <h4>Sigma Graph</h4>
+                <div class="col-sm-12" style="position: relative;height: 300px; width: 100%;">
+                    <div id="container" class=""></div>
+                </div>
+            </div>
+        </div>
+
         <br><br>
         <br><br>
     </div>

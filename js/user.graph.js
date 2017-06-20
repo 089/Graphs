@@ -174,4 +174,66 @@ $(document).ready(function() {
             console.log(event);
         });
         */
+
+
+    $("#showGraph").click(function() {
+        $("#showBox").css("display", "block")
+        $("#yourGraph").empty();
+        $("#properties").empty();
+
+        var data = JSON.parse($("#graphJsonArea").val());
+
+
+        $.each(data.properties, function(key, val) {
+            $('<tr><td>' + key + '</td><td id="' + key + '">' + val + '</td><tr>').appendTo('#properties');
+        });
+
+
+        s = new sigma({
+            graph: data.graph,
+            renderer: {
+                // IMPORTANT:
+                // This works only with the canvas renderer, so the
+                // renderer type set as "canvas" is necessary here.
+                container: 'yourGraph'
+                    // type: 'canvas'
+            },
+
+            settings: {
+                defaultNodeColor: '#333',
+                defaultLabelColor: '#fff',
+                minNodeSize: 20,
+                maxNodeSize: 20,
+                minEdgeSize: 0.2,
+                maxEdgeSize: 3,
+                scalingMode: "inside",
+                labelSize: "proportional",
+                sideMargin: 0.25,
+                enableHovering: false,
+                mouseWheelEnabled: false
+            }
+        });
+
+        // Initialize the dragNodes plugin:
+        var dragListener = sigma.plugins.dragNodes(s, s.renderers[0]);
+
+        dragListener.bind('startdrag', function(event) {
+            console.log(event);
+        });
+
+        dragListener.bind('drag', function(event) {
+            console.log(event);
+        });
+
+        dragListener.bind('drop', function(event) {
+            console.log(event);
+        });
+
+        dragListener.bind('dragend', function(event) {
+            console.log(event);
+        });
+    })
+
+
+
 })

@@ -1,19 +1,19 @@
 #container,
 #intro-graph {
-    top: 0;
+    top: 60px;
     left: 0;
     bottom: 0;
     right: 0;
     position: absolute;
 }
 
-#intro-graph {
-    top: 55px;
-}
-
 .sigma-scene,
 .sigma-mouse {
     left: 0;
+}
+
+#mainNav {
+    background-color: #111;
 }
 
 .sigma-labels {
@@ -26,6 +26,34 @@ body {
     color: #818181;
 }
 
+.intro h1 {
+    font-size: 50pt;
+}
+
+p {
+    font-size: 12pt;
+}
+
+td {
+    text-align: left;
+}
+
+.box {
+    height: 400px;
+}
+
+.box-code {
+    height: 300px;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+.c-line {
+    border-top: 1px solid #aaa;
+    margin-top: 40px;
+    padding-top: 40px;
+}
+
 h2 {
     font-size: 24px;
     text-transform: uppercase;
@@ -35,15 +63,20 @@ h2 {
 }
 
 h4 {
-    font-size: 19px;
+    font-size: 23px;
     line-height: 1.375em;
     color: #303030;
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 10px;
+    margin-top: 40px;
 }
 
 .intro {
     background-color: #333;
+    background-image: url("../img/graphs.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
     color: #fff;
     padding: 100px 25px;
     position: relative;
@@ -151,9 +184,13 @@ h4 {
     color: #fff;
 }
 
+#showBox {
+    display: none;
+}
+
 .navbar {
     margin-bottom: 0;
-    background-color: #333;
+    background-color: transparent;
     z-index: 9999;
     border: 0;
     font-size: 12px !important;
@@ -161,6 +198,10 @@ h4 {
     letter-spacing: 4px;
     border-radius: 0;
     font-family: Montserrat, sans-serif;
+}
+
+#myModal {
+    z-index: 10000
 }
 
 .navbar li a,
