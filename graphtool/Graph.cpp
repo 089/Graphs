@@ -389,11 +389,11 @@ string Graph::graphToJson() {
                 }
 
                 // set properties
-                edges += "\"id\": \"" + to_string(id) + "\",";
-                edges += "\"source\": \"" + to_string(y) + "\",";
-                edges += "\"target\": \"" + to_string(x) + "\",";
-                edges += "\"type\": \"" + edgeType + "\",";
-                edges += "\"size\": \"" + to_string(1) + "\"";
+                edges += "\"id\": " + to_string(id) + ",";
+                edges += "\"source\": " + to_string(y) + ",";
+                edges += "\"target\": " + to_string(x) + ",";
+                edges += "\"type\": " + edgeType + ",";
+                edges += "\"size\": " + to_string(1);
 
                 edges += "}";
 
