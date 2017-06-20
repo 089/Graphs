@@ -417,7 +417,7 @@ string Graph::graphToJson() {
 
     properties += "}";
 
-    return "{ " + nodes + ", " + edges + ", " + properties + " }";
+    return "{ \"graph\": {" + nodes + ", " + edges + "}, " + properties + " }";
 }
 
 /**
