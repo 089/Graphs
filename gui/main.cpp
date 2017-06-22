@@ -5,6 +5,7 @@
 #include <boost/format.hpp>
 #include <iomanip>
 #include <cstdarg>
+#include <sstream>
 
 using namespace std;
 

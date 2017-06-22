@@ -8,6 +8,10 @@
 #include <iostream>
 #include <boost/regex.hpp>
 
+inline const string BoolToString(bool b)
+{
+    return b ? "true" : "false";
+}
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
     nodes = vector<string>();
@@ -338,7 +342,7 @@ bool Graph::isRegular() {
  * Transform the graph to json-format.
  * @return string json.
  */
-string Graph::graphToJson() const {
+string Graph::graphToJson() {
 
     int size = (int) this->adjacencyMatrix.size();
 
@@ -385,11 +389,11 @@ string Graph::graphToJson() const {
                 }
 
                 // set properties
-                edges += "\"id\": \"" + to_string(id) + "\",";
-                edges += "\"source\": \"" + to_string(y) + "\",";
-                edges += "\"target\": \"" + to_string(x) + "\",";
-                edges += "\"type\": \"" + edgeType + "\",";
-                edges += "\"size\": \"" + to_string(1) + "\"";
+                edges += "\"id\": " + to_string(id) + ",";
+                edges += "\"source\": " + to_string(y) + ",";
+                edges += "\"target\": " + to_string(x) + ",";
+                edges += "\"type\": " + edgeType + ",";
+                edges += "\"size\": " + to_string(1);
 
                 edges += "}";
 
@@ -401,7 +405,19 @@ string Graph::graphToJson() const {
 
     edges += "]";
 
-    return "{ " + nodes + ", " + edges + " }";
+    string properties = "\"properties\": {" ;
+
+    properties += "\"isDirected\": \"" + BoolToString(isDirected()) + "\",";
+    properties += "\"isComplete\": \"" + BoolToString(isComplete()) + "\",";
+    properties += "\"isMultigraph\": \"" + BoolToString(isMultigraph()) + "\",";
+    properties += "\"isRegular\": \"" + BoolToString(isRegular()) + "\",";
+    properties += "\"isSimple\": \"" + BoolToString(isSimple()) + "\",";
+    properties += "\"hasCycle\": \"" + BoolToString(hasCycle()) + "\",";
+    properties += "\"isFreeOfLoops\": \"" + BoolToString(isFreeOfLoops()) + "\"";
+
+    properties += "}";
+
+    return "{ \"graph\": {" + nodes + ", " + edges + "}, " + properties + " }";
 }
 
 /**
