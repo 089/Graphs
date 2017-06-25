@@ -65,6 +65,7 @@ static struct optionItem options[] =
                 {"-s",    "--is-simple",           0, "Gibt an, ob der Graph einfach ist."},
                 {"-cy",   "--has-cycle",           0, "Gibt an, ob der Graph einen Kreis hat."},
                 {"-fol",  "--is-free-of-loops",    0, "Gibt an, ob der Graph kreisfrei ist."},
+                {"-for",  "--is-directed-forest",  0, "Gibt an, ob der Graph ein gerichteter Wald ist."},
 
                 // functions with arguments
                 {"",      "",                      0, "FUNKTIONEN MIT ARGUMENTEN"},
@@ -178,6 +179,8 @@ int main(int argc, char **argv) {
 
                 } else if (currentOption == "-h") {
                     showhelp = true;
+                } else if (currentOption == "-for") {
+                    call_isForest(allArgs, currentGraph);
 
                     // B) functions with no arguments
                 } else if (currentOption == "-ideg") {
@@ -285,6 +288,10 @@ void call_getInDeg(const vector<string> &allArgs, Graph *currentGraph) {
         const string key = boost::str(boost::format("in degree(%d)") % val);
         print_result(key, currentGraph->getInDeg(val));
     }
+}
+
+void call_isForest(const vector<string> &allArgs, Graph *currentGraph) {
+    print_result("Ist Wald", currentGraph->isForest());
 }
 
 void call_getOutDeg(const vector<string> &allArgs, Graph *currentGraph) {
