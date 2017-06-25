@@ -106,6 +106,8 @@ void call_hasCycle(const vector<string> &allArgs, Graph *currentGraph);
 
 void call_isComplete(const vector<string> &allArgs, Graph *currentGraph);
 
+void call_isForest(const vector<string> &allArgs, Graph *currentGraph);
+
 void call_isDirected(const vector<string> &allArgs, Graph *currentGraph);
 
 void call_isFreeOfLoops(const vector<string> &allArgs, Graph *currentGraph);

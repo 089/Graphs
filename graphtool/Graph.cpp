@@ -39,7 +39,7 @@ Graph::Graph(vector<vector<int>> adjacencyMatrix, vector<string> node_names) {
 
     if (node_names.size() == getNumberOfNodes()) {
         this->nodes = vector<string>();
-        for(string node : node_names) {
+        for (string node : node_names) {
             nodes.push_back(node);
         }
     } else {
@@ -834,4 +834,24 @@ const string Graph::getAdjacencyMatrixString() const {
     }
 
     return ss.str();
+}
+
+bool Graph::isForest() {
+    if (isForestCache) {
+        return isForestFlag;
+    }
+
+    isForestCache = true;
+    if(hasCycle() || !isDirected()) {
+        isForestFlag = false;
+        return false;
+    }
+    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+        if(getInDeg(i) > 1) {
+            isForestFlag = false;
+            return false;
+        }
+    }
+    isForestFlag = true;
+    return true;
 }

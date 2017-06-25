@@ -253,9 +253,9 @@ TEST(graph_check, test_are_neighbours_range_1) {
 
     // throw out_of_range("from/to must be in [0, " + getNumberOfNodes() + string("[."));
     try {
-        g->areNeighbours(-1,3);
+        g->areNeighbours(-1, 3);
         FAIL();
-    } catch (const out_of_range& e) {
+    } catch (const out_of_range &e) {
         cout << e.what() << endl;
         ASSERT_STREQ("from and to have to be in the range. ", e.what());
     }
@@ -272,9 +272,9 @@ TEST(graph_check, test_are_neighbours_range_2) {
 
     // throw out_of_range("from/to must be in [0, " + getNumberOfNodes() + string("[."));
     try {
-        g->areNeighbours(2,-2);
+        g->areNeighbours(2, -2);
         FAIL();
-    } catch (const out_of_range& e) {
+    } catch (const out_of_range &e) {
         cout << e.what() << endl;
         ASSERT_STREQ("from and to have to be in the range. ", e.what());
     }
@@ -291,9 +291,9 @@ TEST(graph_check, test_are_neighbours_range_3) {
 
     // throw out_of_range("from/to must be in [0, " + getNumberOfNodes() + string("[."));
     try {
-        g->areNeighbours(0,4);
+        g->areNeighbours(0, 4);
         FAIL();
-    } catch (const out_of_range& e) {
+    } catch (const out_of_range &e) {
         cout << e.what() << endl;
         ASSERT_STREQ("from and to have to be in the range. ", e.what());
     }
@@ -310,9 +310,9 @@ TEST(graph_check, test_are_neighbours_range_4) {
 
     // throw out_of_range("from/to must be in [0, " + getNumberOfNodes() + string("[."));
     try {
-        g->areNeighbours(4,0);
+        g->areNeighbours(4, 0);
         FAIL();
-    } catch (const out_of_range& e) {
+    } catch (const out_of_range &e) {
         cout << e.what() << endl;
         ASSERT_STREQ("from and to have to be in the range. ", e.what());
     }
@@ -430,4 +430,27 @@ TEST(graph_check, test_adjazenzmatrix_string) {
     ASSERT_EQ(strs[0], "1,0,1");
     ASSERT_EQ(strs[1], "1,1,1");
     ASSERT_EQ(strs[2], "0,0,1");
+}
+
+TEST(graph_check, test_forest_true) {
+    Graph *g = new Graph("[0 1 1; 0 0 0; 0 0 0]");
+    bool forest = g->isForest();
+
+    ASSERT_TRUE(forest);
+}
+
+TEST(graph_check, test_forest_false) {
+    //cycle -> false
+    Graph *g = new Graph("[0 1 1; 0 0 0; 1 0 0]");
+    bool forest = g->isForest();
+
+    ASSERT_FALSE(forest);
+}
+
+TEST(graph_check, test_forest_undirected) {
+    //undirected -> false
+    Graph *g = new Graph("[0 1 1; 1 0 0; 1 0 0]");
+    bool forest = g->isForest();
+
+    ASSERT_FALSE(forest);
 }
