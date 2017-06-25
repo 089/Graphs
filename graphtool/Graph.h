@@ -223,7 +223,7 @@ public:
      * Return the graph in a json-format.
      * @return string json.
      */
-    string graphToJson() const;
+    string graphToJson();
 
     /**
      * Checks the graph if a cycle exists. DFS.
