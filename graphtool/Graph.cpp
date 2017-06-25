@@ -392,7 +392,7 @@ string Graph::graphToJson() {
                 edges += "\"id\": " + to_string(id) + ",";
                 edges += "\"source\": " + to_string(y) + ",";
                 edges += "\"target\": " + to_string(x) + ",";
-                edges += "\"type\": " + edgeType + ",";
+                edges += "\"type\": \"" + edgeType + "\",";
                 edges += "\"size\": " + to_string(1);
 
                 edges += "}";
@@ -407,13 +407,16 @@ string Graph::graphToJson() {
 
     string properties = "\"properties\": {" ;
 
+    properties += "\"Vertices\": \"" + to_string(getNumberOfNodes()) + "\",";
+    properties += "\"Edges\": \"" + to_string(getNumberOfEdges()) + "\",";
     properties += "\"isDirected\": \"" + BoolToString(isDirected()) + "\",";
     properties += "\"isComplete\": \"" + BoolToString(isComplete()) + "\",";
     properties += "\"isMultigraph\": \"" + BoolToString(isMultigraph()) + "\",";
     properties += "\"isRegular\": \"" + BoolToString(isRegular()) + "\",";
     properties += "\"isSimple\": \"" + BoolToString(isSimple()) + "\",";
     properties += "\"hasCycle\": \"" + BoolToString(hasCycle()) + "\",";
-    properties += "\"isFreeOfLoops\": \"" + BoolToString(isFreeOfLoops()) + "\"";
+    properties += "\"isFreeOfLoops\": \"" + BoolToString(isFreeOfLoops()) + "\",";
+    properties += "\"isForest\": \"" + BoolToString(isForest()) + "\"";
 
     properties += "}";
 
