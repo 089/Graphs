@@ -1,10 +1,8 @@
 var searchData=
 [
-  ['iscomplete',['isComplete',['../class_graph.html#aba9eba8899f63a67ed270ee00bdfeb4e',1,'Graph']]],
-  ['isdirected',['isDirected',['../class_graph.html#afd552af25f5c9672848693d66f27827a',1,'Graph']]],
-  ['isforest',['isForest',['../class_graph.html#a3c59cca56e627174ff1138c332dcc328',1,'Graph']]],
-  ['isfreeofloops',['isFreeOfLoops',['../class_graph.html#a451bbc2d9ddde5e85d6c122a845dbd02',1,'Graph']]],
-  ['ismultigraph',['isMultigraph',['../class_graph.html#ab410dec3635c080f04c60c6835d91df6',1,'Graph']]],
-  ['isregular',['isRegular',['../class_graph.html#afe19c30e6b7005fd0c66c5f182764ca5',1,'Graph']]],
-  ['issimple',['isSimple',['../class_graph.html#a4095f5949d5b2a420ecf2d0f2bb68dc8',1,'Graph']]]
+  ['hasconnectivity',['hasConnectivity',['../class_graph.html#a46cb0098da247fd0f2b07229df8cd5e7',1,'Graph']]],
+  ['hascycle',['hasCycle',['../class_graph.html#a6fcbfa381804b43a67d92eed7f30e1d9',1,'Graph']]],
+  ['hasedge',['hasEdge',['../class_graph.html#a0a4f1d268e549a905d0451cfdfc6f2db',1,'Graph']]],
+  ['hasonlydigits',['hasOnlyDigits',['../main_8cpp.html#ab256f1d33d38b33f45a1c6cad963296a',1,'hasOnlyDigits(const string s):&#160;main.cpp'],['../main_8h.html#ab256f1d33d38b33f45a1c6cad963296a',1,'hasOnlyDigits(const string s):&#160;main.cpp']]],
+  ['haspath',['hasPath',['../class_graph.html#abc5691276d7bab874ae07a40173d50ec',1,'Graph']]]
 ];
