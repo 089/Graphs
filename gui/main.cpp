@@ -150,6 +150,7 @@ int main(int argc, char **argv) {
                     call_isSimple(allArgs, currentGraph);
                     call_hasCycle(allArgs, currentGraph);
                     call_isFreeOfLoops(allArgs, currentGraph);
+                    call_isForest(allArgs, currentGraph);
 
                 } else if (currentOption == "-n") {
                     call_getNumberOfNodes(allArgs, currentGraph);
@@ -180,6 +181,7 @@ int main(int argc, char **argv) {
 
                 } else if (currentOption == "-h") {
                     showhelp = true;
+
                 } else if (currentOption == "-for") {
                     call_isForest(allArgs, currentGraph);
 
