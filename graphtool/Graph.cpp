@@ -842,7 +842,7 @@ bool Graph::isForest() {
     }
 
     isForestCache = true;
-    if(hasCycle() || isDirected()) {
+    if(hasCycle() || !isDirected()) {
         isForestFlag = false;
         return false;
     }
