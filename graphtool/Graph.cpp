@@ -108,6 +108,11 @@ Graph::Graph(string matlabMatrix) {
     }
 
     this->adjacencyMatrix = adjacencyMatrix;
+
+    nodes = vector<string>();
+    for (int i = 0; i < adjacencyMatrix[0].size(); i++) {
+        nodes.push_back(to_string(i));
+    }
 }
 
 bool Graph::isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const {
