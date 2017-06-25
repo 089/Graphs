@@ -99,44 +99,133 @@
             Achte bei den Optionen auf Groß- und Kleinschreibung.</p>
     </div>
 
-    <div id="help" class="container text-center c-line">
+    <div id="help" class="container c-line">
         <h2>Funktionen</h2>
-        <table class="table">
-            <thead>
-                <tr>
-                    <th>Eingabe</th>
-                    <th>Beschreibnung</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>-i --input-csv (1)</td>
-                    <td>Liest die Adjazenzmatrix des Graphen aus der angegebenen CSV-Datei aus.</td>
-                </tr>
-                <tr>
-                    <td>-iml --input-matlab (1)</td>
-                    <td>Erzeugt einen Graphen aus der in Matlab-Notation angegebenen Adjazenzmatrix.
-                    </td>
-                </tr>
-                <tr>
-                    <td>-h --help (0)</td>
-                    <td>Zeigt die Hilfe an.</td>
-                </tr>
-                <tr>
-                    <td>-na --no-args (0)</td>
-                    <td>Ruft alle Funktionen auf, die keine Argumente benötigen und gibt die Ergebnisse aus.
-                    </td>
-                </tr>
-                <tr>
-                    <td>-V --vertices-count (0)</td>
-                    <td>Gibt die Anzahl der Knoten |V| aus.</td>
-                </tr>
-                <tr>
-                    <td>-E --edges-count (0)</td>
-                    <td>Gibt die Anzahl der Kanten |E| aus.</td>
-                </tr>
-            </tbody>
-        </table>
+<pre>
+OPTIONS
+    EINGABE
+
+    -i     --input-csv          (1)
+                Liest  die  Adjazenzmatrix  des  Graphen aus der angegebenen
+                CSV-Datei aus.
+
+    -iml   --input-matlab       (1)
+                Erzeugt einen Graphen aus der in Matlab-Notation angegebenen
+                Adjazenzmatrix.
+
+    -ima   --input-mathematica  (1)
+                Erzeugt   einen  Graphen  aus  der  in  Mathematica-Notation
+                angegebenen Adjazenzmatrix.
+
+    -ivn   --input-vertices-name (1)
+                Übergibt  Namen  der  Knoten.  Diese werden bei der Ausgabe
+                anstelle der Knotennummer angegeben.
+
+    AUSGABE
+
+    -o     --output-csv         (1)
+                Speichert  die Adjazenzmatrix des Graphen in der angegebenen
+                Datei
+
+    -oj    --output-json        (1)
+                Speichert den Graphen - als JSON im Format von sigmajs.org -
+                in der angegebenen Datei.
+
+    -og    --output-graphviz    (1)
+                Speichert den Graphen in der angegebenen Datei im Format von
+                Graphviz (hier: DOT).
+
+    -v     --verbose            (1)
+                Aktiviert den wortreichen Modus
+
+    FUNKTIONEN OHNE ARGUMENTE
+
+    -h     --help               (0)
+                Zeigt die Hilfe an.
+
+    -na    --no-args            (0)
+                Ruft alle Funktionen auf, die keine Argumente benötigen und
+                gibt die Ergebnisse aus.
+
+    -V     --vertices-count     (0)
+                Gibt die Anzahl der Knoten |V| aus.
+
+    -E     --edges-count        (0)
+                Gibt die Anzahl der Kanten |E| aus.
+
+    -d     --is-directed        (0)
+                Gibt an, ob der Graph gerichtet ist.
+
+    -c     --is-complete        (0)
+                Gibt  an,  ob der Graph vollstaendig ist. Ein vollständiger
+                Graph  ist ein Begriff aus der Graphentheorie und bezeichnet
+                einen einfachen Graph, in dem jeder Knoten mit jedem anderen
+                Knoten durch eine Kante verbunden ist (Wikipedia).
+
+    -mg    --is-multigraph      (0)
+                Gibt  an,  ob  der  Graph ein Multigraph ist. In sogenannten
+                Multigraphen  können  zwei Knoten auch durch mehrere Kanten
+                verbunden  sein,  was  in  einfachen  Graphen  nicht erlaubt
+                ist(Wikipedia).
+
+    -r     --is-regular         (0)
+                Gibt  an,  ob  der Graph regulaer ist. In der Graphentheorie
+                heißt  ein  Graph  regulär, falls alle seine Knoten gleich
+                viele  Nachbarn  haben, also den gleichen Grad besitzen. Bei
+                einem   regulären   gerichteten  Graphen  muss  weiter  die
+                stärkere  Bedingung  gelten,  dass alle Knoten den gleichen
+                Eingangs- und Ausgangsgrad besitzen (Wikipedia).
+
+    -s     --is-simple          (0)
+                Gibt an, ob der Graph einfach ist. Ein einfacher Graph (auch
+                schlichter    Graph)   ist   in   der   Graphentheorie   ein
+                ungerichteter  Graph  ohne Mehrfachkanten und ohne Schleifen
+                (Wikipedia).
+
+    -cy    --has-cycle          (0)
+                Gibt an, ob der Graph einen Kreis hat.
+
+    -fol   --is-free-of-loops   (0)
+                Gibt  an,  ob der Graph schleifenfrei ist (z.B. von Knoten 1
+                zu Knoten 1).
+
+    -for   --is-directed-forest (0)
+                Gibt  an,  ob  der  Graph ein gerichteter Wald ist. Als Wald
+                bezeichnet  man  in  der  Graphentheorie einen ungerichteten
+                Graphen ohne Zyklus. Ist dieser zusammenhängend, so spricht
+                man     von     einem     (ungerichteten)     Baum.     Jede
+                Zusammenhangskomponente  eines  Waldes  ist  ein  Baum. Eine
+                Verallgemeinerung auf gerichtete Graphen kann man erklären,
+                indem  man  diese  auf  die  zugrundeliegenden Ungerichteten
+                zurückführt (Wikipedia).
+
+    FUNKTIONEN MIT ARGUMENTEN
+
+    -ideg  --indegree           (1)
+                Gibt   die   Anzahl  der  eingehenden  Kanten  eines  Knoten
+                (Parameter = Nummern zwischen 0 und |V| - 1) aus.
+
+    -odeg  --outdegree          (1)
+                Gibt   die   Anzahl  der  ausgehenden  Kanten  eines  Knoten
+                (Parameter = Nummern zwischen 0 und |V| - 1) aus.
+
+    -an    --are-neighbours     (2)
+                Gibt  an, ob zwei Knoten (Parameter = Nummern zwischen 0 und
+                |V| - 1) Nachbarn sind.
+
+    -hc    --has-connectivity   (2)
+                Gibt  an,  ob  es  zwischen  den  beiden Knoten (Parameter =
+                Nummern zwischen 0 und |V| - 1) einen Weg gibt.
+
+    -he    --has-edge           (2)
+                Gibt  an, ob es den Knoten mit der gegebenen Nummer zwischen
+                0 und |V| - 1 gibt.
+
+    -hp    --has-path           (1)
+                Gibt  an,  ob  die  übergebene  Kantenfolge (Mindestens ein
+                Parameter  =  Nummern  zwischen  0  und  |V|  -  1) im Graph
+                existiert.
+</pre>
     </div>
 
     <div id="example" class="container text-center c-line">
