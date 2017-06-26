@@ -71,14 +71,17 @@ $(document).ready(function() {
 
     $.getJSON("data/data.json", function(data) {
 
+        $.each(data.properties, function(key, val) {
+            $('<tr><td>' + key + '</td><td id="' + key + '">' + val + '</td><tr>').appendTo('#sample-properties');
+        });
+
         s = new sigma({
-            graph: data,
+            graph: data.graph,
             renderer: {
                 // IMPORTANT:
                 // This works only with the canvas renderer, so the
                 // renderer type set as "canvas" is necessary here.
                 container: 'container'
-                    // type: 'canvas'
             },
 
             settings: {

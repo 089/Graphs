@@ -19,6 +19,7 @@
     <script src="js/plugins/sigma.plugins.neighborhoods.min.js"></script>
     <script src="js/plugins/sigma.layout.forceAtlas2.min.js"></script>
     <script src="js/plugins/sigma.renderers.customEdgeShapes.min.js"></script>
+    <script src="js/plugins/sigma.renderers.edgeLabels.min.js"></script>
 
 </head>
 
@@ -37,7 +38,7 @@
             <div class="collapse navbar-collapse" id="myNavbar">
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#descr">Beschreibung</a></li>
-                    <li><a href="#help">Funktionen</a></li>
+                    <li><a href="#help">Hilfefunktionen</a></li>
                     <li><a href="#example">Beispiel</a></li>
                     <li><a data-toggle="modal" data-target="#myModal">Dein Graph</a></li>
                 </ul>
@@ -99,10 +100,10 @@
             Achte bei den Optionen auf Groß- und Kleinschreibung.</p>
     </div>
 
-    <div id="help" class="container c-line">
-        <h2>Funktionen</h2>
-<pre>
-OPTIONS
+    <div id="help" class="container text-center c-line">
+        <h2>Hilfefunktionen</h2>
+        <pre style="text-align: left">
+            OPTIONS
     EINGABE
 
     -i     --input-csv          (1)
@@ -225,7 +226,8 @@ OPTIONS
                 Gibt  an,  ob  die  übergebene  Kantenfolge (Mindestens ein
                 Parameter  =  Nummern  zwischen  0  und  |V|  -  1) im Graph
                 existiert.
-</pre>
+
+        </pre>
     </div>
 
     <div id="example" class="container text-center c-line">
@@ -235,88 +237,106 @@ OPTIONS
 
         <div class="row slideanim slide">
             <div class="col-sm-4 box">
-                <h4>Konsolen-Ausgabe</h4>
-                <img src="img/output.png" width="100%">
+                <h4>Eigenschaften</h4>
+                <pre><table class="table">
+                    <thead>
+                        <tr>
+                            <th>Eigenschaft</th>
+                            <th>Wert</th>
+                        </tr>
+                    </thead>
+                    <tbody id="sample-properties">
+                    </tbody>
+                </table></pre>
             </div>
             <div class="col-sm-4 box">
                 <h4>json-Ausgabe</h4>
-                <div class="box-code">
-                    <code>
+                <div class="box-code" style="height: 319px">
+                    <pre style="text-align: left; height: 319px"><code>
 {
-  "nodes": [
-    {
-      "id": "0",
-      "label": "0",
-      "x": "3",
-      "y": "6",
-      "size": "1"
+    "graph": {
+        "nodes": [{
+                "id": "0",
+                "label": "0",
+                "x": "7",
+                "y": "9",
+                "size": "1"
+            },
+            {
+                "id": "1",
+                "label": "1",
+                "x": "3",
+                "y": "8",
+                "size": "1"
+            },
+            {
+                "id": "2",
+                "label": "2",
+                "x": "0",
+                "y": "2",
+                "size": "1"
+            }
+        ],
+        "edges": [{
+                "id": "0",
+                "source": "0",
+                "target": "0",
+                "type": "arrow",
+                "size": "1"
+            },
+            {
+                "id": "1",
+                "source": "0",
+                "target": "1",
+                "type": "arrow",
+                "size": "1"
+            },
+            {
+                "id": "2",
+                "source": "1",
+                "target": "0",
+                "type": "arrow",
+                "size": "1"
+            },
+            {
+                "id": "3",
+                "source": "1",
+                "target": "2",
+                "type": "arrow",
+                "size": "1"
+            },
+            {
+                "id": "4",
+                "source": "2",
+                "target": "0",
+                "type": "arrow",
+                "size": "1"
+            },
+            {
+                "id": "5",
+                "source": "2",
+                "target": "1",
+                "type": "arrow",
+                "size": "1"
+            }
+        ]
     },
-    {
-      "id": "1",
-      "label": "1",
-      "x": "7",
-      "y": "5",
-      "size": "1"
-    },
-    {
-      "id": "2",
-      "label": "2",
-      "x": "3",
-      "y": "5",
-      "size": "1"
+    "properties": {
+        "isDirected": true,
+        "isComplete": false,
+        "isMultigraph": false,
+        "isRegular": false,
+        "isSimple": false,
+        "hasCycle": true,
+        "isFreeOfLoops": false
     }
-  ],
-  "edges": [
-    {
-      "id": "0",
-      "source": "0",
-      "target": "0",
-      "type": "arrow",
-      "size": "1"
-    },
-    {
-      "id": "1",
-      "source": "0",
-      "target": "1",
-      "type": "arrow",
-      "size": "1"
-    },
-    {
-      "id": "2",
-      "source": "1",
-      "target": "0",
-      "type": "arrow",
-      "size": "1"
-    },
-    {
-      "id": "3",
-      "source": "1",
-      "target": "2",
-      "type": "arrow",
-      "size": "1"
-    },
-    {
-      "id": "4",
-      "source": "2",
-      "target": "0",
-      "type": "arrow",
-      "size": "1"
-    },
-    {
-      "id": "5",
-      "source": "2",
-      "target": "1",
-      "type": "arrow",
-      "size": "1"
-    }
-  ]
 }
-</code>
+</code></pre>
                 </div>
             </div>
             <div class="col-sm-4 box">
                 <h4>Sigma Graph</h4>
-                <div class="col-sm-12" style="position: relative;height: 300px; width: 100%;">
+                <div class="col-sm-12 graph-box" style="position: relative; height: 319px; width: 100%;">
                     <div id="container" class=""></div>
                 </div>
             </div>
