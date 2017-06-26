@@ -349,6 +349,11 @@ bool Graph::isRegular() {
  */
 string Graph::graphToJson() {
 
+    string edgeType = "line";
+
+    if (this->isDirected())
+        string edgeType = "arrow";
+
     int size = (int) this->adjacencyMatrix.size();
 
     string nodes = "\"nodes\": [";
@@ -374,8 +379,6 @@ string Graph::graphToJson() {
     string edges = "\"edges\": [";
     int y = 0;
     int id = 0;
-
-    string edgeType = "arrow";
 
     // parse json edges
     for (vector<int> row : adjacencyMatrix) {
