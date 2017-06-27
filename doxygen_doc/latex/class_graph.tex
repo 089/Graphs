@@ -22,7 +22,7 @@ void \hyperlink{class_graph_ac38ffcb580b1a9fa57142812aac33c46}{export\-File} (co
 \item 
 void \hyperlink{class_graph_a2500973a26b28812291e2c6c142c96f4}{export\-Adjazenzmatrix\-File} (const string file\-Name) const 
 \item 
-string \hyperlink{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}{graph\-To\-Json} () const 
+string \hyperlink{class_graph_a3203a0e4a3ed223169db0b9af46cc971}{graph\-To\-Json} ()
 \item 
 bool \hyperlink{class_graph_a6fcbfa381804b43a67d92eed7f30e1d9}{has\-Cycle} ()
 \item 
@@ -47,6 +47,8 @@ bool \hyperlink{class_graph_a4095f5949d5b2a420ecf2d0f2bb68dc8}{is\-Simple} ()
 bool \hyperlink{class_graph_aba9eba8899f63a67ed270ee00bdfeb4e}{is\-Complete} ()
 \item 
 bool \hyperlink{class_graph_afe19c30e6b7005fd0c66c5f182764ca5}{is\-Regular} ()
+\item 
+bool \hyperlink{class_graph_a3c59cca56e627174ff1138c332dcc328}{is\-Forest} ()
 \item 
 bool \hyperlink{class_graph_a46cb0098da247fd0f2b07229df8cd5e7}{has\-Connectivity} (int s, int t)
 \item 
@@ -232,13 +234,13 @@ Returns outdegree outdeg(v). Therefore it counts the outgoing edges. In undirect
 \begin{DoxyReturn}{Returns}
 outdegree outdeg(v) 
 \end{DoxyReturn}
-\hypertarget{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}{\index{Graph@{Graph}!graph\-To\-Json@{graph\-To\-Json}}
+\hypertarget{class_graph_a3203a0e4a3ed223169db0b9af46cc971}{\index{Graph@{Graph}!graph\-To\-Json@{graph\-To\-Json}}
 \index{graph\-To\-Json@{graph\-To\-Json}!Graph@{Graph}}
 \subsubsection[{graph\-To\-Json}]{\setlength{\rightskip}{0pt plus 5cm}string Graph\-::graph\-To\-Json (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const}}\label{class_graph_a027c9787cdf583c5e6d1cc048c3a7c32}
+)}}\label{class_graph_a3203a0e4a3ed223169db0b9af46cc971}
 Return the graph in a json-\/format. \begin{DoxyReturn}{Returns}
 string json.
 \end{DoxyReturn}
@@ -333,6 +335,18 @@ Returns if the graph is a directed or undirected graph.
 \begin{DoxyReturn}{Returns}
 true, if directed\par
  false, if undirected 
+\end{DoxyReturn}
+\hypertarget{class_graph_a3c59cca56e627174ff1138c332dcc328}{\index{Graph@{Graph}!is\-Forest@{is\-Forest}}
+\index{is\-Forest@{is\-Forest}!Graph@{Graph}}
+\subsubsection[{is\-Forest}]{\setlength{\rightskip}{0pt plus 5cm}bool Graph\-::is\-Forest (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{class_graph_a3c59cca56e627174ff1138c332dcc328}
+Specifies whether the graph is a directed forest (\href{https://en.wikipedia.org/wiki/Tree_(graph_theory)}{\tt \char`\"{}\-A forest is a disjoint union of trees.\char`\"{} }).
+
+\begin{DoxyReturn}{Returns}
+true, if the graph is a directed forest. 
 \end{DoxyReturn}
 \hypertarget{class_graph_a451bbc2d9ddde5e85d6c122a845dbd02}{\index{Graph@{Graph}!is\-Free\-Of\-Loops@{is\-Free\-Of\-Loops}}
 \index{is\-Free\-Of\-Loops@{is\-Free\-Of\-Loops}!Graph@{Graph}}
