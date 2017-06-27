@@ -59,12 +59,13 @@ static struct optionItem options[] =
                 {"-V",    "--vertices-count",      0, "Gibt die Anzahl der Knoten |V| aus."},
                 {"-E",    "--edges-count",         0, "Gibt die Anzahl der Kanten |E| aus."},
                 {"-d",    "--is-directed",         0, "Gibt an, ob der Graph gerichtet ist."},
-                {"-c",    "--is-complete",         0, "Gibt an, ob der Graph vollstaendig ist."},
-                {"-mg",   "--is-multigraph",       0, "Gibt an, ob der Graph ein Multigraph ist."},
-                {"-r",    "--is-regular",          0, "Gibt an, ob der Graph regulaer ist."},
-                {"-s",    "--is-simple",           0, "Gibt an, ob der Graph einfach ist."},
-                {"-cy",   "--has-cycle",           0, "Gibt an, ob der Graph einen Kreis hat."},
-                {"-fol",  "--is-free-of-loops",    0, "Gibt an, ob der Graph kreisfrei ist."},
+                {"-c",    "--is-complete",         0, "Gibt an, ob der Graph vollstaendig ist. Ein vollständiger Graph ist ein Begriff aus der Graphentheorie und bezeichnet einen einfachen Graph, in dem jeder Knoten mit jedem anderen Knoten durch eine Kante verbunden ist (Wikipedia)."},
+                {"-mg",   "--is-multigraph",       0, "Gibt an, ob der Graph ein Multigraph ist. In sogenannten Multigraphen können zwei Knoten auch durch mehrere Kanten verbunden sein, was in einfachen Graphen nicht erlaubt ist(Wikipedia)."},
+                {"-r",    "--is-regular",          0, "Gibt an, ob der Graph regulaer ist. In der Graphentheorie heißt ein Graph regulär, falls alle seine Knoten gleich viele Nachbarn haben, also den gleichen Grad besitzen. Bei einem regulären gerichteten Graphen muss weiter die stärkere Bedingung gelten, dass alle Knoten den gleichen Eingangs- und Ausgangsgrad besitzen (Wikipedia)."},
+                {"-s",    "--is-simple",           0, "Gibt an, ob der Graph einfach ist. Ein einfacher Graph (auch schlichter Graph) ist in der Graphentheorie ein ungerichteter Graph ohne Mehrfachkanten und ohne Schleifen (Wikipedia)."},
+                {"-cy",   "--has-cycle",           0, "Gibt an, ob der gerichtete Graph einen Kreis hat."},
+                {"-fol",  "--is-free-of-loops",    0, "Gibt an, ob der Graph schleifenfrei ist (z.B. von Knoten 1 zu Knoten 1)."},
+                {"-for",  "--is-directed-forest",  0, "Gibt an, ob der Graph ein gerichteter Wald ist. Als Wald bezeichnet man in der Graphentheorie einen ungerichteten Graphen ohne Zyklus. Ist dieser zusammenhängend, so spricht man von einem (ungerichteten) Baum. Jede Zusammenhangskomponente eines Waldes ist ein Baum. Eine Verallgemeinerung auf gerichtete Graphen kann man erklären, indem man diese auf die zugrundeliegenden Ungerichteten zurückführt (Wikipedia)."},
 
                 // functions with arguments
                 {"",      "",                      0, "FUNKTIONEN MIT ARGUMENTEN"},
@@ -154,6 +155,7 @@ int main(int argc, char **argv) {
                     call_isSimple(allArgs, currentGraph);
                     call_hasCycle(allArgs, currentGraph);
                     call_isFreeOfLoops(allArgs, currentGraph);
+                    call_isForest(allArgs, currentGraph);
 
                 } else if (currentOption == "-n") {
                     call_getNumberOfNodes(allArgs, currentGraph);
@@ -184,6 +186,9 @@ int main(int argc, char **argv) {
 
                 } else if (currentOption == "-h") {
                     showhelp = true;
+
+                } else if (currentOption == "-for") {
+                    call_isForest(allArgs, currentGraph);
 
                     // B) functions with no arguments
                 } else if (currentOption == "-ideg") {
@@ -257,7 +262,12 @@ void call_getNumberOfEdges(const vector<string> &allArgs, Graph *currentGraph) {
 }
 
 void call_hasCycle(const vector<string> &allArgs, Graph *currentGraph) {
-    print_result("Hat einen Kreis", currentGraph->hasCycle());
+    if (currentGraph->isDirected()) {
+        print_result("Hat einen Kreis", currentGraph->hasCycle());
+    } else {
+        string niy_message = "Bisher nur für Digraphen implementiert.";
+        print_result("Hat einen Kreis", niy_message);
+    }
 }
 
 void call_isComplete(const vector<string> &allArgs, Graph *currentGraph) {
@@ -269,7 +279,7 @@ void call_isDirected(const vector<string> &allArgs, Graph *currentGraph) {
 }
 
 void call_isFreeOfLoops(const vector<string> &allArgs, Graph *currentGraph) {
-    print_result("Ist kreisfrei", currentGraph->isFreeOfLoops());
+    print_result("Ist schleifenfrei", currentGraph->isFreeOfLoops());
 }
 
 void call_isMultigraph(const vector<string> &allArgs, Graph *currentGraph) {
@@ -293,6 +303,15 @@ void call_getInDeg(const vector<string> &allArgs, Graph *currentGraph) {
     }
 }
 
+void call_isForest(const vector<string> &allArgs, Graph *currentGraph) {
+    if (currentGraph->isDirected()) {
+        print_result("Ist Wald", currentGraph->isForest());
+    } else {
+        string niy_message = "Bisher nur für Digraphen implementiert.";
+        print_result("Hat einen Kreis", niy_message);
+    }
+}
+
 void call_getOutDeg(const vector<string> &allArgs, Graph *currentGraph) {
     const vector<string> currentValues = getValues("-odeg", allArgs);
     for (int valIndex = 0; valIndex < currentValues.size(); valIndex++) {
@@ -310,13 +329,13 @@ void call_areNeighbours(const vector<string> &allArgs, Graph *currentGraph) {
 
 void call_hasConnectivity(const vector<string> &allArgs, Graph *currentGraph) {
     const vector<string> currentValues = getValues("-hc", allArgs);
-    const string key = boost::str(boost::format("\u2203 Weg zw. %d und %d") % currentValues[0] % currentValues[1]);
+    const string key = boost::str(boost::format("Weg zw. %d und %d existiert") % currentValues[0] % currentValues[1]);
     print_result(key, currentGraph->hasConnectivity(str2int(currentValues[0]), str2int(currentValues[1])));
 }
 
 void call_hasEdge(const vector<string> &allArgs, Graph *currentGraph) {
     const vector<string> currentValues = getValues("-he", allArgs);
-    const string key = boost::str(boost::format("\u2203 Kante zw. %d und %d") % currentValues[0] % currentValues[1]);
+    const string key = boost::str(boost::format("Kante zw. %d und %d existiert") % currentValues[0] % currentValues[1]);
     print_result(key, currentGraph->hasEdge(str2int(currentValues[0]), str2int(currentValues[1])));
 }
 
@@ -326,7 +345,7 @@ void call_hasPath(const vector<string> &allArgs, Graph *currentGraph) {
     for (int i = 0; i < currentValues.size(); i++) {
         vertices.push_back(str2int(currentValues[i]));
     }
-    const string key = boost::str(boost::format("\u2203 Pfad {%s}") % boost::join(currentValues, ", "));
+    const string key = boost::str(boost::format("Pfad {%s} existiert") % boost::join(currentValues, ", "));
     print_result(key, currentGraph->hasPath(vertices));
 }
 

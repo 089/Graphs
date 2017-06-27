@@ -74,6 +74,16 @@ private:
     bool isMultigraphFlag = false;
 
     /**
+     * Cache for result of forest function.
+     */
+    bool isForestCache = false;
+
+    /**
+     * Flag for result of forest function.
+     */
+    bool isForestFlag = false;
+
+    /**
      * Cache for result of eponymous function.
      */
     bool isCompleteCache = false;
@@ -213,7 +223,7 @@ public:
      * Return the graph in a json-format.
      * @return string json.
      */
-    string graphToJson() const;
+    string graphToJson();
 
     /**
      * Checks the graph if a cycle exists. DFS.
@@ -308,6 +318,16 @@ public:
      * @return  true, if the graph is a regular graph.
      */
     bool isRegular();
+
+/**
+     * Specifies whether the graph is a directed forest
+     * (<a href="https://en.wikipedia.org/wiki/Tree_(graph_theory)">
+     * "A forest is a disjoint union of trees."
+     * </a>).
+     *
+     * @return  true, if the graph is a directed forest.
+     */
+    bool isForest();
 
     /**
      * Calculates if there is a path from s to t.

@@ -8,6 +8,10 @@
 #include <iostream>
 #include <boost/regex.hpp>
 
+inline const string BoolToString(bool b)
+{
+    return b ? "true" : "false";
+}
 
 Graph::Graph(vector<vector<int>> adjacencyMatrix) {
     nodes = vector<string>();
@@ -104,6 +108,11 @@ Graph::Graph(string matlabMatrix) {
     }
 
     this->adjacencyMatrix = adjacencyMatrix;
+
+    nodes = vector<string>();
+    for (int i = 0; i < adjacencyMatrix[0].size(); i++) {
+        nodes.push_back(to_string(i));
+    }
 }
 
 bool Graph::isSquareMatrix(const vector<vector<int>> &adjacencyMatrix) const {
@@ -338,7 +347,12 @@ bool Graph::isRegular() {
  * Transform the graph to json-format.
  * @return string json.
  */
-string Graph::graphToJson() const {
+string Graph::graphToJson() {
+
+    string edgeType = "line";
+
+    if (this->isDirected())
+        string edgeType = "arrow";
 
     int size = (int) this->adjacencyMatrix.size();
 
@@ -366,8 +380,6 @@ string Graph::graphToJson() const {
     int y = 0;
     int id = 0;
 
-    string edgeType = "arrow";
-
     // parse json edges
     for (vector<int> row : adjacencyMatrix) {
 
@@ -385,11 +397,11 @@ string Graph::graphToJson() const {
                 }
 
                 // set properties
-                edges += "\"id\": \"" + to_string(id) + "\",";
-                edges += "\"source\": \"" + to_string(y) + "\",";
-                edges += "\"target\": \"" + to_string(x) + "\",";
+                edges += "\"id\": " + to_string(id) + ",";
+                edges += "\"source\": " + to_string(y) + ",";
+                edges += "\"target\": " + to_string(x) + ",";
                 edges += "\"type\": \"" + edgeType + "\",";
-                edges += "\"size\": \"" + to_string(1) + "\"";
+                edges += "\"size\": " + to_string(1);
 
                 edges += "}";
 
@@ -401,7 +413,22 @@ string Graph::graphToJson() const {
 
     edges += "]";
 
-    return "{ " + nodes + ", " + edges + " }";
+    string properties = "\"properties\": {" ;
+
+    properties += "\"Vertices\": \"" + to_string(getNumberOfNodes()) + "\",";
+    properties += "\"Edges\": \"" + to_string(getNumberOfEdges()) + "\",";
+    properties += "\"isDirected\": \"" + BoolToString(isDirected()) + "\",";
+    properties += "\"isComplete\": \"" + BoolToString(isComplete()) + "\",";
+    properties += "\"isMultigraph\": \"" + BoolToString(isMultigraph()) + "\",";
+    properties += "\"isRegular\": \"" + BoolToString(isRegular()) + "\",";
+    properties += "\"isSimple\": \"" + BoolToString(isSimple()) + "\",";
+    properties += "\"hasCycle\": \"" + BoolToString(hasCycle()) + "\",";
+    properties += "\"isFreeOfLoops\": \"" + BoolToString(isFreeOfLoops()) + "\",";
+    properties += "\"isForest\": \"" + BoolToString(isForest()) + "\"";
+
+    properties += "}";
+
+    return "{ \"graph\": {" + nodes + ", " + edges + "}, " + properties + " }";
 }
 
 /**
@@ -819,6 +846,27 @@ const string Graph::getAdjacencyMatrixString() const {
 
     return ss.str();
 }
+
+bool Graph::isForest() {
+    if (isForestCache) {
+        return isForestFlag;
+    }
+
+    isForestCache = true;
+    if(hasCycle() || !isDirected()) {
+        isForestFlag = false;
+        return false;
+    }
+    for (int i = 0; i < adjacencyMatrix.size(); i++) {
+        if(getInDeg(i) > 1) {
+            isForestFlag = false;
+            return false;
+        }
+    }
+    isForestFlag = true;
+    return true;
+}
+
 
 Graph *Graph::loadAdjacencyFile(string file) {
     string line;
