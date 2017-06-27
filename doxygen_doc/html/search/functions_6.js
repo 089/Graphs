@@ -1,10 +1,5 @@
 var searchData=
 [
-  ['iscomplete',['isComplete',['../class_graph.html#aba9eba8899f63a67ed270ee00bdfeb4e',1,'Graph']]],
-  ['isdirected',['isDirected',['../class_graph.html#afd552af25f5c9672848693d66f27827a',1,'Graph']]],
-  ['isforest',['isForest',['../class_graph.html#a3c59cca56e627174ff1138c332dcc328',1,'Graph']]],
-  ['isfreeofloops',['isFreeOfLoops',['../class_graph.html#a451bbc2d9ddde5e85d6c122a845dbd02',1,'Graph']]],
-  ['ismultigraph',['isMultigraph',['../class_graph.html#ab410dec3635c080f04c60c6835d91df6',1,'Graph']]],
-  ['isregular',['isRegular',['../class_graph.html#afe19c30e6b7005fd0c66c5f182764ca5',1,'Graph']]],
-  ['issimple',['isSimple',['../class_graph.html#a4095f5949d5b2a420ecf2d0f2bb68dc8',1,'Graph']]]
+  ['justifyline',['justifyLine',['../main_8cpp.html#aa3af88a23d887ed3bb8309d3309d720b',1,'main.cpp']]],
+  ['justifytext',['justifyText',['../main_8cpp.html#ad897add4c0c9f745f88467be3aeab7fa',1,'justifyText(const string &amp;text, int pageWidth, int indent):&#160;main.cpp'],['../main_8h.html#ad897add4c0c9f745f88467be3aeab7fa',1,'justifyText(const string &amp;text, int pageWidth, int indent):&#160;main.cpp']]]
 ];
