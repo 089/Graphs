@@ -259,7 +259,7 @@ void call_hasCycle(const vector<string> &allArgs, Graph *currentGraph) {
     if (currentGraph->isDirected()) {
         print_result("Hat einen Kreis", currentGraph->hasCycle());
     } else {
-        string niy_message = "Up to now only implemented for digraphs.";
+        string niy_message = "Bisher nur für Digraphen implementiert.";
         print_result("Hat einen Kreis", niy_message);
     }
 }
@@ -301,7 +301,7 @@ void call_isForest(const vector<string> &allArgs, Graph *currentGraph) {
     if (currentGraph->isDirected()) {
         print_result("Ist Wald", currentGraph->isForest());
     } else {
-        string niy_message = "Up to now only implemented for digraphs.";
+        string niy_message = "Bisher nur für Digraphen implementiert.";
         print_result("Hat einen Kreis", niy_message);
     }
 }
