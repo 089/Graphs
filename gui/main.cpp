@@ -302,7 +302,7 @@ void call_isForest(const vector<string> &allArgs, Graph *currentGraph) {
         print_result("Ist Wald", currentGraph->isForest());
     } else {
         string niy_message = "Bisher nur für Digraphen implementiert.";
-        print_result("Hat einen Kreis", niy_message);
+        print_result("Ist Wald", niy_message);
     }
 }
 
