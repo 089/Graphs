@@ -866,3 +866,41 @@ bool Graph::isForest() {
     isForestFlag = true;
     return true;
 }
+
+
+Graph *Graph::loadAdjacencyFile(string file) {
+    string line;
+    ifstream myfile(file);
+
+    vector<vector<string>> result;
+    if (myfile.is_open()) {
+        while (getline(myfile, line)) {
+
+            vector<std::string> cols;
+            boost::split(cols, line, boost::is_any_of(","));
+            result.push_back(cols);
+        }
+        myfile.close();
+
+
+        // check if the first column is a name
+        bool isFirstColName = result.at(0).size() != result.size();
+
+        //Load into vector
+        vector<vector<int>> adjacencyMatrix = getZeroizedMatrix((int) result.size(), (int) result.size());
+        for (unsigned long rIndex = 0; rIndex < result.size(); rIndex++) {
+            // add values to matrix
+            for (unsigned long cIndex = 0; cIndex < result.size(); cIndex++) {
+                unsigned long tmpCIndex = isFirstColName ? cIndex + 1 : cIndex;
+                try {
+                    adjacencyMatrix.at(rIndex).at(cIndex) = stoi(result.at(rIndex)[tmpCIndex]);
+                } catch (const invalid_argument &e) {
+                    throw invalid_argument("matrix entries must be and contain at least one integer.");
+                }
+            }
+        }
+        return new Graph(adjacencyMatrix);
+    } else {
+        return nullptr;
+    }
+}

@@ -106,7 +106,13 @@ int main(int argc, char **argv) {
          */
 
         // Get input from csv file
-        // TODO @ForrestFalcon issue #10, vgl. Implementierung inputMatlab
+        vector<string> inputCSV = getValues("-i", allArgs);
+        for (int i = 0; i < inputCSV.size(); i++) {
+            Graph *g = Graph::loadAdjacencyFile(inputCSV[i]);
+            printv("Graph %d (CSV-Datei) \"%s\" hinzugefügt.", graphs.size(), inputCSV[i].c_str());
+            graphs.push_back(g);
+        }
+        printv("%d CSV-Dateien gefunden.", inputCSV.size());
 
         // Get input from matlab string
         vector<string> inputMatlab = getValues("-iml", allArgs);

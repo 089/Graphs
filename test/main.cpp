@@ -1,6 +1,7 @@
 #include "gtest/gtest.h"
 #include <string>
 #include <boost/algorithm/string.hpp>
+#include <fstream>
 #include "Graph.h"
 
 TEST(graph_check, test_directed) {
@@ -453,4 +454,64 @@ TEST(graph_check, test_forest_undirected) {
     bool forest = g->isForest();
 
     ASSERT_FALSE(forest);
+}
+TEST(graph_check, test_adjazenzmatrix_load_file) {
+    ofstream myfile ("tmp.txt");
+    if (myfile.is_open()) {
+        myfile << "1,0,1\n";
+        myfile << "1,1,1\n";
+        myfile << "0,0,1\n";
+        myfile.close();
+    } else FAIL();
+
+    Graph *g = Graph::loadAdjacencyFile("tmp.txt");
+    string mat = g->getAdjacencyMatrixString();
+    remove("tmp.txt");
+
+    std::vector<std::string> strs;
+    boost::split(strs, mat, boost::is_any_of("\n"));
+
+    ASSERT_EQ(strs[0], "1,0,1");
+    ASSERT_EQ(strs[1], "1,1,1");
+    ASSERT_EQ(strs[2], "0,0,1");
+}
+TEST(graph_check, test_adjazenzmatrix_load_file_space) {
+    ofstream myfile ("tmp.txt");
+    if (myfile.is_open()) {
+        myfile << "1     ,0,1\n";
+        myfile << "1,1   ,1\n";
+        myfile << "0,0, 1\n";
+        myfile.close();
+    } else FAIL();
+
+    Graph *g = Graph::loadAdjacencyFile("tmp.txt");
+    string mat = g->getAdjacencyMatrixString();
+    remove("tmp.txt");
+
+    std::vector<std::string> strs;
+    boost::split(strs, mat, boost::is_any_of("\n"));
+
+    ASSERT_EQ(strs[0], "1,0,1");
+    ASSERT_EQ(strs[1], "1,1,1");
+    ASSERT_EQ(strs[2], "0,0,1");
+}
+TEST(graph_check, test_adjazenzmatrix_load_file_graph_name) {
+    ofstream myfile ("tmp.txt");
+    if (myfile.is_open()) {
+        myfile << "Demo,1,0,1\n";
+        myfile << "Test,1,1,1\n";
+        myfile << "42,0,0,1\n";
+        myfile.close();
+    } else FAIL();
+
+    Graph *g = Graph::loadAdjacencyFile("tmp.txt");
+    string mat = g->getAdjacencyMatrixString();
+    remove("tmp.txt");
+
+    std::vector<std::string> strs;
+    boost::split(strs, mat, boost::is_any_of("\n"));
+
+    ASSERT_EQ(strs[0], "1,0,1");
+    ASSERT_EQ(strs[1], "1,1,1");
+    ASSERT_EQ(strs[2], "0,0,1");
 }
